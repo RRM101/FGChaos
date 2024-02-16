@@ -16,7 +16,7 @@ namespace FGChaos.Effects
 
         public override void Run()
         {
-            ChaosPluginBehaviour.instance.RunCoroutine(EliminateCoroutine());
+            StartCorutine(EliminateCoroutine());
         }
 
         IEnumerator EliminateCoroutine()

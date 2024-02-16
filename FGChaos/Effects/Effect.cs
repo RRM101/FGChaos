@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,15 +13,46 @@ namespace FGChaos.Effects
 
         public int Duration;
 
-        public List<Effect> BlockedEffects;
+        public Effect[] BlockedEffects;
 
         public Chaos chaos = ChaosPluginBehaviour.chaosInstance;
 
-        public abstract void Run();
+        bool canRunUpdateMethod = true;
+
+        public virtual void Run()
+        {
+            StartCorutine(RunUpdate());
+        }
+
+        public virtual void Update()
+        {
+            throw new NotImplementedException();
+        }
 
         public virtual void End()
         {
             throw new NotImplementedException();
+        }
+
+        IEnumerator RunUpdate()
+        {
+            while (canRunUpdateMethod)
+            {
+                try
+                {
+                    Update();
+                }
+                catch
+                {
+                    canRunUpdateMethod = false;
+                }
+                yield return null;
+            }
+        }
+
+        public void StartCorutine(IEnumerator enumerator)
+        {
+            ChaosPluginBehaviour.instance.RunCoroutine(enumerator);
         }
     }
 }
