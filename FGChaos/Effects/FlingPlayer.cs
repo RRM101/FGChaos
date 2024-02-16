@@ -9,7 +9,11 @@ namespace FGChaos.Effects
 {
     public class FlingPlayer : Effect
     {
-        new public string Name = "Fling Player";
+        public override string Name
+        {
+            get { return "Fling Player"; }
+            set { }
+        }
 
         public override void Run()
         {

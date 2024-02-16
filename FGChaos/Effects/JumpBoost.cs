@@ -9,9 +9,17 @@ namespace FGChaos.Effects
 {
     public class JumpBoost : Effect
     {
-        new public string Name = "Jump Boost";
+        public override string Name
+        {
+            get { return "Jump Boost"; }
+            set { }
+        }
 
-        new public int Duration = 10;
+        public override int Duration
+        {
+            get { return 10; }
+            set { }
+        }
 
         public override void Run()
         {

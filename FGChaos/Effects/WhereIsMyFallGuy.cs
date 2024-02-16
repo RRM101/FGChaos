@@ -9,9 +9,18 @@ namespace FGChaos.Effects
 {
     public class WhereIsMyFallGuy : Effect
     {
-        new public string Name = "Where is my Fall Guy?";
+        public override string Name
+        {
+            get { return "Where is my Fall Guy?"; }
+            set { }
+        }
 
-        new public int Duration = 15;
+        public override int Duration
+        {
+            get { return 15; }
+            set { }
+        }
+
 
         GameObject model;
 

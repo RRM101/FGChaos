@@ -157,11 +157,17 @@ namespace FGChaos
             effects.Add(typeof(KidnapPlayer));
             effects.Add(typeof(JumpBoost));
             effects.Add(typeof(BoulderRain));
+
+            InvokeRepeating("RandomEffect", delay, delay);
         }
 
         void RandomEffect()
         {
-
+            delay = 5;
+            int getRandomEffect = UnityEngine.Random.Range(0, effects.Count);
+            Effect effectInstance = (Effect)Activator.CreateInstance(effects[getRandomEffect]);
+            effect = effectInstance.Name;
+            effectInstance.Run();
         }
 
         IEnumerator InstantiateAddressableObject(string key)

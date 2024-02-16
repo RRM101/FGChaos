@@ -24,6 +24,7 @@ namespace FGChaos
             if (!Disable.Value)
             {
                 Harmony.CreateAndPatchAll(typeof(Patches));
+
                 ClassInjector.RegisterTypeInIl2Cpp<ChaosPluginBehaviour>();
                 ClassInjector.RegisterTypeInIl2Cpp<Chaos>();
                 GameObject obj = new GameObject("FGChaos Behaviour");

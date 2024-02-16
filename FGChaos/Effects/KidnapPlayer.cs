@@ -14,7 +14,11 @@ namespace FGChaos.Effects
 {
     public class KidnapPlayer : Effect
     {
-        new public string Name = "Kidnap Player";
+        public override string Name
+        {
+            get { return "Kidnap Player"; }
+            set { }
+        }
 
         public override void Run()
         {

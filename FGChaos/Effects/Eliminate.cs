@@ -12,7 +12,11 @@ namespace FGChaos.Effects
 {
     public class Eliminate : Effect
     {
-        new public string Name = "Eliminate Player";
+        public override string Name
+        {
+            get { return "Eliminate Player"; }
+            set { }
+        }
 
         public override void Run()
         {

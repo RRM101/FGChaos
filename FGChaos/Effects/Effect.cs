@@ -8,11 +8,11 @@ using UnityEngine;
 
 namespace FGChaos.Effects
 {
-    public abstract class Effect
+    public class Effect
     {
-        public string Name;
+        public virtual string Name { get; set; }
 
-        public int Duration;
+        public virtual int Duration { get; set; }
 
         public static Type[] BlockedEffects;
 

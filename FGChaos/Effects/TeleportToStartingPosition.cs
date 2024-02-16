@@ -8,7 +8,11 @@ namespace FGChaos.Effects
 {
     public class TeleportToStartingPosition : Effect
     {
-        new public string Name = "Teleport to Start";
+        public override string Name
+        {
+            get { return "Teleport to Start"; }
+            set { }
+        }
 
         public override void Run()
         {

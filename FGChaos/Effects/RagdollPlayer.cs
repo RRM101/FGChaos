@@ -10,7 +10,11 @@ namespace FGChaos.Effects
 {
     public class RagdollPlayer : Effect
     {
-        new public string Name = "Ragdoll Player";
+        public override string Name
+        {
+            get { return "Ragdoll Player"; }
+            set { }
+        }
 
         new public int Duration = 5;
 

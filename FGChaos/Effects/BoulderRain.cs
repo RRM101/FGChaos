@@ -14,37 +14,29 @@ namespace FGChaos.Effects
 {
     public class BoulderRain : Effect
     {
-        new public string Name = "Boulder Rain";
+        public override string Name
+        {
+            get { return "Boulder Rain"; }
+            set { }
+        }
 
-        int randomSpawnAmount;
 
         public override void Run()
         {
-            randomSpawnAmount = UnityEngine.Random.Range(5, 20);
-
-            base.Run();
+            StartCorutine(BoulderRainCoroutine());
         }
 
-        public override void Update()
+
+        IEnumerator BoulderRainCoroutine()
         {
-            randomSpawnAmount = UnityEngine.Random.Range(5, 20);
-            randomSpawnAmount--;
-            if (randomSpawnAmount > 0)
+            int randomSpawnAmount = UnityEngine.Random.Range(5, 20);
+            for (int i = 0; i < randomSpawnAmount; i++)
             {
-                BoulderRainSpawn();
-            }
-            else
-            {
-                End();
+                yield return BoulderRainSpawn();
             }
         }
 
-        void BoulderRainSpawn()
-        {
-            StartCorutine(BoulderRainSpawnCorutine());
-        }
-
-        IEnumerator BoulderRainSpawnCorutine()
+        IEnumerator BoulderRainSpawn()
         {
             Vector3 randompoint = chaos.fallGuy.transform.position + (Vector3)(20 * UnityEngine.Random.insideUnitCircle);
             int randomy = UnityEngine.Random.Range(50, 100);

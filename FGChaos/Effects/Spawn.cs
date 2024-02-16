@@ -16,8 +16,13 @@ namespace FGChaos.Effects
     {
         public string SpawnName;
         public string SpawnGUID;
+        public string name;
 
-        new public string Name;
+        public override string Name
+        {
+            get { return name; }
+            set { }
+        }
 
         public Spawn()
         {
@@ -25,7 +30,7 @@ namespace FGChaos.Effects
 
             SpawnName = chaos.addressableAssetsNames[randomnumber];
             SpawnGUID = chaos.addressableAssetsKeyNamePairs[chaos.addressableAssetsNames[randomnumber]];
-            Name = $"Spawn {chaos.addressableAssetsNames[randomnumber]}";
+            name = $"Spawn {chaos.addressableAssetsNames[randomnumber]}";
         }
 
         public override void Run()
