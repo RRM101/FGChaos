@@ -8,6 +8,7 @@ using FMODUnity;
 using FMOD.Studio;
 using HarmonyLib;
 using BepInEx.Configuration;
+using Il2CppSystem;
 
 namespace FGChaos
 {
@@ -70,6 +71,11 @@ namespace FGChaos
         {
             GameObject obj = new GameObject("FGChaos");
             chaosInstance = obj.AddComponent<Chaos>();
+        }
+
+        public void RunCoroutine(IEnumerator enumerator)
+        {
+            StartCoroutine(enumerator.WrapToIl2Cpp());
         }
 
         public void Update()

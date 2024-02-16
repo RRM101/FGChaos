@@ -28,7 +28,7 @@ namespace FGChaos
         MotorAgent motorAgent;
         public static float delay;
         float roundedDelay;
-        string effect;
+        public string effect;
         bool isInFirstPerson = false;
         bool isInvisible = false;
         public static bool jumpingEnabled = true;
