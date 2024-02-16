@@ -19,7 +19,7 @@ namespace FGChaos.Effects
         {
             model = chaos.fallGuy.gameObject.transform.FindChild("Character").gameObject;
             model.SetActive(false);
-            WaitTillEnd(Duration);
+            WaitTillEnd();
             isActive = true;
         }
 

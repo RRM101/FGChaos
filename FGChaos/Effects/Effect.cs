@@ -14,7 +14,7 @@ namespace FGChaos.Effects
 
         public int Duration;
 
-        public Effect[] BlockedEffects;
+        public static Type[] BlockedEffects;
 
         public Chaos chaos = ChaosPluginBehaviour.chaosInstance;
 
@@ -35,6 +35,7 @@ namespace FGChaos.Effects
         public virtual void End()
         {
             isActive = false;
+            canRunUpdateMethod = false;
         }
 
         IEnumerator RunUpdate()
@@ -59,9 +60,9 @@ namespace FGChaos.Effects
             End();
         }
 
-        public void WaitTillEnd(int seconds)
+        public void WaitTillEnd()
         {
-
+            StartCorutine(WaitCoroutine(Duration));
         }
 
         public void StartCorutine(IEnumerator enumerator)

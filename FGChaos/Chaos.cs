@@ -14,18 +14,20 @@ using SRF;
 using FG.Common.LODs;
 using FGClient.UI;
 using Rewired;
+using FGChaos.Effects;
 
 namespace FGChaos
 {
     public class Chaos : MonoBehaviour
     {
+        List<Type> effects = new List<Type>();
         List<Action> actionList = new List<Action>();
         List<Action> FPBlockedActions = new List<Action>();
         public FallGuysCharacterController fallGuy;
         public Rigidbody fgrb;
         public MultiplayerStartingPosition startingPosition;
         CameraDirector cameraDirector;
-        MotorAgent motorAgent;
+        public MotorAgent motorAgent;
         public static float delay;
         float roundedDelay;
         public string effect;
@@ -72,7 +74,7 @@ namespace FGChaos
             ChaosPluginBehaviour.LoadBank("BNK_PlayGo");
         }
 
-        void Start()
+        void OldStart()
         {
             actionList.Add(FlingPlayer);
             actionList.Add(TeleportToStartingPosition);
@@ -103,7 +105,7 @@ namespace FGChaos
             InvokeRepeating("RandomEffect", delay, delay);
         }
 
-        void RandomEffect()
+        void OldRandomEffect()
         {
             delay = 5;
             int getRandomEffect = UnityEngine.Random.Range(0, actionList.Count);
@@ -140,6 +142,26 @@ namespace FGChaos
                 action();
             }
             Debug.Log(getRandomEffect);
+        }
+
+        void Start()
+        {
+            effects.Add(typeof(FlingPlayer));
+            effects.Add(typeof(TeleportToStartingPosition));
+            effects.Add(typeof(Eliminate));
+            effects.Add(typeof(WhoIsWaving));
+            effects.Add(typeof(Spawn));
+            effects.Add(typeof(WhereIsMyFallGuy));
+            effects.Add(typeof(HandsInTheAir));
+            effects.Add(typeof(RagdollPlayer));
+            effects.Add(typeof(KidnapPlayer));
+            effects.Add(typeof(JumpBoost));
+            effects.Add(typeof(BoulderRain));
+        }
+
+        void RandomEffect()
+        {
+
         }
 
         IEnumerator InstantiateAddressableObject(string key)
