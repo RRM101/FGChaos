@@ -16,6 +16,7 @@ namespace FGChaos.Effects
         {
             ChaosPluginBehaviour.LoadBank("BNK_Emote_Wave_A");
             StartCorutine(WhoIsWavingCoroutine());
+            isActive = true;
         }
 
         IEnumerator WhoIsWavingCoroutine()
@@ -26,6 +27,7 @@ namespace FGChaos.Effects
                 yield return new WaitForSeconds(2);
                 AudioManager.PlayOneShotAttached("SFX_Emote_Wave_A", chaos.fallGuy.gameObject);
             }
+            End();
         }
     }
 }

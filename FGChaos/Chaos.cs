@@ -34,7 +34,7 @@ namespace FGChaos
         public static bool jumpingEnabled = true;
         public static bool rocketShip;
 
-        Dictionary<string, string> addressableAssetsKeyNamePairs = new Dictionary<string, string>()
+        public Dictionary<string, string> addressableAssetsKeyNamePairs = new Dictionary<string, string>()
         {
             {"Planet", "PB_Projectile_Futuristic_Planet"},
             {"Banana", "PB_Banana_FallBall" },
@@ -48,7 +48,7 @@ namespace FGChaos
             {"SS2 Turntable", "51b68558b403c074d8b6eb09e3cf1651" },
             {"Speed Arch", "11374594082ca994d8f12cfff47429da" }
         };
-        string[] addressableAssetsNames;
+        public string[] addressableAssetsNames;
 
 
 
@@ -142,7 +142,7 @@ namespace FGChaos
             Debug.Log(getRandomEffect);
         }
 
-        IEnumerator InstantiateAddressableObject(string key, bool kidnap)
+        IEnumerator InstantiateAddressableObject(string key)
         {
             AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>(key);
             yield return handle;
@@ -154,21 +154,35 @@ namespace FGChaos
                 {
                     obj.transform.position = fallGuy.transform.position;
                 }
-                if (kidnap)
-                {
-                    int random_x = UnityEngine.Random.Range(25, 40);
-                    int random_z = UnityEngine.Random.Range(25, 41);
-                    Rigidbody rigidbody = obj.GetComponent<Rigidbody>();
-                    obj.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
-                    obj.transform.rotation = fallGuy.transform.rotation;
-                    yield return new WaitForSeconds(0.1f);
-                    obj.transform.parent = fallGuy.transform;
-                    obj.transform.localPosition = new Vector3(0, 1, 0);
-                    Vector3 velocity = new Vector3(random_x, Math.Max(Math.Abs(random_x), Math.Abs(random_z)), random_z);
-                    Vector3 velocity2 = velocity.magnitude * fallGuy.transform.forward.normalized;
-                    rigidbody.velocity = new Vector3(velocity2.x, Math.Max(Math.Abs(random_x), Math.Abs(random_z)), velocity2.z);
-                    rigidbody.angularVelocity = rigidbody.velocity;
-                }
+            }
+            else
+            {
+                Debug.Log($"object '{key}' not found");
+            }
+        }
+
+        IEnumerator KidnapPlayer(string key)
+        {
+            AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>(key);
+            yield return handle;
+            if (handle.Result != null)
+            {
+                GameObject obj = Instantiate(handle.Result);
+                obj.RemoveComponentIfExists<LodController>();
+                
+                int random_x = UnityEngine.Random.Range(25, 40);
+                int random_z = UnityEngine.Random.Range(25, 41);
+                Rigidbody rigidbody = obj.GetComponent<Rigidbody>();
+                obj.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+                obj.transform.rotation = fallGuy.transform.rotation;
+                yield return new WaitForSeconds(0.1f);
+                obj.transform.parent = fallGuy.transform;
+                obj.transform.localPosition = new Vector3(0, 1, 0);
+                Vector3 velocity = new Vector3(random_x, Math.Max(Math.Abs(random_x), Math.Abs(random_z)), random_z);
+                Vector3 velocity2 = velocity.magnitude * fallGuy.transform.forward.normalized;
+                rigidbody.velocity = new Vector3(velocity2.x, Math.Max(Math.Abs(random_x), Math.Abs(random_z)), velocity2.z);
+                rigidbody.angularVelocity = rigidbody.velocity;
+                
             }
             else
             {
@@ -279,7 +293,7 @@ namespace FGChaos
         {
             int randomnumber = UnityEngine.Random.Range(0, addressableAssetsNames.Length);
             effect = $"Spawn {addressableAssetsNames[randomnumber]}";
-            StartCoroutine(InstantiateAddressableObject(addressableAssetsKeyNamePairs[addressableAssetsNames[randomnumber]], false).WrapToIl2Cpp());            
+            StartCoroutine(InstantiateAddressableObject(addressableAssetsKeyNamePairs[addressableAssetsNames[randomnumber]]).WrapToIl2Cpp());            
         }
 
         void WhereIsMyFallGuy()
@@ -335,7 +349,7 @@ namespace FGChaos
         void KidnapPlayer()
         {
             effect = "Kidnap Player";
-            StartCoroutine(InstantiateAddressableObject("PB_Projectile_Futuristic_Hexnut_BigShots", true).WrapToIl2Cpp());
+            StartCoroutine(KidnapPlayer("PB_Projectile_Futuristic_Hexnut_BigShots").WrapToIl2Cpp());
         }
 
         IEnumerator JumpBoostCoroutine()

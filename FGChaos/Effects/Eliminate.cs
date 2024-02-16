@@ -17,6 +17,7 @@ namespace FGChaos.Effects
         public override void Run()
         {
             StartCorutine(EliminateCoroutine());
+            isActive = true;
         }
 
         IEnumerator EliminateCoroutine()
@@ -33,6 +34,7 @@ namespace FGChaos.Effects
             else
             {
                 Addressables.LoadSceneAsync("MainMenu");
+                End();
             }
         }
     }

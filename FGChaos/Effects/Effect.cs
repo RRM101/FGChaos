@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace FGChaos.Effects
 {
@@ -19,6 +20,8 @@ namespace FGChaos.Effects
 
         bool canRunUpdateMethod = true;
 
+        public static bool isActive;
+
         public virtual void Run()
         {
             StartCorutine(RunUpdate());
@@ -31,7 +34,7 @@ namespace FGChaos.Effects
 
         public virtual void End()
         {
-            throw new NotImplementedException();
+            isActive = false;
         }
 
         IEnumerator RunUpdate()
@@ -48,6 +51,17 @@ namespace FGChaos.Effects
                 }
                 yield return null;
             }
+        }
+
+        IEnumerator WaitCoroutine(int seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            End();
+        }
+
+        public void WaitTillEnd(int seconds)
+        {
+
         }
 
         public void StartCorutine(IEnumerator enumerator)
