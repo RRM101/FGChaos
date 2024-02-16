@@ -1,0 +1,80 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>FGChaos</AssemblyName>
+    <Description>FGChaos</Description>
+    <Version>1.0.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+    <RestoreAdditionalProjectSources>
+      https://api.nuget.org/v3/index.json;
+      https://nuget.bepinex.dev/v3/index.json;
+      https://nuget.samboy.dev/v3/index.json
+    </RestoreAdditionalProjectSources>
+    <RootNamespace>FGChaos</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Core" Version="6.0.0-be.674" />
+    <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="FMODUnity">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\FMODUnity.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\Il2Cppmscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\Il2CppSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="MT.FGClient">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\MT.FGClient.dll</HintPath>
+    </Reference>
+    <Reference Include="mvvmbindings">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\mvvmbindings.dll</HintPath>
+    </Reference>
+    <Reference Include="ParsingUtils_Runtime">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\ParsingUtils_Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Core">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\Rewired_Core.dll</HintPath>
+    </Reference>
+    <Reference Include="TheMultiplayerGuys.FGCommon">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\TheMultiplayerGuys.FGCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="TheMultiplayerGuys.Utility">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\TheMultiplayerGuys.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Addressables">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\Unity.Addressables.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\Unity.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Wushu.LevelEditor.Runtime">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\Wushu.LevelEditor.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
