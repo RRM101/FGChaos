@@ -21,9 +21,9 @@ namespace FGChaos
     {
         List<Action> actionList = new List<Action>();
         List<Action> FPBlockedActions = new List<Action>();
-        FallGuysCharacterController fallGuy;
-        Rigidbody fgrb;
-        MultiplayerStartingPosition startingPosition;
+        public FallGuysCharacterController fallGuy;
+        public Rigidbody fgrb;
+        public MultiplayerStartingPosition startingPosition;
         CameraDirector cameraDirector;
         MotorAgent motorAgent;
         public static float delay;

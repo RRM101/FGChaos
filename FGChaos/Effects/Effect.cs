@@ -14,8 +14,13 @@ namespace FGChaos.Effects
 
         public List<Effect> BlockedEffects;
 
+        public Chaos chaos = ChaosPluginBehaviour.chaosInstance;
+
         public abstract void Run();
 
-        public abstract void End();
+        public virtual void End()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
