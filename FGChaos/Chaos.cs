@@ -105,6 +105,7 @@ namespace FGChaos
 
         void RandomEffect()
         {
+            delay = 5;
             int getRandomEffect = UnityEngine.Random.Range(0, actionList.Count);
             Action action = actionList[getRandomEffect];
             if (action == Eliminate)
@@ -181,10 +182,7 @@ namespace FGChaos
             {
                 delay -= Time.deltaTime;
             }
-            else
-            {
-                delay = 5;
-            }
+
             roundedDelay = (float)Math.Round(delay, 0);
         }
 
@@ -519,7 +517,7 @@ namespace FGChaos
         {
             Player rewiredplayer = fallGuy.GetComponent<FallGuysCharacterControllerInput>()._rewiredPlayer;
             float wait = 0;
-            while (wait < 30) { rocketShip = rewiredplayer.GetButton(2); wait += Time.deltaTime; yield return null; }
+            while (wait < 20) { rocketShip = rewiredplayer.GetButton(2); wait += Time.deltaTime; yield return null; }
             rocketShip = false;
         }
 
