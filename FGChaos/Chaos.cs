@@ -15,7 +15,6 @@ using FG.Common.LODs;
 using FGClient.UI;
 using Rewired;
 using FGChaos.Effects;
-using HarmonyLib;
 
 namespace FGChaos
 {

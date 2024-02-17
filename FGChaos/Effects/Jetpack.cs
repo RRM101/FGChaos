@@ -19,6 +19,11 @@ namespace FGChaos.Effects
             get { return 20; }
         }
 
+        public override Type[] BlockedEffects
+        {
+            get { return new Type[] { typeof(RocketShip) }; }
+        }
+
         Player rewiredplayer;
 
         public override void Run()
