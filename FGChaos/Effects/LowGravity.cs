@@ -27,7 +27,7 @@ namespace FGChaos.Effects
 
         public override void End()
         {
-            Physics.gravity = new Vector3(0, -5, 0);
+            Physics.gravity = new Vector3(0, -30, 0);
             base.End();
         }
     }
