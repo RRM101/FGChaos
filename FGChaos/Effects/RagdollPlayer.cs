@@ -18,7 +18,7 @@ namespace FGChaos.Effects
         public override int Duration
         {
             get { return 5; }
-        };
+        }
 
         MotorFunctionRagdollStateStunned stateStunned;
 

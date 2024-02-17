@@ -26,8 +26,7 @@ namespace FGChaos.Effects
         {
             stateRollOver = chaos.motorAgent.GetMotorFunction<MotorFunctionRagdoll>().GetState<MotorFunctionRagdollStateRollOver>();
             stateRollOver.Begin(0);
-            WaitTillEnd();
-            isActive = true;
+            base.Run();
         }
 
         public override void End()

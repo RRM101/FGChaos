@@ -20,7 +20,7 @@ namespace FGChaos.Effects
         public override void Run()
         {
             StartCoroutine(EliminateCoroutine());
-            isActive = true;
+            base.Run();
         }
 
         IEnumerator EliminateCoroutine()

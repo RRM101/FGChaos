@@ -32,6 +32,7 @@ namespace FGChaos.Effects
             clientPlayerUpdateManager.RegisterPlayer(clonedfg.GetComponent<FallGuysCharacterController>(), true);
             clientPlayerUpdateManager.GameIsStarting();
             CustomisationManager.Instance.ApplyCustomisationsToFallGuy(clonedfg, GlobalGameStateClient.Instance.PlayerProfile.CustomisationSelections, -1);
+            base.Run();
         }
     }
 }

@@ -23,6 +23,7 @@ namespace FGChaos.Effects
         public override void Run()
         {
             StartCoroutine(BoulderRainCoroutine());
+            base.Run();
         }
 
 
