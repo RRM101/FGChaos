@@ -182,8 +182,18 @@ namespace FGChaos
                     RandomEffect();
                 }
             }
+            if (effectInstance.Name == "Eliminate Player")
+            {
+                int rng = UnityEngine.Random.RandomRange(0, 11);
+                if (rng != 5)
+                {
+                    Debug.Log("Blocked Elimination");
+                    RandomEffect();
+                }
+            }
             effect = effectInstance.Name;
             effectInstance.Run();
+            Debug.Log("Effect Ran: " +  effectInstance.Name);
         }
 
         IEnumerator InstantiateAddressableObject(string key)
