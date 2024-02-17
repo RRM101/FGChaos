@@ -15,7 +15,6 @@ namespace FGChaos.Effects
         public override string Name
         {
             get { return "Eliminate Player"; }
-            set { }
         }
 
         public override void Run()

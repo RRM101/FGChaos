@@ -17,7 +17,6 @@ namespace FGChaos.Effects
         public override string Name
         {
             get { return "Boulder Rain"; }
-            set { }
         }
 
 

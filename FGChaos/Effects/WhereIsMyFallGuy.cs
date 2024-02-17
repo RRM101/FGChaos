@@ -12,13 +12,11 @@ namespace FGChaos.Effects
         public override string Name
         {
             get { return "Where is my Fall Guy?"; }
-            set { }
         }
 
         public override int Duration
         {
             get { return 15; }
-            set { }
         }
 
 
@@ -28,8 +26,7 @@ namespace FGChaos.Effects
         {
             model = chaos.fallGuy.gameObject.transform.FindChild("Character").gameObject;
             model.SetActive(false);
-            WaitTillEnd();
-            isActive = true;
+            base.Run();
         }
 
         public override void End()

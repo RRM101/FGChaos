@@ -12,19 +12,17 @@ namespace FGChaos.Effects
         public override string Name
         {
             get { return "Jump Boost"; }
-            set { }
         }
 
         public override int Duration
         {
             get { return 10; }
-            set { }
         }
 
         public override void Run()
         {
             chaos.fallGuy._inheritedJumpVelocity = new Vector3(0, 25, 0);
-            WaitTillEnd();
+            base.Run();
         }
 
         public override void End()

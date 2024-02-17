@@ -14,7 +14,6 @@ namespace FGChaos.Effects
         public override string Name
         {
             get { return "Clone Player"; }
-            set { }
         }
 
         public override void Run()

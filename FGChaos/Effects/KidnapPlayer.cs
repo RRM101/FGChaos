@@ -17,12 +17,12 @@ namespace FGChaos.Effects
         public override string Name
         {
             get { return "Kidnap Player"; }
-            set { }
         }
 
         public override void Run()
         {
             StartCoroutine(KidnapPlayerCoroutine("PB_Projectile_Futuristic_Hexnut_BigShots"));
+            base.Run();
         }
 
         IEnumerator KidnapPlayerCoroutine(string key)

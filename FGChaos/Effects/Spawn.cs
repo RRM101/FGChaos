@@ -21,7 +21,6 @@ namespace FGChaos.Effects
         public override string Name
         {
             get { return name; }
-            set { }
         }
 
         public Spawn()
@@ -36,6 +35,7 @@ namespace FGChaos.Effects
         public override void Run()
         {
             StartCoroutine(InstantiateAddressableObject(SpawnGUID));
+            base.Run();
         }
 
         IEnumerator InstantiateAddressableObject(string key)

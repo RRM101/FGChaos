@@ -17,12 +17,12 @@ namespace FGChaos.Effects
         public override string Name
         {
             get { return "Planet Assault"; }
-            set { }
         }
 
         public override void Run()
         {
             StartCoroutine(PlanetAssaultCoroutine());
+            base.Run();
         }
 
         IEnumerator PlanetAssaultCoroutine()

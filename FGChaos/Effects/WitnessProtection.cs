@@ -13,13 +13,11 @@ namespace FGChaos.Effects
         public override string Name
         {
             get { return "Witness Protection"; }
-            set { }
         }
 
         public override int Duration
         {
             get { return 30; }
-            set { }
         }
 
         float rotation;
@@ -44,13 +42,13 @@ namespace FGChaos.Effects
                 witnessGameObject.transform.localPosition = new Vector3(0, 0, 5);
                 witnessGameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
             }
-            base.Run();
+            RunWithoutWait();
         }
 
         public override void Update()
         {
             float wait = 0;
-            if (wait < 30)
+            if (wait < Duration)
             {
                 rotation += 200 * Time.deltaTime;
                 witnessProtection.transform.eulerAngles = new Vector3(0, rotation, 0);

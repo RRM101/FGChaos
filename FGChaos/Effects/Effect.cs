@@ -10,9 +10,9 @@ namespace FGChaos.Effects
 {
     public class Effect
     {
-        public virtual string Name { get; set; }
+        public virtual string Name { get; }
 
-        public virtual int Duration { get; set; }
+        public virtual int Duration { get { return 0; } }
 
         public static Type[] BlockedEffects;
 
@@ -24,7 +24,9 @@ namespace FGChaos.Effects
 
         public virtual void Run()
         {
+            isActive = true;
             StartCoroutine(RunUpdate());
+            WaitTillEnd();
         }
 
         public virtual void Update()
@@ -68,6 +70,12 @@ namespace FGChaos.Effects
         public void StartCoroutine(IEnumerator enumerator)
         {
             ChaosPluginBehaviour.instance.RunCoroutine(enumerator);
+        }
+
+        public void RunWithoutWait()
+        {
+            isActive = true;
+            StartCoroutine(RunUpdate());
         }
     }
 }

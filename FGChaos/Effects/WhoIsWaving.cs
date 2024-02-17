@@ -13,7 +13,6 @@ namespace FGChaos.Effects
         public override string Name
         {
             get { return "Who is waving?"; }
-            set { }
         }
 
         public override void Run()

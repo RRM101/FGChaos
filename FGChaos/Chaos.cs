@@ -26,7 +26,7 @@ namespace FGChaos
         public FallGuysCharacterController fallGuy;
         public Rigidbody fgrb;
         public MultiplayerStartingPosition startingPosition;
-        CameraDirector cameraDirector;
+        public CameraDirector cameraDirector;
         public MotorAgent motorAgent;
         public static float delay;
         float roundedDelay;
@@ -230,17 +230,14 @@ namespace FGChaos
 
         public static bool CanJump(MotorFunctionJump motorFunctionJump)
         {
-            bool canJump;
             if (ChaosPluginBehaviour.chaosInstance != null)
             {
-                canJump = jumpingEnabled ? motorFunctionJump.CanJump() : false;
+                return jumpingEnabled ? motorFunctionJump.CanJump() : false;
             }
             else
             {
-                canJump = motorFunctionJump.CanJump();
+                return motorFunctionJump.CanJump();
             }
-
-            return canJump;
         }
 
         void FlingPlayer()

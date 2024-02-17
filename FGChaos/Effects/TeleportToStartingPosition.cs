@@ -11,13 +11,13 @@ namespace FGChaos.Effects
         public override string Name
         {
             get { return "Teleport to Start"; }
-            set { }
         }
 
         public override void Run()
         {
             chaos.fallGuy.transform.position = chaos.startingPosition.transform.position;
             chaos.fallGuy.transform.rotation = chaos.startingPosition.transform.rotation;
+            base.Run();
         }
     }
 }
