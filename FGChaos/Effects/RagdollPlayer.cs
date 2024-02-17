@@ -15,7 +15,10 @@ namespace FGChaos.Effects
             get { return "Ragdoll Player"; }
         }
 
-        new public int Duration = 5;
+        public override int Duration
+        {
+            get { return 5; }
+        };
 
         MotorFunctionRagdollStateStunned stateStunned;
 
@@ -23,8 +26,7 @@ namespace FGChaos.Effects
         {
             stateStunned = chaos.motorAgent.GetMotorFunction<MotorFunctionRagdoll>().GetState<MotorFunctionRagdollStateStunned>();
             stateStunned.Begin(0);
-            WaitTillEnd();
-            isActive = true;
+            base.Run();
         }
 
         public override void End()
