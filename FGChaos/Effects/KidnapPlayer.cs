@@ -22,7 +22,7 @@ namespace FGChaos.Effects
 
         public override void Run()
         {
-            StartCorutine(KidnapPlayerCoroutine("PB_Projectile_Futuristic_Hexnut_BigShots"));
+            StartCoroutine(KidnapPlayerCoroutine("PB_Projectile_Futuristic_Hexnut_BigShots"));
         }
 
         IEnumerator KidnapPlayerCoroutine(string key)

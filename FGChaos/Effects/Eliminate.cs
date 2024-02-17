@@ -20,7 +20,7 @@ namespace FGChaos.Effects
 
         public override void Run()
         {
-            StartCorutine(EliminateCoroutine());
+            StartCoroutine(EliminateCoroutine());
             isActive = true;
         }
 

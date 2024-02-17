@@ -24,7 +24,7 @@ namespace FGChaos.Effects
 
         public virtual void Run()
         {
-            StartCorutine(RunUpdate());
+            StartCoroutine(RunUpdate());
         }
 
         public virtual void Update()
@@ -62,10 +62,10 @@ namespace FGChaos.Effects
 
         public void WaitTillEnd()
         {
-            StartCorutine(WaitCoroutine(Duration));
+            StartCoroutine(WaitCoroutine(Duration));
         }
 
-        public void StartCorutine(IEnumerator enumerator)
+        public void StartCoroutine(IEnumerator enumerator)
         {
             ChaosPluginBehaviour.instance.RunCoroutine(enumerator);
         }

@@ -35,7 +35,7 @@ namespace FGChaos.Effects
 
         public override void Run()
         {
-            StartCorutine(InstantiateAddressableObject(SpawnGUID));
+            StartCoroutine(InstantiateAddressableObject(SpawnGUID));
         }
 
         IEnumerator InstantiateAddressableObject(string key)
