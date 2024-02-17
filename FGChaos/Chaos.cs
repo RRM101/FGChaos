@@ -102,7 +102,7 @@ namespace FGChaos
                     Effect effect = (Effect)Activator.CreateInstance(effectType);
                     if (effect.Name == effectInstance.Name)
                     {
-                        Debug.Log("Blocked");
+                        Debug.Log($"Blocked {effectInstance.Name} because {activeEffect.Name} is active");
                         RandomEffect();
                     }
                 }
