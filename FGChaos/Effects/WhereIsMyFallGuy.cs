@@ -19,6 +19,10 @@ namespace FGChaos.Effects
             get { return 15; }
         }
 
+        public override Type[] BlockedEffects
+        {
+            get { return new Type[] { typeof(FirstPersonMode) }; }
+        }
 
         GameObject model;
 

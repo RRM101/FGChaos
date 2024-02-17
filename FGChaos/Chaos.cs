@@ -15,6 +15,7 @@ using FG.Common.LODs;
 using FGClient.UI;
 using Rewired;
 using FGChaos.Effects;
+using HarmonyLib;
 
 namespace FGChaos
 {
@@ -157,6 +158,14 @@ namespace FGChaos
             effects.Add(typeof(KidnapPlayer));
             effects.Add(typeof(JumpBoost));
             effects.Add(typeof(BoulderRain));
+            effects.Add(typeof(PlanetAssault));
+            effects.Add(typeof(WitnessProtection));
+            effects.Add(typeof(ClonePlayer));
+            effects.Add(typeof(FirstPersonMode));
+            effects.Add(typeof(PiracyIsNoFalling));
+            effects.Add(typeof(RocketShip));
+            effects.Add(typeof(Jetpack));
+            effects.Add(typeof(LowGravity));
 
             InvokeRepeating("RandomEffect", delay, delay);
         }
@@ -166,6 +175,14 @@ namespace FGChaos
             delay = 5;
             int getRandomEffect = UnityEngine.Random.Range(0, effects.Count);
             Effect effectInstance = (Effect)Activator.CreateInstance(effects[getRandomEffect]);
+            foreach (Type effectType in effectInstance.BlockedEffects)
+            {
+                Effect effect = (Effect)Activator.CreateInstance(effectType);
+                if (effect.isActive)
+                {
+                    RandomEffect();
+                }
+            }
             effect = effectInstance.Name;
             effectInstance.Run();
         }

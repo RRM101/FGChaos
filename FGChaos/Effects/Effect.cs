@@ -14,13 +14,13 @@ namespace FGChaos.Effects
 
         public virtual int Duration { get { return 0; } }
 
-        public static Type[] BlockedEffects;
+        public virtual Type[] BlockedEffects { get { return new Type[] {}; } }
 
         public Chaos chaos = ChaosPluginBehaviour.chaosInstance;
 
         bool canRunUpdateMethod = true;
 
-        public static bool isActive;
+        public bool isActive;
 
         public virtual void Run()
         {
