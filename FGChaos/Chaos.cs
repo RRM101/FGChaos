@@ -23,6 +23,7 @@ namespace FGChaos
         List<Type> effects = new List<Type>();
         List<Action> actionList = new List<Action>();
         List<Action> FPBlockedActions = new List<Action>();
+        public List<Effect> activeEffects = new List<Effect>();
         public FallGuysCharacterController fallGuy;
         public Rigidbody fgrb;
         public MultiplayerStartingPosition startingPosition;
@@ -177,9 +178,13 @@ namespace FGChaos
             foreach (Type effectType in effectInstance.BlockedEffects)
             {
                 Effect effect = (Effect)Activator.CreateInstance(effectType);
-                if (effect.isActive)
+                foreach (Effect activeEffect in activeEffects)
                 {
-                    RandomEffect();
+                    if (effect.Name == activeEffect.Name)
+                    {
+                        Debug.Log("Blocked");
+                        RandomEffect();
+                    }
                 }
             }
             if (effectInstance.Name == "Eliminate Player")
@@ -193,7 +198,7 @@ namespace FGChaos
             }
             effect = effectInstance.Name;
             effectInstance.Run();
-            Debug.Log("Effect Ran: " +  effectInstance.Name);
+            Debug.Log("Effect Ran: " + effectInstance.Name);
         }
 
         IEnumerator InstantiateAddressableObject(string key)
@@ -249,6 +254,10 @@ namespace FGChaos
             if (delay > 0)
             {
                 delay -= Time.deltaTime;
+            }
+            else
+            {
+                delay = 0;
             }
 
             roundedDelay = (float)Math.Round(delay, 0);
