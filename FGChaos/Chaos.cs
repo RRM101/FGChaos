@@ -94,18 +94,20 @@ namespace FGChaos
             delay = 5;
             int getRandomEffect = UnityEngine.Random.Range(0, effects.Count);
             Effect effectInstance = (Effect)Activator.CreateInstance(effects[getRandomEffect]);
-            foreach (Type effectType in effectInstance.BlockedEffects)
+
+            foreach (Effect activeEffect in activeEffects)
             {
-                Effect effect = (Effect)Activator.CreateInstance(effectType);
-                foreach (Effect activeEffect in activeEffects)
+                foreach (Type effectType in activeEffect.BlockedEffects)
                 {
-                    if (effect.Name == activeEffect.Name)
+                    Effect effect = (Effect)Activator.CreateInstance(effectType);
+                    if (effect.Name == effectInstance.Name)
                     {
                         Debug.Log("Blocked");
                         RandomEffect();
                     }
                 }
             }
+
             if (effectInstance.Name == "Eliminate Player")
             {
                 int rng = UnityEngine.Random.RandomRange(0, 11);
