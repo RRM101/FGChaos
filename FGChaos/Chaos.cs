@@ -86,6 +86,7 @@ namespace FGChaos
             effects.Add(typeof(Jetpack));
             effects.Add(typeof(LowGravity));
             effects.Add(typeof(NoGravity));
+            effects.Add(typeof(Speed));
 
             InvokeRepeating("RandomEffect", delay, delay);
         }
