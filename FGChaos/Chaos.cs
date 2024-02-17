@@ -106,6 +106,7 @@ namespace FGChaos
                     {
                         Debug.Log($"Blocked {effectInstance.Name} because {activeEffect.Name} is active");
                         RandomEffect();
+                        return;
                     }
                 }
             }
