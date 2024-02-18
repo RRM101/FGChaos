@@ -8,8 +8,10 @@ using FMODUnity;
 using FMOD.Studio;
 using HarmonyLib;
 using BepInEx.Configuration;
-using Il2CppSystem;
+using System;
 using System.IO;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace FGChaos
 {
@@ -49,6 +51,16 @@ namespace FGChaos
                 Destroy(this);
             }
             instance = this;
+        }
+
+        void OnEnable()
+        {
+            SceneManager.add_sceneLoaded((Action<Scene, LoadSceneMode>)OnSceneLoaded);
+        }
+
+        public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            Chaos.StopAllEffects();
         }
 
         public static void LoadBank(string bank)

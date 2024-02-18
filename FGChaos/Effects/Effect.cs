@@ -29,7 +29,7 @@ namespace FGChaos.Effects
         public virtual void Run()
         {
             isActive = true;
-            chaos.activeEffects.Add(this);
+            Chaos.activeEffects.Add(this);
             StartCoroutine(RunUpdate());
             WaitTillEnd();
         }
@@ -42,7 +42,7 @@ namespace FGChaos.Effects
         public virtual void End()
         {
             isActive = false;
-            chaos.activeEffects.Remove(this);
+            Chaos.activeEffects.Remove(this);
             canRunUpdateMethod = false;
         }
 

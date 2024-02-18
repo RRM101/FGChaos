@@ -16,7 +16,7 @@ namespace FGChaos
     public class Chaos : MonoBehaviour
     {
         List<Type> effects = new List<Type>();
-        public List<Effect> activeEffects = new List<Effect>();
+        public static List<Effect> activeEffects = new List<Effect>();
         public FallGuysCharacterController fallGuy;
         public Rigidbody fgrb;
         public MultiplayerStartingPosition startingPosition;
@@ -27,7 +27,7 @@ namespace FGChaos
         public string effect;
         public static bool jumpingEnabled = true;
         public static bool rocketShip;
-        GameObject chaosCanvas;
+        public GameObject chaosCanvas;
         Slider chaosSlider;
 
         public Dictionary<string, string> addressableAssetsKeyNamePairs = new Dictionary<string, string>()
@@ -42,7 +42,8 @@ namespace FGChaos
             {"Rhino", "PB_Bull" },
             {"Wifi", "167d0008aef582c4eb63bb6c88bbc610" },
             {"SS2 Turntable", "51b68558b403c074d8b6eb09e3cf1651" },
-            {"Speed Arch", "11374594082ca994d8f12cfff47429da" }
+            {"Speed Arch", "11374594082ca994d8f12cfff47429da" },
+            {"Blueberry", "PB_DodgeFall_Fruit_Berry_01"}
         };
         public string[] addressableAssetsNames;
 
@@ -100,6 +101,7 @@ namespace FGChaos
             effects.Add(typeof(LowGravity));
             effects.Add(typeof(NoGravity));
             effects.Add(typeof(Speed));
+            effects.Add(typeof(BlueberryBombardment));
 
             //InvokeRepeating("RandomEffect", delay, delay);
         }
@@ -178,7 +180,7 @@ namespace FGChaos
             }
         }
 
-        void OnDestroy()
+        public static void StopAllEffects()
         {
             foreach (Effect effect in activeEffects)
             {

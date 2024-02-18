@@ -29,6 +29,7 @@ namespace FGChaos.Effects
             {
                 GameObject.Destroy(cameraDirectorChild.gameObject);
             }
+            clonedfg.transform.GetChild(0).gameObject.SetActive(true);
             FallGuysCharacterController fallGuysCharacter = clonedfg.GetComponent<FallGuysCharacterController>();
             fallGuysCharacter.IsLocalPlayer = true;
             fallGuysCharacter.IsControlledLocally = true;
