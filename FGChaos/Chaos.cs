@@ -122,15 +122,16 @@ namespace FGChaos
                 }
             }
 
-            effectInstance.Run();
             if (effectInstance.Duration > 0)
             {
-                effect = $"{effectInstance.Name} ({effectInstance.Duration * 1 / Time.timeScale}s)";
+                effect = $"{effectInstance.Name} ({effectInstance.Duration * 1/Time.timeScale}s)";
             }
             else
             {
                 effect = effectInstance.Name;
             }
+
+            effectInstance.Run();
             Debug.Log("Effect Ran: " + effectInstance.Name);
         }
 

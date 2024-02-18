@@ -11,6 +11,7 @@ namespace FGChaos.Effects
     public class Speed : Effect
     {
         public string name;
+        public int duration = 15;
 
         public override string Name
         {
@@ -19,7 +20,7 @@ namespace FGChaos.Effects
 
         public override int Duration
         {
-            get { return 15; }
+            get { return duration; }
         }
 
         public override Type[] BlockedEffects
@@ -34,6 +35,7 @@ namespace FGChaos.Effects
         {
             speed = speeds[UnityEngine.Random.Range(0, speeds.Length)];
             name = $"{speed}x Speed";
+            duration = (int)(duration * 1 / speed);
         }
 
         public override void Run()
