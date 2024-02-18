@@ -102,16 +102,16 @@ namespace FGChaos
                 foreach (Type effectType in activeEffect.BlockedEffects)
                 {
                     Effect effect = (Effect)Activator.CreateInstance(effectType);
-                    if (effect.Name == effectInstance.Name)
+                    if (effect.ID == effectInstance.ID)
                     {
-                        Debug.Log($"Blocked {effectInstance.Name} because {activeEffect.Name} is active");
+                        Debug.Log($"Blocked {effectInstance.ID} because {activeEffect.ID} is active");
                         RandomEffect();
                         return;
                     }
                 }
             }
 
-            if (effectInstance.Name == "Eliminate Player")
+            if (effectInstance.ID == "Eliminate")
             {
                 int rng = UnityEngine.Random.RandomRange(0, 11);
                 if (rng != 5)

@@ -14,6 +14,11 @@ namespace FGChaos.Effects
             get { return "Fling Player"; }
         }
 
+        public override string ID
+        {
+            get { return "FlingPlayer"; }
+        }
+
         public override void Run()
         {
             int random_x = UnityEngine.Random.Range(-200, 200);

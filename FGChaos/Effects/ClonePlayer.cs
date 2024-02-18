@@ -16,6 +16,11 @@ namespace FGChaos.Effects
             get { return "Clone Player"; }
         }
 
+        public override string ID
+        {
+            get { return "ClonePlayer"; }
+        }
+
         public override void Run()
         {
             GameObject clonedfg = GameObject.Instantiate(chaos.fallGuy.gameObject);

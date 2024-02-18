@@ -17,6 +17,11 @@ namespace FGChaos.Effects
             get { return "Eliminate Player"; }
         }
 
+        public override string ID
+        {
+            get { return "Eliminate"; }
+        }
+
         public override void Run()
         {
             StartCoroutine(EliminateCoroutine());

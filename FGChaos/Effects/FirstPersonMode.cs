@@ -21,6 +21,11 @@ namespace FGChaos.Effects
             get { return 30; }
         }
 
+        public override string ID
+        {
+            get { return "FirstPersonMode"; }
+        }
+
         public override Type[] BlockedEffects
         {
             get {

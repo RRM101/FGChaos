@@ -19,6 +19,11 @@ namespace FGChaos.Effects
             get { return "Kidnap Player"; }
         }
 
+        public override string ID
+        {
+            get { return "KidnapPlayer"; }
+        }
+
         public override void Run()
         {
             StartCoroutine(KidnapPlayerCoroutine("PB_Projectile_Futuristic_Hexnut_BigShots"));

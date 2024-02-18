@@ -20,6 +20,11 @@ namespace FGChaos.Effects
             get { return 30; }
         }
 
+        public override string ID
+        {
+            get { return "WitnessProtection"; }
+        }
+
         float rotation;
         Transform witnessProtection;
 

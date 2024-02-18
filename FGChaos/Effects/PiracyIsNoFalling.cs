@@ -19,6 +19,11 @@ namespace FGChaos.Effects
             get { return 15; }
         }
 
+        public override string ID
+        {
+            get { return "PiracyIsNoFalling"; }
+        }
+
         public override void Run()
         {
             ModalMessageData modalMessageData = new ModalMessageData

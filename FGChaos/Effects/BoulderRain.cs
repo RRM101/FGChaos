@@ -19,6 +19,10 @@ namespace FGChaos.Effects
             get { return "Boulder Rain"; }
         }
 
+        public override string ID
+        {
+            get { return "BoulderRain"; }
+        }
 
         public override void Run()
         {

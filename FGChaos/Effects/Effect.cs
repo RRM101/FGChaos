@@ -14,6 +14,8 @@ namespace FGChaos.Effects
 
         public virtual int Duration { get { return 0; } }
 
+        public virtual string ID { get; }
+
         public virtual Type[] BlockedEffects { get { return new Type[] {}; } }
 
         public Chaos chaos = ChaosPluginBehaviour.chaosInstance;

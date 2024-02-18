@@ -15,6 +15,11 @@ namespace FGChaos.Effects
             get { return "Who is waving?"; }
         }
 
+        public override string ID
+        {
+            get { return "WhoIsWaving"; }
+        }
+
         public override void Run()
         {
             ChaosPluginBehaviour.LoadBank("BNK_Emote_Wave_A");

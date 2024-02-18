@@ -18,6 +18,11 @@ namespace FGChaos.Effects
             get { return 15; }
         }
 
+        public override string ID
+        {
+            get { return "RocketShip"; }
+        }
+
         public override Type[] BlockedEffects
         {
             get { return new Type[] { typeof(Jetpack) }; }

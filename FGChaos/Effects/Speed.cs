@@ -23,6 +23,11 @@ namespace FGChaos.Effects
             get { return duration; }
         }
 
+        public override string ID
+        {
+            get { return "Speed"; }
+        }
+
         public override Type[] BlockedEffects
         {
             get { return new Type[] { typeof(Speed) }; }

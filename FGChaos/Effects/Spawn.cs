@@ -23,6 +23,11 @@ namespace FGChaos.Effects
             get { return name; }
         }
 
+        public override string ID
+        {
+            get { return "Spawn"; }
+        }
+
         public Spawn()
         {
             int randomnumber = UnityEngine.Random.Range(0, chaos.addressableAssetsNames.Length);

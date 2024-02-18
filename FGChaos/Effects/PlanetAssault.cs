@@ -19,6 +19,11 @@ namespace FGChaos.Effects
             get { return "Planet Assault"; }
         }
 
+        public override string ID
+        {
+            get { return "PlanetAssault"; }
+        }
+
         public override void Run()
         {
             StartCoroutine(PlanetAssaultCoroutine());

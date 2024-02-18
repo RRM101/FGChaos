@@ -19,6 +19,11 @@ namespace FGChaos.Effects
             get { return 10; }
         }
 
+        public override string ID
+        {
+            get { return "JumpBoost"; }
+        }
+
         public override void Run()
         {
             chaos.fallGuy._inheritedJumpVelocity = new Vector3(0, 25, 0);

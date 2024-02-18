@@ -13,6 +13,11 @@ namespace FGChaos.Effects
             get { return "Teleport to Start"; }
         }
 
+        public override string ID
+        {
+            get { return "TeleportToStartingPosition"; }
+        }
+
         public override void Run()
         {
             chaos.fallGuy.transform.position = chaos.startingPosition.transform.position;

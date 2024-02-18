@@ -20,6 +20,11 @@ namespace FGChaos.Effects
             get { return 30; }
         }
 
+        public override string ID
+        {
+            get { return "LowGravity"; }
+        }
+
         public override void Run()
         {
             Physics.gravity = new Vector3(0, -5, 0);

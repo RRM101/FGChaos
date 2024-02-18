@@ -20,6 +20,11 @@ namespace FGChaos.Effects
             get { return 5; }
         }
 
+        public override string ID
+        {
+            get { return "HandsInTheAir"; }
+        }
+
         MotorFunctionRagdollStateRollOver stateRollOver;
 
         public override void Run()

@@ -20,6 +20,11 @@ namespace FGChaos.Effects
             get { return 5; }
         }
 
+        public override string ID
+        {
+            get { return "RagdollPlayer"; }
+        }
+
         MotorFunctionRagdollStateStunned stateStunned;
 
         public override void Run()
