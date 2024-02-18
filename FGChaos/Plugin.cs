@@ -9,6 +9,7 @@ using FMOD.Studio;
 using HarmonyLib;
 using BepInEx.Configuration;
 using Il2CppSystem;
+using System.IO;
 
 namespace FGChaos
 {
@@ -66,6 +67,15 @@ namespace FGChaos
                 RuntimeManager.UnloadBank(bank);
                 RuntimeManager.UnloadBank($"{bank}.assets");
             }
+        }
+
+        public static Sprite PNGtoSprite(string path)
+        {
+            byte[] imagedata = File.ReadAllBytes(path);
+            Texture2D texture = new Texture2D(0, 0, TextureFormat.ARGB32, false);
+            ImageConversion.LoadImage(texture, imagedata);
+            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));
+            return sprite;
         }
 
         public void EnableChaos()
