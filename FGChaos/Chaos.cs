@@ -88,7 +88,7 @@ namespace FGChaos
             effects.Add(typeof(NoGravity));
             effects.Add(typeof(Speed));
 
-            InvokeRepeating("RandomEffect", delay, delay);
+            //InvokeRepeating("RandomEffect", delay, delay);
         }
 
         void RandomEffect()
@@ -118,12 +118,13 @@ namespace FGChaos
                 {
                     Debug.Log("Blocked Elimination");
                     RandomEffect();
+                    return;
                 }
             }
 
             if (effectInstance.Duration > 0)
             {
-                effect = $"{effectInstance.Name} ({effectInstance.Duration}s)";
+                effect = $"{effectInstance.Name} ({effectInstance.Duration * 1/Time.timeScale}s)";
             }
             else
             {
@@ -138,11 +139,12 @@ namespace FGChaos
         {
             if (delay > 0)
             {
-                delay -= Time.deltaTime;
+                delay -= Time.deltaTime * 1/Time.timeScale;
             }
             else
             {
-                delay = 0;
+                delay = 5;
+                RandomEffect();
             }
 
             roundedDelay = (float)Math.Round(delay, 0);

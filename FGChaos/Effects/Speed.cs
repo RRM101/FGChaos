@@ -27,7 +27,7 @@ namespace FGChaos.Effects
             get { return new Type[] { typeof(Speed) }; }
         }
 
-        float[] speeds = new float[] { 0.2f, 0.5f };
+        float[] speeds = new float[] { 0.2f, 0.5f, 2f, 5f, 10f };
         float speed;
 
         public Speed()
