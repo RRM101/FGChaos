@@ -70,6 +70,12 @@
     <Reference Include="UnityEngine.IMGUIModule">
       <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
+	<Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.UI.dll</HintPath>
+    </Reference>
+	<Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.InputLegacyModule">
       <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>

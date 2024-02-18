@@ -8,6 +8,8 @@ using UnityEngine;
 using FG.Common.Character.MotorSystem;
 using FG.Common.Character;
 using FGChaos.Effects;
+using UnityEngine.UI;
+using BepInEx;
 
 namespace FGChaos
 {
@@ -25,6 +27,8 @@ namespace FGChaos
         public string effect;
         public static bool jumpingEnabled = true;
         public static bool rocketShip;
+        GameObject chaosCanvas;
+        Slider chaosSlider;
 
         public Dictionary<string, string> addressableAssetsKeyNamePairs = new Dictionary<string, string>()
         {
@@ -46,12 +50,16 @@ namespace FGChaos
 
         void OnGUI()
         {
-            GUI.Label(new Rect(Screen.width / 2, 5, 100, 300), $"<size=50>{roundedDelay}</size>");
+            //GUI.Label(new Rect(Screen.width / 2, 5, 100, 300), $"<size=50>{roundedDelay}</size>");
             GUI.Label(new Rect(Screen.width - 150, 5, 145, 200), $"<size=25>{effect}</size>");
         }
 
         void Awake()
         {
+            RectTransform chaosSliderRectTransform;
+            AssetBundle chaosBundle = AssetBundle.LoadFromFile(Paths.PluginPath + "/FGChaos/Assets/fgchaosbundle");
+
+
             fallGuy = FindObjectOfType<FallGuysCharacterController>();
             fgrb = fallGuy.GetComponent<Rigidbody>();
             startingPosition = FindObjectOfType<MultiplayerStartingPosition>();
@@ -60,6 +68,11 @@ namespace FGChaos
             delay = 5;
             addressableAssetsNames = addressableAssetsKeyNamePairs.Keys.ToArray();
             rocketShip = false;
+            chaosCanvas = Instantiate(chaosBundle.LoadAsset("ChaosCanvas").Cast<GameObject>());
+            chaosSlider = chaosCanvas.transform.GetChild(0).GetComponent<Slider>();
+            chaosSliderRectTransform = chaosSlider.GetComponent<RectTransform>();
+            chaosSliderRectTransform.sizeDelta = new Vector2(Screen.width + 5, chaosSliderRectTransform.sizeDelta.y);
+            chaosBundle.Unload(false);
             ChaosPluginBehaviour.LoadBank("BNK_Music_GP");
             ChaosPluginBehaviour.LoadBank("BNK_PlayGo");
         }
@@ -147,6 +160,8 @@ namespace FGChaos
                 delay = 5;
                 RandomEffect();
             }
+
+            chaosSlider.value = delay / 5;
 
             roundedDelay = (float)Math.Round(delay, 0);
         }
