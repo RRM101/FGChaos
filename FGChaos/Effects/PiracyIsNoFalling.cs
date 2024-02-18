@@ -11,7 +11,7 @@ namespace FGChaos.Effects
     {
         public override string Name
         {
-            get { return "Pirated Game"; }
+            get { return "Pirated Game (Jumping Disabled)"; }
         }
 
         public override int Duration
