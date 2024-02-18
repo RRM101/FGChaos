@@ -40,7 +40,6 @@ namespace FGChaos.Effects
         {
             speed = speeds[UnityEngine.Random.Range(0, speeds.Length)];
             name = $"{speed}x Speed";
-            duration = (int)(duration * speed);
         }
 
         public override void Run()

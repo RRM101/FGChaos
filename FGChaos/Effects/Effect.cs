@@ -20,6 +20,8 @@ namespace FGChaos.Effects
 
         public Chaos chaos = ChaosPluginBehaviour.chaosInstance;
 
+        public int actualDuration { get { return (int)(Duration * Time.timeScale); } }
+
         bool canRunUpdateMethod = true;
 
         public bool isActive;
@@ -68,7 +70,7 @@ namespace FGChaos.Effects
 
         public void WaitTillEnd()
         {
-            StartCoroutine(WaitCoroutine(Duration));
+            StartCoroutine(WaitCoroutine(actualDuration));
         }
 
         public void StartCoroutine(IEnumerator enumerator)
