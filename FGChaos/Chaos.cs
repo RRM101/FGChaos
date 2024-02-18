@@ -124,7 +124,7 @@ namespace FGChaos
 
             if (effectInstance.Duration > 0)
             {
-                effect = $"{effectInstance.Name} ({effectInstance.Duration * 1/Time.timeScale}s)";
+                effect = $"{effectInstance.Name} ({effectInstance.Duration / Time.timeScale}s)";
             }
             else
             {
@@ -139,7 +139,7 @@ namespace FGChaos
         {
             if (delay > 0)
             {
-                delay -= Time.deltaTime * 1/Time.timeScale;
+                delay -= Time.deltaTime / Time.timeScale;
             }
             else
             {
