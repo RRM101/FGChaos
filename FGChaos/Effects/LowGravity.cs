@@ -20,21 +20,10 @@ namespace FGChaos.Effects
             get { return 30; }
         }
 
-        string currentSceneName;
-
         public override void Run()
         {
             Physics.gravity = new Vector3(0, -5, 0);
-            currentSceneName = SceneManager.GetActiveScene().name;
             base.Run();
-        }
-
-        public override void Update()
-        {
-            if (SceneManager.GetActiveScene().name != currentSceneName)
-            {
-                End();
-            }
         }
 
         public override void End()

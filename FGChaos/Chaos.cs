@@ -120,7 +120,16 @@ namespace FGChaos
                     RandomEffect();
                 }
             }
-            effect = effectInstance.Name;
+
+            if (effectInstance.Duration > 0)
+            {
+                effect = $"{effectInstance.Name} ({effectInstance.Duration}s)";
+            }
+            else
+            {
+                effect = effectInstance.Name;
+            }
+
             effectInstance.Run();
             Debug.Log("Effect Ran: " + effectInstance.Name);
         }
@@ -149,6 +158,14 @@ namespace FGChaos
             {
                 return motorFunctionJump.CanJump();
             }
-        }       
+        }
+
+        void OnDestroy()
+        {
+            foreach (Effect effect in activeEffects)
+            {
+                effect.End();
+            }
+        }
     }
 }

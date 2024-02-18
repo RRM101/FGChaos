@@ -29,7 +29,6 @@ namespace FGChaos.Effects
 
         float[] speeds = new float[] { 0.2f, 0.5f };
         float speed;
-        string currentSceneName;
 
         public Speed()
         {
@@ -40,16 +39,7 @@ namespace FGChaos.Effects
         public override void Run()
         {
             Time.timeScale = speed;
-            currentSceneName = SceneManager.GetActiveScene().name;
             base.Run();
-        }
-
-        public override void Update()
-        {
-            if (SceneManager.GetActiveScene().name != currentSceneName)
-            {
-                End();
-            }
         }
 
         public override void End()
