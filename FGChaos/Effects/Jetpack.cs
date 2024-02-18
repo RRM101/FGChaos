@@ -39,8 +39,8 @@ namespace FGChaos.Effects
 
         public override void End()
         {
-            Chaos.rocketShip = false;
             base.End();
+            Chaos.rocketShip = false;
         }
     }
 }

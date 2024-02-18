@@ -37,7 +37,7 @@ namespace FGChaos.Effects
 
         public override void End()
         {
-            Chaos.jumpingEnabled = false;
+            Chaos.jumpingEnabled = true;
             base.End();
         }
     }
