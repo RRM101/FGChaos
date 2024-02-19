@@ -25,6 +25,7 @@ namespace FGChaos.Effects
             ChaosPluginBehaviour.LoadBank("BNK_Emote_Wave_A");
             StartCoroutine(WhoIsWavingCoroutine());
             isActive = true;
+            RunWithoutWait();
         }
 
         IEnumerator WhoIsWavingCoroutine()

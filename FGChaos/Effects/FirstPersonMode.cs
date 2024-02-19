@@ -54,10 +54,13 @@ namespace FGChaos.Effects
 
         public override void End()
         {
-            cameraDirectorTransform.SetParent(null);
-            cameraDirectorTransform.position = Vector3.zero;
-            cameraDirectorTransform.rotation = new Quaternion(0, 0, 0, 0);
-            cameraDirectorTransform.GetChild(1).gameObject.SetActive(true);
+            if (cameraDirectorTransform != null)
+            {
+                cameraDirectorTransform.SetParent(null);
+                cameraDirectorTransform.position = Vector3.zero;
+                cameraDirectorTransform.rotation = new Quaternion(0, 0, 0, 0);
+                cameraDirectorTransform.GetChild(1).gameObject.SetActive(true);
+            }
             base.End();
         }
     }
