@@ -58,7 +58,6 @@ namespace FGChaos
 
         void Awake()
         {
-            StopAllEffects();
             RectTransform chaosSliderRectTransform;
             AssetBundle chaosBundle = AssetBundle.LoadFromFile(Paths.PluginPath + "/FGChaos/Assets/fgchaosbundle");
 
@@ -79,6 +78,7 @@ namespace FGChaos
             blueberrySprite = ChaosPluginBehaviour.PNGtoSprite(Paths.PluginPath + "/FGChaos/Assets/Images/blueberrybombardment.png");
             ChaosPluginBehaviour.LoadBank("BNK_Music_GP");
             ChaosPluginBehaviour.LoadBank("BNK_PlayGo");
+            StopAllEffects();
         }
 
         void Start()

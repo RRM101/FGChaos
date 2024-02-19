@@ -73,7 +73,7 @@
           "lib/net6.0/_._": {}
         }
       },
-      "BepInEx.Core/6.0.0-be.674": {
+      "BepInEx.Core/6.0.0-be.688": {
         "type": "package",
         "dependencies": {
           "HarmonyX": "2.10.1",
@@ -97,7 +97,7 @@
           "build/BepInEx.PluginInfoProps.props": {}
         }
       },
-      "BepInEx.Unity.Common/6.0.0-be.674": {
+      "BepInEx.Unity.Common/6.0.0-be.688": {
         "type": "package",
         "dependencies": {
           "AssetRipper.VersionUtilities": "1.2.1",
@@ -114,11 +114,11 @@
           }
         }
       },
-      "BepInEx.Unity.IL2CPP/6.0.0-be.674": {
+      "BepInEx.Unity.IL2CPP/6.0.0-be.688": {
         "type": "package",
         "dependencies": {
-          "BepInEx.Core": "6.0.0-be.674",
-          "BepInEx.Unity.Common": "6.0.0-be.674",
+          "BepInEx.Core": "6.0.0-be.688",
+          "BepInEx.Unity.Common": "6.0.0-be.688",
           "HarmonyX": "2.10.1",
           "Iced": "1.18.0",
           "Il2CppInterop.Generator": "1.4.6-ci.389",
@@ -1496,13 +1496,13 @@
         "lib/netstandard2.0/VersionUtilities.xml"
       ]
     },
-    "BepInEx.Core/6.0.0-be.674": {
-      "sha512": "onhAmi1nB36fVyQ25TRkWfDcYHBmw9pKxx758ut2hWou2gJpRpY2Dxc+GZrXCidPGy65mCi393zIU+07ShHTZw==",
+    "BepInEx.Core/6.0.0-be.688": {
+      "sha512": "34VErIttx6PckRukoaRXIb6ZF5oby+9Oktt9E3ZafOGzA0lBWOmY/BKHfg766XZBplE06KijHp+vrryCjfLP7Q==",
       "type": "package",
-      "path": "bepinex.core/6.0.0-be.674",
+      "path": "bepinex.core/6.0.0-be.688",
       "files": [
         ".nupkg.metadata",
-        "bepinex.core.6.0.0-be.674.nupkg.sha512",
+        "bepinex.core.6.0.0-be.688.nupkg.sha512",
         "bepinex.core.nuspec",
         "lib/net35/BepInEx.Core.dll",
         "lib/net35/BepInEx.Core.xml",
@@ -1522,13 +1522,13 @@
         "build/BepInEx.PluginInfoProps.props"
       ]
     },
-    "BepInEx.Unity.Common/6.0.0-be.674": {
-      "sha512": "CApjIS89Pl7sKsnxOXANWBq3ALrdAQzn/neK6E6sydjYQiiVKwC6Wo65c1wHdcctSylGhh+e59WuxVSlGuJW9w==",
+    "BepInEx.Unity.Common/6.0.0-be.688": {
+      "sha512": "RRPG9sEgIdGgut0LOSQopW+6mMpE0LDggKZWfLBBeaJj1p0WFrVBCqEAruFLO0FrwT/+dEC7EtV62n13RV1JfA==",
       "type": "package",
-      "path": "bepinex.unity.common/6.0.0-be.674",
+      "path": "bepinex.unity.common/6.0.0-be.688",
       "files": [
         ".nupkg.metadata",
-        "bepinex.unity.common.6.0.0-be.674.nupkg.sha512",
+        "bepinex.unity.common.6.0.0-be.688.nupkg.sha512",
         "bepinex.unity.common.nuspec",
         "lib/net35/BepInEx.Unity.Common.dll",
         "lib/net35/BepInEx.Unity.Common.xml",
@@ -1537,13 +1537,13 @@
         "logo.png"
       ]
     },
-    "BepInEx.Unity.IL2CPP/6.0.0-be.674": {
-      "sha512": "y6b5w0L5jDE8h67swHN3cDJ+FV+MzVcwrVqr9ssO37L9Laj87zYUtQVRTXwi5G/QFqeUQcUqi04gsYYR9yue3Q==",
+    "BepInEx.Unity.IL2CPP/6.0.0-be.688": {
+      "sha512": "a68J6PA9AdgYlj8HeuEK1hM4Vv+j1x/6TflK5/PaYAd05/TPdjNI09LsSTIOaS9hdWZwCcpPEw/HxLhXaQKodw==",
       "type": "package",
-      "path": "bepinex.unity.il2cpp/6.0.0-be.674",
+      "path": "bepinex.unity.il2cpp/6.0.0-be.688",
       "files": [
         ".nupkg.metadata",
-        "bepinex.unity.il2cpp.6.0.0-be.674.nupkg.sha512",
+        "bepinex.unity.il2cpp.6.0.0-be.688.nupkg.sha512",
         "bepinex.unity.il2cpp.nuspec",
         "lib/net6.0/BepInEx.Unity.IL2CPP.dll",
         "lib/net6.0/BepInEx.Unity.IL2CPP.xml",
@@ -4562,7 +4562,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "BepInEx.Core >= 6.0.0-be.674",
+      "BepInEx.Core >= 6.0.0-be.*",
       "BepInEx.PluginInfoProps >= 2.*",
       "BepInEx.Unity.IL2CPP >= 6.0.0-be.*"
     ]
@@ -4611,7 +4611,7 @@
         "dependencies": {
           "BepInEx.Core": {
             "target": "Package",
-            "version": "[6.0.0-be.674, )"
+            "version": "[6.0.0-be.*, )"
           },
           "BepInEx.PluginInfoProps": {
             "target": "Package",
