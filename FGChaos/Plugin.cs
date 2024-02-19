@@ -20,10 +20,12 @@ namespace FGChaos
     public class Plugin : BasePlugin
     {
         public static ConfigEntry<bool> Disable { get; set; }
+        public static ConfigEntry<int> EffectTimer { get; set; }
 
         public override void Load()
         {
-            Disable = Config.Bind("Config", "Disable", false, "Disables the mod when enabled.");
+            Disable = Config.Bind("Config", "Disable", false, "Disables the mod.");
+            EffectTimer = Config.Bind("Config", "Effect Timer", 10, "The amount of time in seconds for the next effect.");
 
             if (!Disable.Value)
             {

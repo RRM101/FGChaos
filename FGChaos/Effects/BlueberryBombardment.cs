@@ -87,7 +87,10 @@ namespace FGChaos.Effects
 
         public override void End()
         {
-            GameObject.Destroy(spawnPosition.gameObject);
+            if (spawnPosition != null)
+            {
+                GameObject.Destroy(spawnPosition.gameObject);
+            }
             base.End();
         }
     }

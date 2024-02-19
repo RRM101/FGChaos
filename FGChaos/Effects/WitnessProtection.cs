@@ -67,7 +67,10 @@ namespace FGChaos.Effects
 
         public override void End()
         {
-            GameObject.Destroy(witnessProtection.gameObject);
+            if (witnessProtection != null)
+            {
+                GameObject.Destroy(witnessProtection.gameObject);
+            }
             base.End();
         }
     }

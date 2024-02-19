@@ -16,7 +16,7 @@ namespace FGChaos.Effects
 
         public override int Duration
         {
-            get { return 10; }
+            get { return 15; }
         }
 
         public override string ID

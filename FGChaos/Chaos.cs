@@ -58,6 +58,7 @@ namespace FGChaos
 
         void Awake()
         {
+            StopAllEffects();
             RectTransform chaosSliderRectTransform;
             AssetBundle chaosBundle = AssetBundle.LoadFromFile(Paths.PluginPath + "/FGChaos/Assets/fgchaosbundle");
 
@@ -66,7 +67,7 @@ namespace FGChaos
             startingPosition = FindObjectOfType<MultiplayerStartingPosition>();
             cameraDirector = FindObjectOfType<CameraDirector>();
             motorAgent = fallGuy.GetComponent<MotorAgent>();
-            delay = 5;
+            delay = Plugin.EffectTimer.Value;
             addressableAssetsNames = addressableAssetsKeyNamePairs.Keys.ToArray();
             rocketShip = false;
             chaosCanvas = Instantiate(chaosBundle.LoadAsset("ChaosCanvas").Cast<GameObject>());
@@ -110,7 +111,7 @@ namespace FGChaos
 
         void RandomEffect()
         {
-            delay = 5;
+            delay = Plugin.EffectTimer.Value;
             int getRandomEffect = UnityEngine.Random.Range(0, effects.Count);
             Effect effectInstance = (Effect)Activator.CreateInstance(effects[getRandomEffect]);
 
@@ -161,11 +162,11 @@ namespace FGChaos
             }
             else
             {
-                delay = 5;
+                delay = Plugin.EffectTimer.Value;
                 RandomEffect();
             }
 
-            chaosSlider.value = delay / 5;
+            chaosSlider.value = delay / Plugin.EffectTimer.Value;
 
             roundedDelay = (float)Math.Round(delay, 0);
         }
@@ -186,7 +187,11 @@ namespace FGChaos
         {
             foreach (Effect effect in activeEffects)
             {
-                effect.End();
+                try
+                {
+                    effect.End();
+                }
+                catch { }
             }
         }
     }
