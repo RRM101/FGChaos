@@ -84,7 +84,7 @@ namespace FGChaos.Effects
         IEnumerator DestroyEffectName()
         {
             yield return new WaitForSeconds(10);
-            if (textMeshPro.gameObject != null)
+            if (textMeshPro != null)
             {
                 GameObject.Destroy(textMeshPro.gameObject);
             }
