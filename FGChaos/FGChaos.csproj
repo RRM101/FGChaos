@@ -55,6 +55,9 @@
     <Reference Include="Unity.ResourceManager">
       <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\Unity.ResourceManager.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.dll</HintPath>
     </Reference>
@@ -70,9 +73,24 @@
     <Reference Include="UnityEngine.IMGUIModule">
       <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.TextCoreFontEngineModule">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreTextEngineModule">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
 	<Reference Include="UnityEngine.UI">
       <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.UI.dll</HintPath>
     </Reference>
+	<Reference Include="UnityEngine.UIElementsModule">
+	  <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\UnityEngine.UIElementsModule.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEngine.UIElementsNativeModule">
+	  <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\UnityEngine.UIElementsNativeModule.dll</HintPath>
+	</Reference>
 	<Reference Include="UnityEngine.UIModule">
       <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.UIModule.dll</HintPath>
     </Reference>

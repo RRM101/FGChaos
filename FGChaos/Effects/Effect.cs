@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
 namespace FGChaos.Effects
@@ -26,12 +27,20 @@ namespace FGChaos.Effects
 
         public bool isActive;
 
+        public TextMeshProUGUI textMeshPro;
+
         public virtual void Run()
         {
+            AddEffectName();
             isActive = true;
             Chaos.activeEffects.Add(this);
             StartCoroutine(RunUpdate());
             WaitTillEnd();
+
+            if (Duration == 0)
+            {
+                StartCoroutine(DestroyEffectName());
+            }
         }
 
         public virtual void Update()
@@ -44,6 +53,10 @@ namespace FGChaos.Effects
             isActive = false;
             Chaos.activeEffects.Remove(this);
             canRunUpdateMethod = false;
+            if (Duration > 0)
+            {
+                GameObject.Destroy(textMeshPro.gameObject);
+            }
         }
 
         IEnumerator RunUpdate()
@@ -68,6 +81,25 @@ namespace FGChaos.Effects
             End();
         }
 
+        IEnumerator DestroyEffectName()
+        {
+            yield return new WaitForSeconds(10);
+            GameObject.Destroy(textMeshPro.gameObject);
+        }
+
+        public void AddEffectName()
+        {
+            textMeshPro = GameObject.Instantiate(ChaosPluginBehaviour.effectName.gameObject, chaos.chaosCanvas.transform.GetChild(1)).GetComponent<TextMeshProUGUI>();
+            if (Duration > 0)
+            {
+                textMeshPro.text = $"{Name} ({Duration}s)";
+            }
+            else
+            {
+                textMeshPro.text = Name;
+            }
+        }
+
         public void WaitTillEnd()
         {
             StartCoroutine(WaitCoroutine(actualDuration));
@@ -80,8 +112,14 @@ namespace FGChaos.Effects
 
         public void RunWithoutWait()
         {
+            AddEffectName();
             isActive = true;
+            Chaos.activeEffects.Add(this);
             StartCoroutine(RunUpdate());
+            if (Duration == 0)
+            {
+                StartCoroutine(DestroyEffectName());
+            }
         }
     }
 }

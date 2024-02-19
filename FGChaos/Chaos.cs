@@ -53,7 +53,7 @@ namespace FGChaos
         void OnGUI()
         {
             //GUI.Label(new Rect(Screen.width / 2, 5, 100, 300), $"<size=50>{roundedDelay}</size>");
-            GUI.Label(new Rect(Screen.width - 150, 5, 145, 200), $"<size=25>{effect}</size>");
+            //GUI.Label(new Rect(Screen.width - 150, 5, 145, 200), $"<size=25>{effect}</size>");
         }
 
         void Awake()
@@ -73,6 +73,7 @@ namespace FGChaos
             chaosSlider = chaosCanvas.transform.GetChild(0).GetComponent<Slider>();
             chaosSliderRectTransform = chaosSlider.GetComponent<RectTransform>();
             chaosSliderRectTransform.sizeDelta = new Vector2(Screen.width + 5, chaosSliderRectTransform.sizeDelta.y);
+            chaosCanvas.transform.GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
             chaosBundle.Unload(false);
             blueberrySprite = ChaosPluginBehaviour.PNGtoSprite(Paths.PluginPath + "/FGChaos/Assets/Images/blueberrybombardment.png");
             ChaosPluginBehaviour.LoadBank("BNK_Music_GP");

@@ -12,6 +12,7 @@ using System;
 using System.IO;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 namespace FGChaos
 {
@@ -42,6 +43,7 @@ namespace FGChaos
     {
         public static ChaosPluginBehaviour instance;
         public static Chaos chaosInstance;
+        public static TextMeshProUGUI effectName;
         bool devMode = false;
         
         public void Awake()
@@ -61,6 +63,18 @@ namespace FGChaos
         public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             Chaos.StopAllEffects();
+
+            if (scene.name == "MainMenu" && effectName == null)
+            {
+                GameObject effectNameGameObject = new GameObject("Effect Name");
+                GameObject.DontDestroyOnLoad(effectNameGameObject);
+                effectNameGameObject.hideFlags = HideFlags.HideAndDontSave;
+                effectNameGameObject.AddComponent<LayoutElement>();
+                effectName = effectNameGameObject.AddComponent<TextMeshProUGUI>();
+                effectName.font = Resources.FindObjectsOfTypeAll<TMP_FontAsset>()[3];
+                effectName.horizontalAlignment = HorizontalAlignmentOptions.Right;
+                effectName.rectTransform.sizeDelta = new Vector2(Screen.width, 50);
+            }
         }
 
         public static void LoadBank(string bank)
@@ -101,13 +115,13 @@ namespace FGChaos
             StartCoroutine(enumerator.WrapToIl2Cpp());
         }
 
-        public void Update()
+        /*public void Update()
         {
             if (Input.GetKeyDown(KeyCode.H) && devMode)
             {
                 EnableChaos();
             }
-        }
+        }*/
     }
     
 }

@@ -25,7 +25,7 @@ namespace FGChaos.Effects
         public override void Run()
         {
             StartCoroutine(EliminateCoroutine());
-            base.Run();
+            RunWithoutWait();
         }
 
         IEnumerator EliminateCoroutine()
@@ -37,7 +37,9 @@ namespace FGChaos.Effects
             if (randomnumber == 0)
             {
                 yield return new WaitForSeconds(1);
-                chaos.effect = "Fake Eliminate Player"; // improve later
+                textMeshPro.text = "Fake Eliminate Player"; // improve later
+                yield return new WaitForSeconds(4);
+                End();
             }
             else
             {
