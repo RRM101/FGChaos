@@ -13,6 +13,8 @@ using System.IO;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
+using FGClient.UI;
 
 namespace FGChaos
 {
@@ -25,11 +27,11 @@ namespace FGChaos
         public override void Load()
         {
             Disable = Config.Bind("Config", "Disable", false, "Disables the mod.");
-            EffectTimer = Config.Bind("Config", "Effect Timer", 10, "The amount of time in seconds for the next effect.");
+            EffectTimer = Config.Bind("Config", "Effect Timer", 10, "The amount of time in seconds for the next effect to run.");
 
             if (!Disable.Value)
             {
-                Harmony.CreateAndPatchAll(typeof(Patches));
+                Harmony.CreateAndPatchAll(typeof(Patches), "FGChaosPatches");
 
                 ClassInjector.RegisterTypeInIl2Cpp<ChaosPluginBehaviour>();
                 ClassInjector.RegisterTypeInIl2Cpp<Chaos>();
@@ -46,7 +48,14 @@ namespace FGChaos
         public static ChaosPluginBehaviour instance;
         public static Chaos chaosInstance;
         public static TextMeshProUGUI effectName;
-        bool devMode = false;
+        string[] modFiles = new string[]
+        {
+            "/FGChaos/FGChaos.dll",
+            "/FGChaos/Assets/fgchaosbundle",
+            "/FGChaos/Assets/Images/blueberrybombardment.png"
+        };
+        bool hasMissingFiles;
+        List<string> missingFilePaths = new List<string>();
         
         public void Awake()
         {
@@ -55,6 +64,8 @@ namespace FGChaos
                 Destroy(this);
             }
             instance = this;
+
+            CheckForMissingFiles();
         }
 
         void OnEnable()
@@ -66,17 +77,53 @@ namespace FGChaos
         {
             Chaos.StopAllEffects();
 
-            if (scene.name == "MainMenu" && effectName == null)
+            if (scene.name == "MainMenu")
             {
-                GameObject effectNameGameObject = new GameObject("Effect Name");
-                GameObject.DontDestroyOnLoad(effectNameGameObject);
-                effectNameGameObject.hideFlags = HideFlags.HideAndDontSave;
-                effectNameGameObject.AddComponent<LayoutElement>();
-                effectName = effectNameGameObject.AddComponent<TextMeshProUGUI>();
-                effectName.font = Resources.FindObjectsOfTypeAll<TMP_FontAsset>()[3];
-                effectName.horizontalAlignment = HorizontalAlignmentOptions.Right;
-                effectName.rectTransform.sizeDelta = new Vector2(Screen.width, 50);
+                if (effectName == null)
+                {
+                    GameObject effectNameGameObject = new GameObject("Effect Name");
+                    GameObject.DontDestroyOnLoad(effectNameGameObject);
+                    effectNameGameObject.hideFlags = HideFlags.HideAndDontSave;
+                    effectNameGameObject.AddComponent<LayoutElement>();
+                    effectName = effectNameGameObject.AddComponent<TextMeshProUGUI>();
+                    effectName.font = Resources.FindObjectsOfTypeAll<TMP_FontAsset>()[3];
+                    effectName.horizontalAlignment = HorizontalAlignmentOptions.Right;
+                    effectName.rectTransform.sizeDelta = new Vector2(Screen.width, 50);
+                }
+
+                if (hasMissingFiles)
+                {
+                    ShowMissingFilesPopup();
+                }
             }
+        }
+
+        void CheckForMissingFiles()
+        {
+            foreach (string path in modFiles)
+            {
+                if (!File.Exists(Paths.PluginPath + path))
+                {
+                    hasMissingFiles = true;
+                    missingFilePaths.Add(Paths.PluginPath + path);
+                }
+            }
+        }
+
+        void ShowMissingFilesPopup()
+        {
+            string missingFiles = string.Join("\n", missingFilePaths);
+            ModalMessageData modalMessageData = new ModalMessageData
+            {
+                Title = "FGChaos - Missing Files!",
+                Message = $"The Missing Files are:\n{missingFiles}\nMake you sure you placed the mod in the currect folder.",
+                LocaliseTitle = UIModalMessage.LocaliseOption.NotLocalised,
+                LocaliseMessage = UIModalMessage.LocaliseOption.NotLocalised,
+                ModalType = UIModalMessage.ModalType.MT_OK
+            };
+
+            PopupManager.Instance.Show(PopupInteractionType.Warning, modalMessageData);
+            Harmony.UnpatchID("FGChaosPatches");
         }
 
         public static void LoadBank(string bank)
@@ -116,14 +163,6 @@ namespace FGChaos
         {
             StartCoroutine(enumerator.WrapToIl2Cpp());
         }
-
-        /*public void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.H) && devMode)
-            {
-                EnableChaos();
-            }
-        }*/
     }
     
 }
