@@ -27,6 +27,7 @@ namespace FGChaos.Effects
 
         float rotation;
         Transform witnessProtection;
+        float wait = 0;
 
         public override void Run()
         {
@@ -52,7 +53,6 @@ namespace FGChaos.Effects
 
         public override void Update()
         {
-            float wait = 0;
             if (wait < Duration)
             {
                 rotation += 200 * Time.deltaTime;
