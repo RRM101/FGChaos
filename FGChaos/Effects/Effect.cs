@@ -53,7 +53,7 @@ namespace FGChaos.Effects
             isActive = false;
             Chaos.activeEffects.Remove(this);
             canRunUpdateMethod = false;
-            if (Duration > 0)
+            if (Duration > 0 && textMeshPro != null)
             {
                 GameObject.Destroy(textMeshPro.gameObject);
             }
@@ -84,7 +84,10 @@ namespace FGChaos.Effects
         IEnumerator DestroyEffectName()
         {
             yield return new WaitForSeconds(10);
-            GameObject.Destroy(textMeshPro.gameObject);
+            if (textMeshPro.gameObject != null)
+            {
+                GameObject.Destroy(textMeshPro.gameObject);
+            }
         }
 
         public void AddEffectName()
