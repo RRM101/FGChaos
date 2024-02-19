@@ -22,6 +22,7 @@ namespace FGChaos
         public MultiplayerStartingPosition startingPosition;
         public CameraDirector cameraDirector;
         public MotorAgent motorAgent;
+        public Sprite blueberrySprite;
         public static float delay;
         float roundedDelay;
         public string effect;
@@ -60,7 +61,6 @@ namespace FGChaos
             RectTransform chaosSliderRectTransform;
             AssetBundle chaosBundle = AssetBundle.LoadFromFile(Paths.PluginPath + "/FGChaos/Assets/fgchaosbundle");
 
-
             fallGuy = FindObjectOfType<FallGuysCharacterController>();
             fgrb = fallGuy.GetComponent<Rigidbody>();
             startingPosition = FindObjectOfType<MultiplayerStartingPosition>();
@@ -74,6 +74,7 @@ namespace FGChaos
             chaosSliderRectTransform = chaosSlider.GetComponent<RectTransform>();
             chaosSliderRectTransform.sizeDelta = new Vector2(Screen.width + 5, chaosSliderRectTransform.sizeDelta.y);
             chaosBundle.Unload(false);
+            blueberrySprite = ChaosPluginBehaviour.PNGtoSprite(Paths.PluginPath + "/FGChaos/Assets/Images/blueberrybombardment.png");
             ChaosPluginBehaviour.LoadBank("BNK_Music_GP");
             ChaosPluginBehaviour.LoadBank("BNK_PlayGo");
         }

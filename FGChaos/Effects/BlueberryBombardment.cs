@@ -42,7 +42,7 @@ namespace FGChaos.Effects
             spawnPosition.localPosition = new Vector3(0, 10, 1);
             blueberryImage = chaos.chaosCanvas.transform.CreateChild("Blueberry Image").AddComponent<Image>();
             blueberryImage.rectTransform.anchoredPosition = Vector2.zero;
-            blueberryImage.sprite = ChaosPluginBehaviour.PNGtoSprite(Paths.PluginPath + "/FGChaos/Assets/Images/blueberrybombardment.png");
+            blueberryImage.sprite = chaos.blueberrySprite;
             blueberryImage.SetNativeSize();
             StartCoroutine(ImageFade());
 
