@@ -33,7 +33,8 @@ namespace FGChaos.Effects
                 typeof(FirstPersonMode),
                 typeof(WitnessProtection),
                 typeof(ClonePlayer),
-                typeof(WhereIsMyFallGuy)
+                typeof(WhereIsMyFallGuy),
+                typeof(LockCamera)
             }; }
         }
 

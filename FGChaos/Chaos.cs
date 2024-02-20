@@ -106,6 +106,7 @@ namespace FGChaos
             effects.Add(typeof(Speed));
             effects.Add(typeof(BlueberryBombardment));
             effects.Add(typeof(SetTeam));
+            effects.Add(typeof(LockCamera));
 
             //InvokeRepeating("RandomEffect", delay, delay);
         }
