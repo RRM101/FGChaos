@@ -33,8 +33,8 @@ namespace FGChaos.Effects
             int randomnumber = UnityEngine.Random.Range(0, chaos.addressableAssetsNames.Length);
 
             SpawnName = chaos.addressableAssetsNames[randomnumber];
-            SpawnGUID = chaos.addressableAssetsKeyNamePairs[chaos.addressableAssetsNames[randomnumber]];
-            name = $"Spawn {chaos.addressableAssetsNames[randomnumber]}";
+            SpawnGUID = chaos.addressableAssetsKeyNamePairs[SpawnName];
+            name = $"Spawn {SpawnName}";
         }
 
         public override void Run()
