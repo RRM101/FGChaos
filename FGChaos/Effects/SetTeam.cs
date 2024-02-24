@@ -23,14 +23,6 @@ namespace FGChaos.Effects
             get { return "SetTeam"; }
         }
 
-        string[] teams = new string[]
-        {
-            "Red",
-            "Blue",
-            "Yellow",
-            "Green"
-        };
-
         TeamColourOption teamColour;
 
         public SetTeam()
@@ -38,7 +30,7 @@ namespace FGChaos.Effects
             TeamColourOption[] teamColourOptions = Resources.FindObjectsOfTypeAll<TeamColourOption>();
             int randomnumber = UnityEngine.Random.Range(0, 4);
             teamColour = teamColourOptions[randomnumber];
-            name = $"You are now in {teams[randomnumber]} Team";
+            name = $"You are now in {teamColour.name}"; // Improve this later
         }
 
         public override void Run()

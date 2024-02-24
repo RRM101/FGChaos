@@ -28,14 +28,18 @@ namespace FGChaos.Effects
 
         public override Type[] BlockedEffects
         {
-            get {
-                return new Type[] {
-                typeof(FirstPersonMode),
-                typeof(WitnessProtection),
-                typeof(ClonePlayer),
-                typeof(WhereIsMyFallGuy),
-                typeof(LockCamera)
-            }; }
+            get
+            {
+                return new Type[] 
+                {
+                    typeof(FirstPersonMode),
+                    typeof(WitnessProtection),
+                    typeof(ClonePlayer),
+                    typeof(WhereIsMyFallGuy),
+                    typeof(LockCamera),
+                    typeof(TopDownView)
+                };
+            }
         }
 
         Transform cameraDirectorTransform;

@@ -22,6 +22,12 @@
   </ItemGroup>
   
   <ItemGroup>
+    <Reference Include="DOTween">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween.Modules">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\DOTween.Modules.dll</HintPath>
+    </Reference>
     <Reference Include="FMODUnity">
       <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\FMODUnity.dll</HintPath>
     </Reference>
