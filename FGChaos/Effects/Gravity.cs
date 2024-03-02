@@ -50,13 +50,13 @@ namespace FGChaos.Effects
 
         public override void Run()
         {
-            Physics.gravity = new Vector3(0, 0, 0);
+            Physics.gravity = new Vector3(0, gravity, 0);
             base.Run();
         }
 
         public override void End()
         {
-            Physics.gravity = new Vector3(0, gravity, 0);
+            Physics.gravity = new Vector3(0, -30, 0);
             base.End();
         }
     }
