@@ -30,7 +30,7 @@ namespace FGChaos.Effects
 
         public override void Update()
         {
-            chaos.cameraDirector.StartRecenterToHeading();
+            chaos.cameraDirector.StartRecenterToHeading(); // Improve later
         }
     }
 }

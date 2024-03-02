@@ -1,5 +1,6 @@
 ﻿using FG.Common;
 using FGClient;
+using System.Text.RegularExpressions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,8 @@ namespace FGChaos.Effects
             TeamColourOption[] teamColourOptions = Resources.FindObjectsOfTypeAll<TeamColourOption>();
             int randomnumber = UnityEngine.Random.Range(0, 4);
             teamColour = teamColourOptions[randomnumber];
-            name = $"You are now in {teamColour.name}"; // Improve this later
+            string teamName = Regex.Replace(teamColour.name, @"[\d-]", string.Empty);
+            name = $"You are now in {teamName}";
         }
 
         public override void Run()

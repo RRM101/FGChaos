@@ -86,7 +86,7 @@ namespace FGChaos
                     effectNameGameObject.hideFlags = HideFlags.HideAndDontSave;
                     effectNameGameObject.AddComponent<LayoutElement>();
                     effectName = effectNameGameObject.AddComponent<TextMeshProUGUI>();
-                    effectName.font = Resources.FindObjectsOfTypeAll<TMP_FontAsset>()[3];
+                    effectName.font = Resources.FindObjectsOfTypeAll<TMP_FontAsset>()[1];
                     effectName.horizontalAlignment = HorizontalAlignmentOptions.Right;
                     effectName.rectTransform.sizeDelta = new Vector2(Screen.width, 50);
                 }

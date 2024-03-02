@@ -48,14 +48,6 @@ namespace FGChaos
         };
         public string[] addressableAssetsNames;
 
-
-
-        void OnGUI()
-        {
-            //GUI.Label(new Rect(Screen.width / 2, 5, 100, 300), $"<size=50>{roundedDelay}</size>");
-            //GUI.Label(new Rect(Screen.width - 150, 5, 145, 200), $"<size=25>{effect}</size>");
-        }
-
         void Awake()
         {
             RectTransform chaosSliderRectTransform;
@@ -101,8 +93,7 @@ namespace FGChaos
             effects.Add(typeof(PiracyIsNoFalling));
             effects.Add(typeof(RocketShip));
             effects.Add(typeof(Jetpack));
-            effects.Add(typeof(LowGravity));
-            effects.Add(typeof(NoGravity));
+            effects.Add(typeof(Gravity));
             effects.Add(typeof(Speed));
             effects.Add(typeof(BlueberryBombardment));
             effects.Add(typeof(SetTeam));
