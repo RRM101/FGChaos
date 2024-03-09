@@ -50,6 +50,7 @@ namespace FGChaos.Effects
             cameraDirectorTransform.GetParent().GetChild(1).gameObject.SetActive(false);
             cameraDirectorTransform.GetParent().SetParent(parentGameObject.transform);
             cameraDirectorTransform.localPosition = Vector3.zero;
+            cameraDirectorTransform.GetParent().localPosition = Vector3.zero;
             cameraDirectorTransform.DOLocalMove(new Vector3(0, 20, 0), 1).SetEase(Ease.InOutSine);
             cameraDirectorTransform.DORotate(new Vector3(90, 0, 0), 1).SetEase(Ease.InOutSine);
             input = chaos.fallGuy.GetComponent<FallGuysCharacterControllerInput>();

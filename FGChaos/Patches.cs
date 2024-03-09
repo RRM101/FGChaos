@@ -1,6 +1,8 @@
 ﻿using FG.Common.Character;
 using FG.Common.Character.MotorSystem;
+using FGClient;
 using FGClient.OfflinePlayground;
+using FGClient.UI;
 using HarmonyLib;
 using System;
 using System.Collections.Generic;
@@ -14,11 +16,20 @@ namespace FGChaos
     public class Patches
     {
         [HarmonyPatch(typeof(OfflinePlaygroundManager), "OnIntroCamerasComplete")]
+        [HarmonyPatch(typeof(ClientGameManager), "OnIntroCountdownEnded")]
         [HarmonyPrefix]
-        static bool OfflinePlaygroundManagerOfflinePlaygroundManager(OfflinePlaygroundManager __instance)
+        static bool StartChaos()
         {
-            ChaosPluginBehaviour.instance.EnableChaos();
+            ChaosPluginBehaviour.instance.EnableChaos();            
             return true;
+        }
+
+        [HarmonyPatch(typeof(GameplayTimerViewModel), "Initialise")]
+        [HarmonyPrefix]
+        static bool GameplayTimerViewModelInitialise(GameplayTimerViewModel __instance)
+        {
+            GameObject.Destroy(__instance.gameObject);
+            return false;
         }
 
         [HarmonyPatch(typeof(MotorFunctionJumpStateInactive), "UpdateState")]
@@ -48,5 +59,33 @@ namespace FGChaos
             __result = h;
             return false;
         }
+
+        /*[HarmonyPatch(typeof(COMMON_SpeedArch), "CreateSpeedBoostDataInstance")]
+        [HarmonyPrefix]
+        static bool COMMON_SpeedArchCreateSpeedBoostDataInstance(COMMON_SpeedArch __instance)
+        {
+            if (__instance.SpeedBoostData == null && __instance._movementModifier != null)
+            {
+                __instance.SpeedBoostData = __instance._movementModifier.SpeedBoostData;
+            }
+
+            return false;
+        }
+
+        [HarmonyPatch(typeof(SpeedBoostData), MethodType.Constructor, new Type[] { typeof(SpeedBoostData) }, new ArgumentType[] {ArgumentType.Ref} )] // WHY DOESNT THE CONSTRUCTOR PATCH
+        [HarmonyPrefix]
+        static bool SpeedBoostData(ref SpeedBoostData other)
+        {
+            try
+            {
+                Debug.Log(other._allowsStacking);
+            }
+            catch
+            {
+
+            }
+            Application.Quit();
+            return false;
+        }*/
     }
 }

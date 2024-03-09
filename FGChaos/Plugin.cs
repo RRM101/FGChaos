@@ -155,8 +155,11 @@ namespace FGChaos
 
         public void EnableChaos()
         {
-            GameObject obj = new GameObject("FGChaos");
-            chaosInstance = obj.AddComponent<Chaos>();
+            if (chaosInstance == null)
+            {
+                GameObject obj = new GameObject("FGChaos");
+                chaosInstance = obj.AddComponent<Chaos>();
+            }
         }
 
         public void RunCoroutine(IEnumerator enumerator)

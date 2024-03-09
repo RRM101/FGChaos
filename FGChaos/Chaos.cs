@@ -15,7 +15,7 @@ namespace FGChaos
 {
     public class Chaos : MonoBehaviour
     {
-        List<Type> effects = new List<Type>();
+        public static List<Type> effects = new List<Type>();
         public static List<Effect> activeEffects = new List<Effect>();
         public FallGuysCharacterController fallGuy;
         public Rigidbody fgrb;
@@ -75,30 +75,36 @@ namespace FGChaos
 
         void Start()
         {
-            effects.Add(typeof(FlingPlayer));
-            effects.Add(typeof(TeleportToStartingPosition));
-            effects.Add(typeof(Eliminate));
-            effects.Add(typeof(WhoIsWaving));
-            effects.Add(typeof(Spawn));
-            effects.Add(typeof(WhereIsMyFallGuy));
-            effects.Add(typeof(HandsInTheAir));
-            effects.Add(typeof(RagdollPlayer));
-            effects.Add(typeof(KidnapPlayer));
-            effects.Add(typeof(JumpBoost));
-            effects.Add(typeof(BoulderRain));
-            effects.Add(typeof(PlanetAssault));
-            effects.Add(typeof(WitnessProtection));
-            effects.Add(typeof(ClonePlayer));
-            effects.Add(typeof(FirstPersonMode));
-            effects.Add(typeof(PiracyIsNoFalling));
-            effects.Add(typeof(RocketShip));
-            effects.Add(typeof(Jetpack));
-            effects.Add(typeof(Gravity));
-            effects.Add(typeof(Speed));
-            effects.Add(typeof(BlueberryBombardment));
-            effects.Add(typeof(SetTeam));
-            effects.Add(typeof(LockCamera));
-            effects.Add(typeof(TopDownView));
+            if (effects.Count == 0)
+            {
+                effects.Add(typeof(FlingPlayer));
+                effects.Add(typeof(TeleportToStartingPosition));
+                effects.Add(typeof(Eliminate));
+                effects.Add(typeof(WhoIsWaving));
+                effects.Add(typeof(Spawn));
+                effects.Add(typeof(Spawn));
+                effects.Add(typeof(Spawn));
+                effects.Add(typeof(WhereIsMyFallGuy));
+                effects.Add(typeof(HandsInTheAir));
+                effects.Add(typeof(RagdollPlayer));
+                effects.Add(typeof(KidnapPlayer));
+                effects.Add(typeof(JumpBoost));
+                effects.Add(typeof(BoulderRain));
+                effects.Add(typeof(PlanetAssault));
+                effects.Add(typeof(WitnessProtection));
+                effects.Add(typeof(ClonePlayer));
+                effects.Add(typeof(FirstPersonMode));
+                effects.Add(typeof(PiracyIsNoFalling));
+                effects.Add(typeof(RocketShip));
+                effects.Add(typeof(Jetpack));
+                effects.Add(typeof(Gravity));
+                effects.Add(typeof(Speed));
+                effects.Add(typeof(BlueberryBombardment));
+                effects.Add(typeof(SetTeam));
+                effects.Add(typeof(LockCamera));
+                effects.Add(typeof(TopDownView));
+                effects.Add(typeof(SpeedBoost));
+            }
 
             //InvokeRepeating("RandomEffect", delay, delay);
         }
