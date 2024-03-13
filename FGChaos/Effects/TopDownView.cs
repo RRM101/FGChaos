@@ -11,32 +11,17 @@ namespace FGChaos.Effects
 {
     public class TopDownView : Effect
     {
-        public override string Name
+        public TopDownView()
         {
-            get { return "Top Down View"; }
-        }
-
-        public override string ID
-        {
-            get { return "TopDownView"; }
-        }
-
-        public override int Duration
-        {
-            get { return 30; }
-        }
-
-        public override Type[] BlockedEffects
-        {
-            get
+            Name = "Top Down View";
+            ID = "TopDownView";
+            Duration = 30;
+            BlockedEffects = new Type[]
             {
-                return new Type[] 
-                {
-                    typeof(FirstPersonMode),
-                    typeof(LockCamera),
-                    typeof(TopDownView)
-                };
-            }
+                typeof(FirstPersonMode),
+                typeof(LockCamera),
+                typeof(TopDownView)
+            };
         }
 
         Transform cameraDirectorTransform;

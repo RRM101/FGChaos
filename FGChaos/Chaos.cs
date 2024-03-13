@@ -73,7 +73,7 @@ namespace FGChaos
             StopAllEffects();
         }
 
-        void Start()
+        void Start() // will probably change this
         {
             if (effects.Count == 0)
             {
@@ -105,8 +105,6 @@ namespace FGChaos
                 effects.Add(typeof(TopDownView));
                 effects.Add(typeof(SpeedBoost));
             }
-
-            //InvokeRepeating("RandomEffect", delay, delay);
         }
 
         void RandomEffect()
@@ -162,7 +160,6 @@ namespace FGChaos
             }
             else
             {
-                delay = Plugin.EffectTimer.Value;
                 RandomEffect();
             }
 

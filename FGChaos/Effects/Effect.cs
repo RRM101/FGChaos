@@ -11,13 +11,13 @@ namespace FGChaos.Effects
 {
     public class Effect
     {
-        public virtual string Name { get; }
+        public string Name;
 
-        public virtual int Duration { get { return 0; } }
+        public int Duration = 0;
 
-        public virtual string ID { get; }
+        public string ID;
 
-        public virtual Type[] BlockedEffects { get { return new Type[] {}; } }
+        public Type[] BlockedEffects = new Type[] {};
 
         public Chaos chaos = ChaosPluginBehaviour.chaosInstance;
 

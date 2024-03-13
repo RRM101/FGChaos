@@ -14,14 +14,10 @@ namespace FGChaos.Effects
 {
     public class KidnapPlayer : Effect
     {
-        public override string Name
+        public KidnapPlayer()
         {
-            get { return "Kidnap Player"; }
-        }
-
-        public override string ID
-        {
-            get { return "KidnapPlayer"; }
+            Name = "Kidnap Player";
+            ID = "KidnapPlayer";
         }
 
         public override void Run()
@@ -51,11 +47,6 @@ namespace FGChaos.Effects
                 Vector3 velocity2 = velocity.magnitude * chaos.fallGuy.transform.forward.normalized;
                 rigidbody.velocity = new Vector3(velocity2.x, Math.Max(Math.Abs(random_x), Math.Abs(random_z)), velocity2.z);
                 rigidbody.angularVelocity = rigidbody.velocity;
-
-            }
-            else
-            {
-                Debug.Log($"object '{key}' not found");
             }
         }
 

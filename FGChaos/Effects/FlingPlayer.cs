@@ -9,14 +9,10 @@ namespace FGChaos.Effects
 {
     public class FlingPlayer : Effect
     {
-        public override string Name
+        public FlingPlayer()
         {
-            get { return "Fling Player"; }
-        }
-
-        public override string ID
-        {
-            get { return "FlingPlayer"; }
+            Name = "Fling Player";
+            ID = "FlingPlayer";
         }
 
         public override void Run()

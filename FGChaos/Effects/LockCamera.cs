@@ -8,24 +8,12 @@ namespace FGChaos.Effects
 {
     public class LockCamera : Effect
     {
-        public override string Name
+        public LockCamera()
         {
-            get { return "Lock Camera"; }
-        }
-
-        public override string ID
-        {
-            get { return "LockCamera"; }
-        }
-
-        public override int Duration
-        {
-            get { return 20; }
-        }
-
-        public override Type[] BlockedEffects
-        {
-            get { return new Type[] { typeof(FirstPersonMode) }; }
+            Name = "Lock Camera";
+            ID = "LockCamera";
+            Duration = 20;
+            BlockedEffects = new Type[] { typeof(FirstPersonMode) };
         }
 
         public override void Update()

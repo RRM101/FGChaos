@@ -13,19 +13,11 @@ namespace FGChaos.Effects
 {
     public class SpeedBoost : Effect
     {
-        public override string Name
+        public SpeedBoost()
         {
-            get { return "Speed Boost"; }
-        }
-
-        public override string ID
-        {
-            get { return "SpeedBoost"; }
-        }
-
-        public override int Duration
-        {
-            get { return 15; }
+            Name = "Speed Boost";
+            ID = "SpeedBoost";
+            Duration = 15;
         }
 
         public override void Run()

@@ -14,14 +14,10 @@ namespace FGChaos.Effects
 {
     public class PlanetAssault : Effect
     {
-        public override string Name
+        public PlanetAssault()
         {
-            get { return "Planet Assault"; }
-        }
-
-        public override string ID
-        {
-            get { return "PlanetAssault"; }
+            Name = "Planet Assault";
+            ID = "PlanetAssault";
         }
 
         public override void Run()

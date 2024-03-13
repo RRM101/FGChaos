@@ -9,24 +9,12 @@ namespace FGChaos.Effects
 {
     public class WhereIsMyFallGuy : Effect
     {
-        public override string Name
+        public WhereIsMyFallGuy()
         {
-            get { return "Where is my Fall Guy?"; }
-        }
-
-        public override int Duration
-        {
-            get { return 15; }
-        }
-
-        public override string ID
-        {
-            get { return "WhereIsMyFallGuy"; }
-        }
-
-        public override Type[] BlockedEffects
-        {
-            get { return new Type[] { typeof(FirstPersonMode) }; }
+            Name = "Where is my Fall Guy?";
+            ID = "WhereIsMyFallGuy";
+            Duration = 15;
+            BlockedEffects = new Type[] { typeof(FirstPersonMode) };
         }
 
         GameObject model;

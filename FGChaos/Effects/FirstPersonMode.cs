@@ -11,35 +11,20 @@ namespace FGChaos.Effects
 {
     public class FirstPersonMode : Effect
     {
-        public override string Name
+        public FirstPersonMode()
         {
-            get { return "First Person Mode"; }
-        }
-
-        public override int Duration
-        {
-            get { return 30; }
-        }
-
-        public override string ID
-        {
-            get { return "FirstPersonMode"; }
-        }
-
-        public override Type[] BlockedEffects
-        {
-            get
+            Name = "First Person Mode";
+            ID = "FirstPersonMode";
+            Duration = 30;
+            BlockedEffects = new Type[]
             {
-                return new Type[] 
-                {
-                    typeof(FirstPersonMode),
-                    typeof(WitnessProtection),
-                    typeof(ClonePlayer),
-                    typeof(WhereIsMyFallGuy),
-                    typeof(LockCamera),
-                    typeof(TopDownView)
-                };
-            }
+                typeof(FirstPersonMode),
+                typeof(WitnessProtection),
+                typeof(ClonePlayer),
+                typeof(WhereIsMyFallGuy),
+                typeof(LockCamera),
+                typeof(TopDownView)
+            };
         }
 
         Transform cameraDirectorTransform;

@@ -8,14 +8,10 @@ namespace FGChaos.Effects
 {
     public class TeleportToStartingPosition : Effect
     {
-        public override string Name
+        public TeleportToStartingPosition()
         {
-            get { return "Teleport to Start"; }
-        }
-
-        public override string ID
-        {
-            get { return "TeleportToStartingPosition"; }
+            Name = "Teleport to Start";
+            ID = "TeleportToStartingPosition";
         }
 
         public override void Run()

@@ -17,19 +17,11 @@ namespace FGChaos.Effects
 {
     public class BlueberryBombardment : Effect
     {
-        public override string Name
+        public BlueberryBombardment()
         {
-            get { return "Blueberry Bombardment"; }
-        }
-
-        public override string ID
-        {
-            get { return "BlueberryBombardment"; }
-        }
-
-        public override int Duration
-        {
-            get { return 15; }
+            Name = "Blueberry Bombardment";
+            ID = "BlueberryBombardment";
+            Duration = 15;
         }
 
         Transform spawnPosition;

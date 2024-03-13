@@ -12,28 +12,17 @@ namespace FGChaos.Effects
 {
     public class SetTeam : Effect
     {
-        string name;
-
-        public override string Name
-        {
-            get { return name; }
-        }
-
-        public override string ID
-        {
-            get { return "SetTeam"; }
-        }
-
-        TeamColourOption teamColour;
-
         public SetTeam()
         {
             TeamColourOption[] teamColourOptions = Resources.FindObjectsOfTypeAll<TeamColourOption>();
             int randomnumber = UnityEngine.Random.Range(0, 4);
             teamColour = teamColourOptions[randomnumber];
             string teamName = Regex.Replace(teamColour.name, @"[\d-]", string.Empty);
-            name = $"You are now in {teamName}";
+            Name = $"You are now in {teamName}";
+            ID = "SetTeam";
         }
+
+        TeamColourOption teamColour;
 
         public override void Run()
         {

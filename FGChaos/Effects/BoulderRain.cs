@@ -14,14 +14,10 @@ namespace FGChaos.Effects
 {
     public class BoulderRain : Effect
     {
-        public override string Name
+        public BoulderRain()
         {
-            get { return "Boulder Rain"; }
-        }
-
-        public override string ID
-        {
-            get { return "BoulderRain"; }
+            Name = "Boulder Rain";
+            ID = "BoulderRain";
         }
 
         public override void Run()
@@ -29,7 +25,6 @@ namespace FGChaos.Effects
             StartCoroutine(BoulderRainCoroutine());
             base.Run();
         }
-
 
         IEnumerator BoulderRainCoroutine()
         {

@@ -9,24 +9,12 @@ namespace FGChaos.Effects
 {
     public class Jetpack : Effect
     {
-        public override string Name
+        public Jetpack()
         {
-            get { return "Jetpack"; }
-        }
-
-        public override int Duration
-        {
-            get { return 20; }
-        }
-
-        public override string ID
-        {
-            get { return "Jetpack"; }
-        }
-
-        public override Type[] BlockedEffects
-        {
-            get { return new Type[] { typeof(RocketShip) }; }
+            Name = "Jetpack";
+            ID = "Jetpack";
+            Duration = 20;
+            BlockedEffects = new Type[] { typeof(RocketShip) };
         }
 
         Player rewiredplayer;

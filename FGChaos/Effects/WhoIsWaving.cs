@@ -10,14 +10,10 @@ namespace FGChaos.Effects
 {
     public class WhoIsWaving : Effect
     {
-        public override string Name
+        public WhoIsWaving()
         {
-            get { return "Who is waving?"; }
-        }
-
-        public override string ID
-        {
-            get { return "WhoIsWaving"; }
+            Name = "Who is waving?";
+            ID = "WhoIsWaving";
         }
 
         public override void Run()

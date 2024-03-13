@@ -9,19 +9,11 @@ namespace FGChaos.Effects
 {
     public class PiracyIsNoFalling : Effect
     {
-        public override string Name
+        public PiracyIsNoFalling()
         {
-            get { return "Pirated Game (Jumping Disabled)"; }
-        }
-
-        public override int Duration
-        {
-            get { return 15; }
-        }
-
-        public override string ID
-        {
-            get { return "PiracyIsNoFalling"; }
+            Name = "Pirated Game (Jumping Disabled)";
+            ID = "PiracyIsNoFalling";
+            Duration = 15;
         }
 
         public override void Run()

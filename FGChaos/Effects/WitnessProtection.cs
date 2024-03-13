@@ -10,19 +10,11 @@ namespace FGChaos.Effects
 {
     public class WitnessProtection : Effect
     {
-        public override string Name
+        public WitnessProtection()
         {
-            get { return "Witness Protection"; }
-        }
-
-        public override int Duration
-        {
-            get { return 30; }
-        }
-
-        public override string ID
-        {
-            get { return "WitnessProtection"; }
+            Name = "Witness Protection";
+            ID = "WitnessProtection";
+            Duration = 30;
         }
 
         float rotation;

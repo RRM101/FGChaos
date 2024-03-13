@@ -8,24 +8,12 @@ namespace FGChaos.Effects
 {
     public class RocketShip : Effect
     {
-        public override string Name
+        public RocketShip()
         {
-            get { return "Rocket Ship"; }
-        }
-
-        public override int Duration
-        {
-            get { return 15; }
-        }
-
-        public override string ID
-        {
-            get { return "RocketShip"; }
-        }
-
-        public override Type[] BlockedEffects
-        {
-            get { return new Type[] { typeof(Jetpack) }; }
+            Name = "Rocket Ship";
+            ID = "RocketShip";
+            Duration = 15;
+            BlockedEffects = new Type[] { typeof(Jetpack) };
         }
 
         public override void Run()

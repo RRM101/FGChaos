@@ -10,19 +10,11 @@ namespace FGChaos.Effects
 {
     public class RagdollPlayer : Effect
     {
-        public override string Name
+        public RagdollPlayer()
         {
-            get { return "Ragdoll Player"; }
-        }
-
-        public override int Duration
-        {
-            get { return 10; }
-        }
-
-        public override string ID
-        {
-            get { return "RagdollPlayer"; }
+            Name = "Ragdoll Player";
+            ID = "RagdollPlayer";
+            Duration = 10;
         }
 
         MotorFunctionRagdollStateStunned stateStunned;

@@ -11,14 +11,10 @@ namespace FGChaos.Effects
 {
     public class ClonePlayer : Effect
     {
-        public override string Name
+        public ClonePlayer()
         {
-            get { return "Clone Player"; }
-        }
-
-        public override string ID
-        {
-            get { return "ClonePlayer"; }
+            Name = "Clone Player";
+            ID = "ClonePlayer";
         }
 
         public override void Run()

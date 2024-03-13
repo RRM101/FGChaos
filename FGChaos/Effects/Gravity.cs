@@ -10,43 +10,24 @@ namespace FGChaos.Effects
 {
     public class Gravity : Effect
     {
-        string name;
+        public Gravity()
+        {
+            string[] gravityArray = gravityDictionary.Keys.ToArray();
+            string gravityType = gravityArray[UnityEngine.Random.Range(0, gravityArray.Length)];
+            Name = $"{gravityType} Gravity";
+            gravity = gravityDictionary[gravityType];
+            ID = "Gravity";
+            Duration = 20;
+            BlockedEffects = new Type[] { typeof(Gravity) };
+        }
+
         int gravity;
-
-        public override string Name
-        {
-            get { return name; }
-        }
-
-        public override int Duration
-        {
-            get { return 20; }
-        }
-
-        public override string ID
-        {
-            get { return "Gravity"; }
-        }
-
-        public override Type[] BlockedEffects
-        {
-            get { return new Type[] { typeof(Gravity) }; }
-        }
-
         Dictionary<string, int> gravityDictionary = new Dictionary<string, int>()
         {
             {"Zero", 0},
             {"Low", -5},
             {"High", -50}
         };
-
-        public Gravity()
-        {
-            string[] gravityArray = gravityDictionary.Keys.ToArray();
-            string gravityType = gravityArray[UnityEngine.Random.Range(0, gravityArray.Length)];
-            name = $"{gravityType} Gravity";
-            gravity = gravityDictionary[gravityType];
-        }
 
         public override void Run()
         {

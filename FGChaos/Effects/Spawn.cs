@@ -14,28 +14,18 @@ namespace FGChaos.Effects
 {
     public class Spawn : Effect
     {
-        public string SpawnName;
-        public string SpawnGUID;
-        public string name;
-
-        public override string Name
-        {
-            get { return name; }
-        }
-
-        public override string ID
-        {
-            get { return "Spawn"; }
-        }
-
         public Spawn()
         {
             int randomnumber = UnityEngine.Random.Range(0, chaos.addressableAssetsNames.Length);
 
             SpawnName = chaos.addressableAssetsNames[randomnumber];
             SpawnGUID = chaos.addressableAssetsKeyNamePairs[SpawnName];
-            name = $"Spawn {SpawnName}";
+            Name = $"Spawn {SpawnName}";
+            ID = "Spawn";
         }
+
+        public string SpawnName;
+        public string SpawnGUID;
 
         public override void Run()
         {

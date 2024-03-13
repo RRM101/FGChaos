@@ -10,37 +10,17 @@ namespace FGChaos.Effects
 {
     public class Speed : Effect
     {
-        public string name;
-        public int duration = 15;
-
-        public override string Name
+        public Speed()
         {
-            get { return name; }
-        }
-
-        public override int Duration
-        {
-            get { return duration; }
-        }
-
-        public override string ID
-        {
-            get { return "Speed"; }
-        }
-
-        public override Type[] BlockedEffects
-        {
-            get { return new Type[] { typeof(Speed) }; }
+            speed = speeds[UnityEngine.Random.Range(0, speeds.Length)];
+            Name = $"{speed}x Speed";
+            ID = "Speed";
+            Duration = 15;
+            BlockedEffects = new Type[] { typeof(Speed) };
         }
 
         float[] speeds = new float[] { 0.2f, 0.5f, 2f, 5f, 10f };
         float speed;
-
-        public Speed()
-        {
-            speed = speeds[UnityEngine.Random.Range(0, speeds.Length)];
-            name = $"{speed}x Speed";
-        }
 
         public override void Run()
         {
