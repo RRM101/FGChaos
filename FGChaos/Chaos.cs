@@ -104,6 +104,7 @@ namespace FGChaos
                 effects.Add(typeof(LockCamera));
                 effects.Add(typeof(TopDownView));
                 effects.Add(typeof(SpeedBoost));
+                effects.Add(typeof(BallBoost));
             }
         }
 

@@ -26,7 +26,7 @@ namespace FGChaos.Effects
             base.Run();
         }
 
-        IEnumerator Speed() // very stupid way of doing this but the constructor doesnt patch
+        IEnumerator Speed() // very stupid way of doing this
         {
             COMMON_SpeedArch speedArch;
             AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>("11374594082ca994d8f12cfff47429da");

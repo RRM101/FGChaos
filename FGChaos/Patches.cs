@@ -59,33 +59,5 @@ namespace FGChaos
             __result = h;
             return false;
         }
-
-        /*[HarmonyPatch(typeof(COMMON_SpeedArch), "CreateSpeedBoostDataInstance")]
-        [HarmonyPrefix]
-        static bool COMMON_SpeedArchCreateSpeedBoostDataInstance(COMMON_SpeedArch __instance)
-        {
-            if (__instance.SpeedBoostData == null && __instance._movementModifier != null)
-            {
-                __instance.SpeedBoostData = __instance._movementModifier.SpeedBoostData;
-            }
-
-            return false;
-        }
-
-        [HarmonyPatch(typeof(SpeedBoostData), MethodType.Constructor, new Type[] { typeof(SpeedBoostData) }, new ArgumentType[] {ArgumentType.Ref} )] // WHY DOESNT THE CONSTRUCTOR PATCH
-        [HarmonyPrefix]
-        static bool SpeedBoostData(ref SpeedBoostData other)
-        {
-            try
-            {
-                Debug.Log(other._allowsStacking);
-            }
-            catch
-            {
-
-            }
-            Application.Quit();
-            return false;
-        }*/
     }
 }
