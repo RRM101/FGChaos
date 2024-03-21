@@ -59,6 +59,12 @@ namespace FGChaos.Effects
             }
         }
 
+        public Effect Create()
+        {
+            Effect effect = (Effect)Activator.CreateInstance(GetType());
+            return effect;
+        }
+
         IEnumerator RunUpdate()
         {
             while (canRunUpdateMethod)

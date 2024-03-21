@@ -15,7 +15,7 @@ namespace FGChaos
 {
     public class Chaos : MonoBehaviour
     {
-        public static List<Type> effects = new List<Type>();
+        public static List<Effect> effects = new List<Effect>();
         public static List<Effect> activeEffects = new List<Effect>();
         public FallGuysCharacterController fallGuy;
         public Rigidbody fgrb;
@@ -73,38 +73,38 @@ namespace FGChaos
             StopAllEffects();
         }
 
-        void Start() // will probably change this
+        void Start()
         {
             if (effects.Count == 0)
             {
-                effects.Add(typeof(FlingPlayer));
-                effects.Add(typeof(TeleportToStartingPosition));
-                effects.Add(typeof(Eliminate));
-                effects.Add(typeof(WhoIsWaving));
-                effects.Add(typeof(Spawn));
-                effects.Add(typeof(Spawn));
-                effects.Add(typeof(Spawn));
-                effects.Add(typeof(WhereIsMyFallGuy));
-                effects.Add(typeof(HandsInTheAir));
-                effects.Add(typeof(RagdollPlayer));
-                effects.Add(typeof(KidnapPlayer));
-                effects.Add(typeof(JumpBoost));
-                effects.Add(typeof(BoulderRain));
-                effects.Add(typeof(PlanetAssault));
-                effects.Add(typeof(WitnessProtection));
-                effects.Add(typeof(ClonePlayer));
-                effects.Add(typeof(FirstPersonMode));
-                effects.Add(typeof(PiracyIsNoFalling));
-                effects.Add(typeof(RocketShip));
-                effects.Add(typeof(Jetpack));
-                effects.Add(typeof(Gravity));
-                effects.Add(typeof(Speed));
-                effects.Add(typeof(BlueberryBombardment));
-                effects.Add(typeof(SetTeam));
-                effects.Add(typeof(LockCamera));
-                effects.Add(typeof(TopDownView));
-                effects.Add(typeof(SpeedBoost));
-                effects.Add(typeof(BallBoost));
+                effects.Add(new FlingPlayer());
+                effects.Add(new TeleportToStartingPosition());
+                effects.Add(new Eliminate());
+                effects.Add(new WhoIsWaving());
+                effects.Add(new Spawn());
+                effects.Add(new Spawn());
+                effects.Add(new Spawn());
+                effects.Add(new WhereIsMyFallGuy());
+                effects.Add(new HandsInTheAir());
+                effects.Add(new RagdollPlayer());
+                effects.Add(new KidnapPlayer());
+                effects.Add(new JumpBoost());
+                effects.Add(new BoulderRain());
+                effects.Add(new PlanetAssault());
+                effects.Add(new WitnessProtection());
+                effects.Add(new ClonePlayer());
+                effects.Add(new FirstPersonMode());
+                effects.Add(new PiracyIsNoFalling());
+                effects.Add(new RocketShip());
+                effects.Add(new Jetpack());
+                effects.Add(new Gravity());
+                effects.Add(new Speed());
+                effects.Add(new BlueberryBombardment());
+                effects.Add(new SetTeam());
+                effects.Add(new LockCamera());
+                effects.Add(new TopDownView());
+                effects.Add(new SpeedBoost());
+                effects.Add(new BallBoost());
             }
         }
 
@@ -112,7 +112,7 @@ namespace FGChaos
         {
             delay = Plugin.EffectTimer.Value;
             int getRandomEffect = UnityEngine.Random.Range(0, effects.Count);
-            Effect effectInstance = (Effect)Activator.CreateInstance(effects[getRandomEffect]);
+            Effect effectInstance = effects[getRandomEffect].Create();
 
             foreach (Effect activeEffect in activeEffects)
             {
