@@ -15,7 +15,7 @@ namespace FGChaos
 {
     public class Chaos : MonoBehaviour
     {
-        public static List<Effect> effects = ChaosPluginBehaviour.effects;
+        public static List<Effect> effects = new List<Effect>();
         public static List<Effect> activeEffects = new List<Effect>();
         public FallGuysCharacterController fallGuy;
         public Rigidbody fgrb;
@@ -71,6 +71,41 @@ namespace FGChaos
             ChaosPluginBehaviour.LoadBank("BNK_Music_GP");
             ChaosPluginBehaviour.LoadBank("BNK_PlayGo");
             StopAllEffects();
+        }
+
+        void Start()
+        {
+            if (effects.Count == 0)
+            {
+                effects.Add(new FlingPlayer());
+                effects.Add(new TeleportToStartingPosition());
+                effects.Add(new Eliminate());
+                effects.Add(new WhoIsWaving());
+                effects.Add(new Spawn());
+                effects.Add(new Spawn());
+                effects.Add(new Spawn());
+                effects.Add(new WhereIsMyFallGuy());
+                effects.Add(new HandsInTheAir());
+                effects.Add(new RagdollPlayer());
+                effects.Add(new KidnapPlayer());
+                effects.Add(new JumpBoost());
+                effects.Add(new BoulderRain());
+                effects.Add(new PlanetAssault());
+                effects.Add(new WitnessProtection());
+                effects.Add(new ClonePlayer());
+                effects.Add(new FirstPersonMode());
+                effects.Add(new PiracyIsNoFalling());
+                effects.Add(new RocketShip());
+                effects.Add(new Jetpack());
+                effects.Add(new Gravity());
+                effects.Add(new Speed());
+                effects.Add(new BlueberryBombardment());
+                effects.Add(new SetTeam());
+                effects.Add(new LockCamera());
+                effects.Add(new TopDownView());
+                effects.Add(new SpeedBoost());
+                effects.Add(new BallBoost());
+            }
         }
 
         void RandomEffect()

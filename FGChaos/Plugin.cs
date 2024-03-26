@@ -15,7 +15,6 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using FGClient.UI;
-using FGChaos.Effects;
 
 namespace FGChaos
 {
@@ -46,38 +45,6 @@ namespace FGChaos
     }
     public class ChaosPluginBehaviour : MonoBehaviour
     {
-        public static List<Effect> effects = new List<Effect>()
-        {
-            new FlingPlayer(),
-            new TeleportToStartingPosition(),
-            new Eliminate(),
-            new WhoIsWaving(),
-            new Spawn(),
-            new Spawn(),
-            new Spawn(),
-            new WhereIsMyFallGuy(),
-            new HandsInTheAir(),
-            new RagdollPlayer(),
-            new KidnapPlayer(),
-            new JumpBoost(),
-            new BoulderRain(),
-            new PlanetAssault(),
-            new WitnessProtection(),
-            new ClonePlayer(),
-            new FirstPersonMode(),
-            new PiracyIsNoFalling(),
-            new RocketShip(),
-            new Jetpack(),
-            new Gravity(),
-            new Speed(),
-            new BlueberryBombardment(),
-            new SetTeam(),
-            new LockCamera(),
-            new TopDownView(),
-            new SpeedBoost(),
-            new BallBoost()
-        };
-
         public static ChaosPluginBehaviour instance;
         public static Chaos chaosInstance;
         public static TextMeshProUGUI effectName;
