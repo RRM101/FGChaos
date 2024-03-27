@@ -105,6 +105,7 @@ namespace FGChaos
                 effects.Add(new TopDownView());
                 effects.Add(new SpeedBoost());
                 effects.Add(new BallBoost());
+                effects.Add(new Win());
             }
         }
 

@@ -73,8 +73,13 @@ namespace FGChaos.Effects
                 {
                     Update();
                 }
-                catch
+                catch (NotImplementedException e)
                 {
+                    canRunUpdateMethod = false;
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"Error occured while running Update method: {e.Message} in effect {ID}");
                     canRunUpdateMethod = false;
                 }
                 yield return null;

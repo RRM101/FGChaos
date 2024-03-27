@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace FGChaos
 {
@@ -58,6 +59,23 @@ namespace FGChaos
 
             __result = h;
             return false;
+        }
+
+        [HarmonyPatch(typeof(StateVictoryScreen), "ProceedToNextState")]
+        [HarmonyPrefix]
+        static bool StateVictoryScreenProceedToNextState(StateVictoryScreen __instance)
+        {
+            __instance._victoryScreenViewModel.HideScreen();
+            Addressables.LoadSceneAsync("MainMenu");
+            return false;
+        }
+
+        [HarmonyPatch(typeof(TitleScreenViewModel), "HandlePlayButtonDown")]
+        [HarmonyPrefix]
+        static bool TitleScreenViewModelHandlePlayButtonDown(TitleScreenViewModel __instance)
+        {
+            ChaosPluginBehaviour.UnloadBank("BNK_SFX_WinnerScreen");
+            return true;
         }
     }
 }
