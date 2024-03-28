@@ -58,6 +58,9 @@
     <Reference Include="Unity.Addressables">
       <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\Unity.Addressables.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.ResourceManager">
       <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\Unity.ResourceManager.dll</HintPath>
     </Reference>
