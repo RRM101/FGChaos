@@ -10,6 +10,7 @@ using FG.Common.Character;
 using FGChaos.Effects;
 using UnityEngine.UI;
 using BepInEx;
+using UnityEngine.Rendering.PostProcessing;
 
 namespace FGChaos
 {
@@ -22,6 +23,7 @@ namespace FGChaos
         public MultiplayerStartingPosition startingPosition;
         public CameraDirector cameraDirector;
         public MotorAgent motorAgent;
+        public PostProcessVolume postProcessVolume;
         public Sprite blueberrySprite;
         public static float delay;
         float roundedDelay;
@@ -58,6 +60,8 @@ namespace FGChaos
             startingPosition = FindObjectOfType<MultiplayerStartingPosition>();
             cameraDirector = FindObjectOfType<CameraDirector>();
             motorAgent = fallGuy.GetComponent<MotorAgent>();
+            postProcessVolume = cameraDirector.MainNativeCam.gameObject.AddComponent<PostProcessVolume>();
+            postProcessVolume.isGlobal = true;
             delay = Plugin.EffectTimer.Value;
             addressableAssetsNames = addressableAssetsKeyNamePairs.Keys.ToArray();
             rocketShip = false;
