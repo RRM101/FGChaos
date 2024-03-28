@@ -129,7 +129,7 @@ namespace FGChaos
                 }
             }
 
-            if (effectInstance.ID == "Eliminate")
+            if (effectInstance.ID == "Eliminate" || effectInstance.ID == "Win")
             {
                 int rng = UnityEngine.Random.RandomRange(0, 11);
                 if (rng != 5)

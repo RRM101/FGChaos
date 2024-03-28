@@ -67,15 +67,8 @@ namespace FGChaos
         {
             __instance._victoryScreenViewModel.HideScreen();
             Addressables.LoadSceneAsync("MainMenu");
-            return false;
-        }
-
-        [HarmonyPatch(typeof(TitleScreenViewModel), "HandlePlayButtonDown")]
-        [HarmonyPrefix]
-        static bool TitleScreenViewModelHandlePlayButtonDown(TitleScreenViewModel __instance)
-        {
             ChaosPluginBehaviour.UnloadBank("BNK_SFX_WinnerScreen");
-            return true;
+            return false;
         }
     }
 }
