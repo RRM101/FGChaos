@@ -70,16 +70,7 @@ namespace FGChaos
         static bool StateVictoryScreenProceedToNextState(StateVictoryScreen __instance)
         {
             __instance._victoryScreenViewModel.HideScreen();
-            //Addressables.LoadSceneAsync("MainMenu");
-            //ChaosPluginBehaviour.UnloadBank("BNK_SFX_WinnerScreen");
             __instance._gsm.ReplaceCurrentState(new StateMainMenu(__instance._gsm, __instance._gameStateData, false).Cast<GameStateMachine.IGameState>());
-            return false;
-        }
-
-        [HarmonyPatch(typeof(VictoryScreenViewModel), "PlaySquadMemberAnim")]
-        [HarmonyPrefix]
-        static bool VictoryScreenViewModel(VictoryScreenViewModel __instance)
-        {
             return false;
         }
     }

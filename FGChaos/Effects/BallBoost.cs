@@ -23,7 +23,7 @@ namespace FGChaos.Effects
             motorFunctionPowerup.EquippedPowerupData._hasInfiniteStacks = true;
             motorFunctionPowerup.EquippedPowerupData._duration = -1;
             motorFunctionPowerup.SetStateTo(MotorFunctionPowerup._useStateId);
-            chaos.fgrb.velocity = chaos.fallGuy.transform.rotation * new Vector3(0, 300, 500);
+            chaos.fgrb.velocity = chaos.fallGuy.transform.rotation * new Vector3(0, 10, 50);
             base.Run();
         }
     }

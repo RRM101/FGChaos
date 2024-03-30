@@ -110,6 +110,7 @@ namespace FGChaos
                 effects.Add(new SpeedBoost());
                 effects.Add(new BallBoost());
                 effects.Add(new Win());
+                effects.Add(new VignetteEffect());
             }
         }
 
