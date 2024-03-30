@@ -197,5 +197,11 @@ namespace FGChaos
                 catch { }
             }
         }
+
+        void OnDestroy()
+        {
+            Destroy(chaosCanvas);
+            StopAllEffects();
+        }
     }
 }

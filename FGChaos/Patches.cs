@@ -1,8 +1,12 @@
-﻿using FG.Common.Character;
+﻿using FG.Common;
+using FG.Common.Character;
 using FG.Common.Character.MotorSystem;
 using FGClient;
 using FGClient.OfflinePlayground;
 using FGClient.UI;
+using FMOD;
+using FMOD.Studio;
+using FMODUnity;
 using HarmonyLib;
 using System;
 using System.Collections.Generic;
@@ -66,8 +70,16 @@ namespace FGChaos
         static bool StateVictoryScreenProceedToNextState(StateVictoryScreen __instance)
         {
             __instance._victoryScreenViewModel.HideScreen();
-            Addressables.LoadSceneAsync("MainMenu");
-            ChaosPluginBehaviour.UnloadBank("BNK_SFX_WinnerScreen");
+            //Addressables.LoadSceneAsync("MainMenu");
+            //ChaosPluginBehaviour.UnloadBank("BNK_SFX_WinnerScreen");
+            __instance._gsm.ReplaceCurrentState(new StateMainMenu(__instance._gsm, __instance._gameStateData, false).Cast<GameStateMachine.IGameState>());
+            return false;
+        }
+
+        [HarmonyPatch(typeof(VictoryScreenViewModel), "PlaySquadMemberAnim")]
+        [HarmonyPrefix]
+        static bool VictoryScreenViewModel(VictoryScreenViewModel __instance)
+        {
             return false;
         }
     }

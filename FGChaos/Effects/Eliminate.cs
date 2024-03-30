@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine;
 using System.Collections;
+using FG.Common.CMS;
+using FG.Common;
+using Events;
 
 namespace FGChaos.Effects
 {
@@ -26,6 +29,7 @@ namespace FGChaos.Effects
 
         IEnumerator EliminateCoroutine()
         {
+            ChaosPluginBehaviour.UnloadBank(CMSLoader.Instance.CMSData.Rounds[NetworkGameData.currentGameOptions_._roundID].IngameMusicSoundBank);
             EliminatedScreenViewModel.Show("eliminated", null, null);
             AudioManager.PlayGameplayEndAudio(false);
             yield return new WaitForSeconds(5);
@@ -40,6 +44,7 @@ namespace FGChaos.Effects
             else
             {
                 Addressables.LoadSceneAsync("MainMenu");
+                Broadcaster.Instance.Broadcast(new OnTransitionToVictoryScreen());
                 End();
             }
         }

@@ -86,7 +86,14 @@ namespace FGChaos
                     effectNameGameObject.hideFlags = HideFlags.HideAndDontSave;
                     effectNameGameObject.AddComponent<LayoutElement>();
                     effectName = effectNameGameObject.AddComponent<TextMeshProUGUI>();
-                    effectName.font = Resources.FindObjectsOfTypeAll<TMP_FontAsset>()[1];
+                    foreach(TMP_FontAsset fontAsset in Resources.FindObjectsOfTypeAll<TMP_FontAsset>())
+                    {
+                        if (fontAsset.name.Contains("Titan"))
+                        {
+                            effectName.font = fontAsset;
+                            break;
+                        }
+                    }
                     effectName.horizontalAlignment = HorizontalAlignmentOptions.Right;
                     effectName.rectTransform.sizeDelta = new Vector2(Screen.width, 50);
                 }
@@ -95,6 +102,14 @@ namespace FGChaos
                 {
                     ShowMissingFilesPopup();
                 }
+            }
+        }
+
+        void Update()
+        {
+            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.L) && chaosInstance != null)
+            {
+                Destroy(chaosInstance.gameObject);
             }
         }
 

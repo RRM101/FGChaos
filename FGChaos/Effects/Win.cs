@@ -1,4 +1,5 @@
-﻿using FG.Common;
+﻿using Events;
+using FG.Common;
 using FG.Common.CMS;
 using FGClient;
 using FGClient.UI;
@@ -28,6 +29,7 @@ namespace FGChaos.Effects
                 clientPlayerManager._playerMetadata.Add(0, playerMetadata);
             }
 
+            ChaosPluginBehaviour.LoadBank("BNK_SFX_WinnerScreen");
             ChaosPluginBehaviour.LoadBank("BNK_Music_GP");
 
             Action action = SwitchToVictoryScreen;
@@ -41,6 +43,7 @@ namespace FGChaos.Effects
         void SwitchToVictoryScreen()
         {
             GlobalGameStateClient.Instance.SwitchToVictoryScreen(0);
+            Broadcaster.Instance.Broadcast(new OnTransitionToVictoryScreen());
         }
     }
 }

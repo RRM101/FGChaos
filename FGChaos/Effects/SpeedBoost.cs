@@ -26,6 +26,8 @@ namespace FGChaos.Effects
             base.Run();
         }
 
+        public static GameObject speedArchGameObject;
+
         IEnumerator Speed() // very stupid way of doing this
         {
             COMMON_SpeedArch speedArch;
@@ -33,6 +35,11 @@ namespace FGChaos.Effects
             yield return handle;
             if (handle.Result != null)
             {
+                if (speedArchGameObject == null)
+                {
+                    speedArchGameObject = GameObject.Instantiate(handle.Result);
+                    speedArchGameObject.SetActive(false);
+                }
                 speedArch = handle.Result.GetComponent<COMMON_SpeedArch>();
                 speedArch.CreateSpeedBoostDataInstance();
                 SpeedBoostData speedBoostData = speedArch.SpeedBoostData;
