@@ -1,10 +1,4 @@
 ﻿using FG.Common.Character;
-using FG.Common.Character.MotorSystem;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FGChaos.Effects
 {

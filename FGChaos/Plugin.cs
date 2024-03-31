@@ -5,7 +5,6 @@ using Il2CppInterop.Runtime.Injection;
 using System.Collections;
 using UnityEngine;
 using FMODUnity;
-using FMOD.Studio;
 using HarmonyLib;
 using BepInEx.Configuration;
 using System;

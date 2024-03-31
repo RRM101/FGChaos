@@ -1,20 +1,10 @@
 ﻿using FG.Common;
 using FG.Common.Character;
-using FG.Common.Character.MotorSystem;
 using FGClient;
 using FGClient.OfflinePlayground;
 using FGClient.UI;
-using FMOD;
-using FMOD.Studio;
-using FMODUnity;
 using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace FGChaos
 {

@@ -1,9 +1,5 @@
 ﻿using FG.Common.LODs;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine;
@@ -39,7 +35,7 @@ namespace FGChaos.Effects
                 int random_x = UnityEngine.Random.Range(50, 100);
                 int random_z = UnityEngine.Random.Range(50, 101);
                 int front = UnityEngine.Random.Range(0, 2);
-                int multiplier = -1;
+                int multiplier = -1; // Random bullshit GO!
                 multiplier = front == 1 ? -1 : 1;
                 obj.transform.localPosition = new Vector3(0, 1, -5 * multiplier);
                 Vector3 velocity = new Vector3(random_x, Math.Max(Math.Abs(random_x), Math.Abs(random_z)), random_z);
