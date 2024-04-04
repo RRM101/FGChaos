@@ -10,7 +10,7 @@ namespace FGChaos.Effects
             Name = "Vignette";
             ID = "VignetteEffect";
             Duration = 30;
-            BlockedEffects = new Type[] { typeof(VignetteEffect) };
+            BlockedEffects = new Type[] { typeof(VignetteEffect), typeof(Creepypasta) };
         }
 
         PostProcessProfile postProcessProfile;
@@ -20,7 +20,7 @@ namespace FGChaos.Effects
             postProcessProfile = chaos.postProcessVolume.profile;
             Vignette vignette = postProcessProfile.AddSettings<Vignette>();
             vignette.intensity.Override(0.6f);
-            vignette.roundness.Override(0.75f);
+            vignette.smoothness.Override(0.75f);
             base.Run();
         }
 

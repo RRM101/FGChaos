@@ -109,6 +109,7 @@ namespace FGChaos
                 effects.Add(new BallBoost());
                 effects.Add(new Win());
                 effects.Add(new VignetteEffect());
+                effects.Add(new Creepypasta());
             }
         }
 
