@@ -10,10 +10,17 @@ namespace FGChaos.Effects
         public SetTeam()
         {
             TeamColourOption[] teamColourOptions = Resources.FindObjectsOfTypeAll<TeamColourOption>();
-            int randomnumber = UnityEngine.Random.Range(0, 4);
-            teamColour = teamColourOptions[randomnumber];
-            string teamName = Regex.Replace(teamColour.name, @"[\d-]", string.Empty);
-            Name = $"You are now in {teamName}";
+            if (teamColourOptions.Length == 4)
+            {
+                int randomnumber = UnityEngine.Random.Range(0, 4);
+                teamColour = teamColourOptions[randomnumber];
+                string teamName = Regex.Replace(teamColour.name, @"[\d-]", string.Empty);
+                Name = $"You are now in {teamName}";
+            }
+            else
+            {
+                Name = "SetTeam";
+            }
             ID = "SetTeam";
         }
 

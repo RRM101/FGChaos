@@ -14,7 +14,7 @@ namespace FGChaos
 {
     public class Chaos : MonoBehaviour
     {
-        public static List<Effect> effects = new List<Effect>();
+        List<Effect> effects = EffectList.effects;
         public static List<Effect> activeEffects = new List<Effect>();
         public FallGuysCharacterController fallGuy;
         public Rigidbody fgrb;
@@ -31,7 +31,7 @@ namespace FGChaos
         public GameObject chaosCanvas;
         Slider chaosSlider;
 
-        public Dictionary<string, string> addressableAssetsKeyNamePairs = new Dictionary<string, string>()
+        public static Dictionary<string, string> addressableAssetsKeyNamePairs = new Dictionary<string, string>()
         {
             {"Planet", "PB_Projectile_Futuristic_Planet"},
             {"Banana", "PB_Banana_FallBall" },
@@ -46,70 +46,39 @@ namespace FGChaos
             {"Speed Arch", "11374594082ca994d8f12cfff47429da" },
             {"Blueberry", "PB_DodgeFall_Fruit_Berry_01"}
         };
-        public string[] addressableAssetsNames;
+        public static string[] addressableAssetsNames;
 
         void Awake()
         {
-            RectTransform chaosSliderRectTransform;
-            AssetBundle chaosBundle = AssetBundle.LoadFromFile(Paths.PluginPath + "/FGChaos/Assets/fgchaosbundle");
-
-            fallGuy = FindObjectOfType<FallGuysCharacterController>();
-            fgrb = fallGuy.GetComponent<Rigidbody>();
-            startingPosition = FindObjectOfType<MultiplayerStartingPosition>();
-            cameraDirector = FindObjectOfType<CameraDirector>();
-            motorAgent = fallGuy.GetComponent<MotorAgent>();
-            postProcessVolume = cameraDirector.MainNativeCam.gameObject.AddComponent<PostProcessVolume>();
-            postProcessVolume.isGlobal = true;
-            delay = Plugin.EffectTimer.Value;
-            addressableAssetsNames = addressableAssetsKeyNamePairs.Keys.ToArray();
-            rocketShip = false;
-            chaosCanvas = Instantiate(chaosBundle.LoadAsset("ChaosCanvas").Cast<GameObject>());
-            chaosSlider = chaosCanvas.transform.GetChild(0).GetComponent<Slider>();
-            chaosSliderRectTransform = chaosSlider.GetComponent<RectTransform>();
-            chaosSliderRectTransform.sizeDelta = new Vector2(Screen.width + 5, chaosSliderRectTransform.sizeDelta.y);
-            chaosCanvas.transform.GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
-            chaosBundle.Unload(false);
-            blueberrySprite = ChaosPluginBehaviour.PNGtoSprite(Paths.PluginPath + "/FGChaos/Assets/Images/blueberrybombardment.png");
-            ChaosPluginBehaviour.LoadBank("BNK_Music_GP");
-            ChaosPluginBehaviour.LoadBank("BNK_PlayGo");
-            StopAllEffects();
-        }
-
-        void Start()
-        {
-            if (effects.Count == 0)
+            try
             {
-                effects.Add(new FlingPlayer());
-                effects.Add(new TeleportToStartingPosition());
-                effects.Add(new Eliminate());
-                effects.Add(new WhoIsWaving());
-                effects.Add(new Spawn());
-                effects.Add(new Spawn());
-                effects.Add(new Spawn());
-                effects.Add(new WhereIsMyFallGuy());
-                effects.Add(new HandsInTheAir());
-                effects.Add(new RagdollPlayer());
-                effects.Add(new KidnapPlayer());
-                effects.Add(new JumpBoost());
-                effects.Add(new BoulderRain());
-                effects.Add(new PlanetAssault());
-                effects.Add(new WitnessProtection());
-                effects.Add(new ClonePlayer());
-                effects.Add(new FirstPersonMode());
-                effects.Add(new PiracyIsNoFalling());
-                effects.Add(new RocketShip());
-                effects.Add(new Jetpack());
-                effects.Add(new Gravity());
-                effects.Add(new Speed());
-                effects.Add(new BlueberryBombardment());
-                effects.Add(new SetTeam());
-                effects.Add(new LockCamera());
-                effects.Add(new TopDownView());
-                effects.Add(new SpeedBoost());
-                effects.Add(new BallBoost());
-                effects.Add(new Win());
-                effects.Add(new VignetteEffect());
-                effects.Add(new Creepypasta());
+                RectTransform chaosSliderRectTransform;
+                AssetBundle chaosBundle = AssetBundle.LoadFromFile(Paths.PluginPath + "/FGChaos/Assets/fgchaosbundle");
+
+                fallGuy = FindObjectOfType<FallGuysCharacterController>();
+                fgrb = fallGuy.GetComponent<Rigidbody>();
+                startingPosition = FindObjectOfType<MultiplayerStartingPosition>();
+                cameraDirector = FindObjectOfType<CameraDirector>();
+                motorAgent = fallGuy.GetComponent<MotorAgent>();
+                postProcessVolume = cameraDirector.MainNativeCam.gameObject.AddComponent<PostProcessVolume>();
+                postProcessVolume.isGlobal = true;
+                delay = Plugin.EffectTimer.Value;
+                addressableAssetsNames = addressableAssetsKeyNamePairs.Keys.ToArray();
+                rocketShip = false;
+                chaosCanvas = Instantiate(chaosBundle.LoadAsset("ChaosCanvas").Cast<GameObject>());
+                chaosSlider = chaosCanvas.transform.GetChild(0).GetComponent<Slider>();
+                chaosSliderRectTransform = chaosSlider.GetComponent<RectTransform>();
+                chaosSliderRectTransform.sizeDelta = new Vector2(Screen.width + 5, chaosSliderRectTransform.sizeDelta.y);
+                chaosCanvas.transform.GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
+                chaosBundle.Unload(false);
+                blueberrySprite = ChaosPluginBehaviour.PNGtoSprite(Paths.PluginPath + "/FGChaos/Assets/Images/blueberrybombardment.png");
+                ChaosPluginBehaviour.LoadBank("BNK_Music_GP");
+                ChaosPluginBehaviour.LoadBank("BNK_PlayGo");
+            }
+            catch (Exception e)
+            {
+                ChaosPluginBehaviour.ChaosStartError(e);
+                throw;
             }
         }
 
@@ -138,7 +107,6 @@ namespace FGChaos
                 int rng = UnityEngine.Random.RandomRange(0, 11);
                 if (rng != 5)
                 {
-                    Debug.Log("Blocked Elimination");
                     RandomEffect();
                     return;
                 }

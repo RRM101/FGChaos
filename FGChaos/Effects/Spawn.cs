@@ -11,11 +11,18 @@ namespace FGChaos.Effects
     {
         public Spawn()
         {
-            int randomnumber = UnityEngine.Random.Range(0, chaos.addressableAssetsNames.Length);
+            if (ChaosPluginBehaviour.chaosInstance != null)
+            {
+                int randomnumber = UnityEngine.Random.Range(0, Chaos.addressableAssetsNames.Length);
 
-            SpawnName = chaos.addressableAssetsNames[randomnumber];
-            SpawnGUID = chaos.addressableAssetsKeyNamePairs[SpawnName];
-            Name = $"Spawn {SpawnName}";
+                SpawnName = Chaos.addressableAssetsNames[randomnumber];
+                SpawnGUID = Chaos.addressableAssetsKeyNamePairs[SpawnName];
+                Name = $"Spawn {SpawnName}";
+            }
+            else
+            {
+                Name = "Spawn";
+            }
             ID = "Spawn";
         }
 

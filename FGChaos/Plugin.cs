@@ -167,12 +167,33 @@ namespace FGChaos
             return sprite;
         }
 
+        public static void ChaosStartError(Exception e)
+        {
+            ModalMessageData modalMessageData = new ModalMessageData()
+            {
+                Title = "FGChaos - ERROR!",
+                Message = $"An error occured while starting chaos.\nThe Error:\n{e.Message}",
+                LocaliseTitle = UIModalMessage.LocaliseOption.NotLocalised,
+                LocaliseMessage = UIModalMessage.LocaliseOption.NotLocalised,
+                ModalType = UIModalMessage.ModalType.MT_OK
+            };
+            PopupManager.Instance.Show(PopupInteractionType.Error, modalMessageData);
+        }
+
         public void EnableChaos()
         {
-            if (chaosInstance == null)
+            try
             {
-                GameObject obj = new GameObject("FGChaos");
-                chaosInstance = obj.AddComponent<Chaos>();
+                if (chaosInstance == null)
+                {
+                    GameObject obj = new GameObject("FGChaos");
+                    chaosInstance = obj.AddComponent<Chaos>();
+                }
+            }
+            catch (Exception e)
+            {
+                ChaosStartError(e);
+                throw;
             }
         }
 

@@ -12,11 +12,10 @@ namespace FGChaos
     {
         [HarmonyPatch(typeof(OfflinePlaygroundManager), "OnIntroCamerasComplete")]
         [HarmonyPatch(typeof(ClientGameManager), "OnIntroCountdownEnded")]
-        [HarmonyPrefix]
-        static bool StartChaos()
+        [HarmonyPostfix]
+        static void StartChaos()
         {
-            ChaosPluginBehaviour.instance.EnableChaos();            
-            return true;
+            ChaosPluginBehaviour.instance.EnableChaos();
         }
 
         [HarmonyPatch(typeof(GameplayTimerViewModel), "Initialise")]
