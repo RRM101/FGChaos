@@ -22,7 +22,7 @@ namespace FGChaos
             new BoulderRain(),
             new PlanetAssault(),
             new WitnessProtection(),
-            new ClonePlayer(),
+            //new ClonePlayer(),  // Temporarily disabled because its bugged
             new FirstPersonMode(),
             new PiracyIsNoFalling(),
             new RocketShip(),

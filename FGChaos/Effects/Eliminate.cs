@@ -24,7 +24,6 @@ namespace FGChaos.Effects
 
         IEnumerator EliminateCoroutine()
         {
-            ChaosPluginBehaviour.UnloadBank(CMSLoader.Instance.CMSData.Rounds[NetworkGameData.currentGameOptions_._roundID].IngameMusicSoundBank);
             EliminatedScreenViewModel.Show("eliminated", null, null);
             AudioManager.PlayGameplayEndAudio(false);
             yield return new WaitForSeconds(5);
@@ -38,8 +37,18 @@ namespace FGChaos.Effects
             }
             else
             {
-                Addressables.LoadSceneAsync("MainMenu");
-                Broadcaster.Instance.Broadcast(new OnTransitionToVictoryScreen());
+                //Addressables.LoadSceneAsync("MainMenu");
+                GlobalGameStateClient.Instance._gameStateMachine.ReplaceCurrentState(new StateMainMenu(GlobalGameStateClient.Instance._gameStateMachine, GlobalGameStateClient.Instance.CreateClientGameStateData(), false).Cast<GameStateMachine.IGameState>());
+                GlobalGameStateClient.Instance.GameStateView.GetLiveClientGameManager(out ClientGameManager cgm);
+                if (cgm != null)
+                {
+                    cgm.Shutdown();
+                }
+                else
+                {
+                    ChaosPluginBehaviour.UnloadBank(CMSLoader.Instance.CMSData.Rounds[NetworkGameData.currentGameOptions_._roundID].IngameMusicSoundBank);
+                    Broadcaster.Instance.Broadcast(new OnTransitionToVictoryScreen());
+                }
                 End();
             }
         }
