@@ -12,7 +12,6 @@ namespace FGChaos.Effects
         public Win()
         {
             Name = "Win";
-            ID = "Win";
         }
 
         public override void Run()

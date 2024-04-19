@@ -13,7 +13,6 @@ namespace FGChaos.Effects
         public PlanetAssault()
         {
             Name = "Planet Assault";
-            ID = "PlanetAssault";
         }
 
         public override void Run()

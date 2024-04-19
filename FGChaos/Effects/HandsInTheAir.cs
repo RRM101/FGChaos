@@ -7,7 +7,6 @@ namespace FGChaos.Effects
         public HandsInTheAir()
         {
             Name = "Hands In The Air";
-            ID = "HandsInTheAir";
             Duration = 10;
         }
 

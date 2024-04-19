@@ -8,7 +8,6 @@ namespace FGChaos.Effects
         public WhereIsMyFallGuy()
         {
             Name = "Where is my Fall Guy?";
-            ID = "WhereIsMyFallGuy";
             Duration = 15;
             BlockedEffects = new Type[] { typeof(FirstPersonMode) };
         }

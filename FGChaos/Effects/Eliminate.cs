@@ -13,7 +13,6 @@ namespace FGChaos.Effects
         public Eliminate()
         {
             Name = "Eliminate Player";
-            ID = "Eliminate";
         }
 
         public override void Run()

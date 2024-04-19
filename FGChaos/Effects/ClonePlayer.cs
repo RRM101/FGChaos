@@ -9,7 +9,6 @@ namespace FGChaos.Effects
         public ClonePlayer()
         {
             Name = "Clone Player";
-            ID = "ClonePlayer";
         }
 
         public override void Run()

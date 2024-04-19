@@ -7,7 +7,6 @@ namespace FGChaos.Effects
         public PiracyIsNoFalling()
         {
             Name = "Pirated Game (Jumping Disabled)";
-            ID = "PiracyIsNoFalling";
             Duration = 15;
         }
 

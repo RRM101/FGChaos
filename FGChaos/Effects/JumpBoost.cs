@@ -7,7 +7,6 @@ namespace FGChaos.Effects
         public JumpBoost()
         {
             Name = "Jump Boost";
-            ID = "JumpBoost";
             Duration = 15;
         }
 

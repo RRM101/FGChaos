@@ -14,7 +14,6 @@ namespace FGChaos.Effects
         public Creepypasta()
         {
             Name = "Creepypasta";
-            ID = "Creepypasta";
             Duration = 30;
             BlockedEffects = new Type[] { typeof(VignetteEffect), typeof(Creepypasta) };
         }

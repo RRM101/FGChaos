@@ -21,7 +21,6 @@ namespace FGChaos.Effects
             {
                 Name = "SetTeam";
             }
-            ID = "SetTeam";
         }
 
         TeamColourOption teamColour;

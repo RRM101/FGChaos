@@ -9,7 +9,6 @@ namespace FGChaos.Effects
         {
             speed = speeds[UnityEngine.Random.Range(0, speeds.Length)];
             Name = $"{speed}x Speed";
-            ID = "Speed";
             Duration = 15;
             BlockedEffects = new Type[] { typeof(Speed) };
         }

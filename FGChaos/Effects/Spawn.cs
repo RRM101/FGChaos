@@ -23,7 +23,6 @@ namespace FGChaos.Effects
             {
                 Name = "Spawn";
             }
-            ID = "Spawn";
         }
 
         public string SpawnName;

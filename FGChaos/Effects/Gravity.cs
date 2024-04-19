@@ -13,7 +13,6 @@ namespace FGChaos.Effects
             string gravityType = gravityArray[UnityEngine.Random.Range(0, gravityArray.Length)];
             Name = $"{gravityType} Gravity";
             gravity = gravityDictionary[gravityType];
-            ID = "Gravity";
             Duration = 20;
             BlockedEffects = new Type[] { typeof(Gravity) };
         }

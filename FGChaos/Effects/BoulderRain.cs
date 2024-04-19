@@ -12,7 +12,6 @@ namespace FGChaos.Effects
         public BoulderRain()
         {
             Name = "Boulder Rain";
-            ID = "BoulderRain";
             destroyEffectName = false;
         }
 

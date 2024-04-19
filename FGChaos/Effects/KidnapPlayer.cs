@@ -13,7 +13,6 @@ namespace FGChaos.Effects
         public KidnapPlayer()
         {
             Name = "Kidnap Player";
-            ID = "KidnapPlayer";
         }
 
         public override void Run()

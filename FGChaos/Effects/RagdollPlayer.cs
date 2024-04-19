@@ -7,7 +7,6 @@ namespace FGChaos.Effects
         public RagdollPlayer()
         {
             Name = "Ragdoll Player";
-            ID = "RagdollPlayer";
             Duration = 10;
         }
 

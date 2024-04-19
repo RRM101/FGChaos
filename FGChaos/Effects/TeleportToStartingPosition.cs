@@ -5,7 +5,6 @@
         public TeleportToStartingPosition()
         {
             Name = "Teleport to Start";
-            ID = "TeleportToStartingPosition";
         }
 
         public override void Run()

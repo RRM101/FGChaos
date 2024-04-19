@@ -8,7 +8,6 @@ namespace FGChaos.Effects
         public WhoIsWaving()
         {
             Name = "Who is waving?";
-            ID = "WhoIsWaving";
         }
 
         public override void Run()

@@ -7,7 +7,6 @@ namespace FGChaos.Effects
         public LockCamera()
         {
             Name = "Lock Camera";
-            ID = "LockCamera";
             Duration = 20;
             BlockedEffects = new Type[] { typeof(FirstPersonMode) };
         }

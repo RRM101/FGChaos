@@ -8,7 +8,6 @@ namespace FGChaos.Effects
         public VignetteEffect()
         {
             Name = "Vignette";
-            ID = "VignetteEffect";
             Duration = 30;
             BlockedEffects = new Type[] { typeof(VignetteEffect), typeof(Creepypasta) };
         }

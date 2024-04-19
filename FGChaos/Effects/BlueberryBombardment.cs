@@ -14,7 +14,6 @@ namespace FGChaos.Effects
         public BlueberryBombardment()
         {
             Name = "Blueberry Bombardment";
-            ID = "BlueberryBombardment";
             Duration = 15;
         }
 

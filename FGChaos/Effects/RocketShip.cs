@@ -7,7 +7,6 @@ namespace FGChaos.Effects
         public RocketShip()
         {
             Name = "Rocket Ship";
-            ID = "RocketShip";
             Duration = 15;
             BlockedEffects = new Type[] { typeof(Jetpack) };
         }

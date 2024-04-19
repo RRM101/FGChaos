@@ -11,7 +11,6 @@ namespace FGChaos.Effects
         public SpeedBoost()
         {
             Name = "Speed Boost";
-            ID = "SpeedBoost";
             Duration = 15;
         }
 

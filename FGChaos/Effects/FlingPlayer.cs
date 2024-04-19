@@ -8,7 +8,6 @@ namespace FGChaos.Effects
         public FlingPlayer()
         {
             Name = "Fling Player";
-            ID = "FlingPlayer";
         }
 
         public override void Run()

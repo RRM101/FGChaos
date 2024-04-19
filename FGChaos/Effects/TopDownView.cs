@@ -10,7 +10,6 @@ namespace FGChaos.Effects
         public TopDownView()
         {
             Name = "Top Down View";
-            ID = "TopDownView";
             Duration = 30;
             BlockedEffects = new Type[]
             {

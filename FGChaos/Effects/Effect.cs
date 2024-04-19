@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace FGChaos.Effects
 {
-    public class Effect
+    public abstract class Effect
     {
         public string Name;
 
         public int Duration = 0;
 
-        public string ID;
+        public string ID => GetType().Name;
 
         public Type[] BlockedEffects = new Type[] {};
 

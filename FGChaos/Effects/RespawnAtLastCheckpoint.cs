@@ -14,7 +14,6 @@ namespace FGChaos.Effects
         public RespawnAtLastCheckpoint()
         {
             Name = "Respawn at the Last Checkpoint";
-            ID = "RespawnAtLastCheckpoint";
         }
 
         public override void Run()

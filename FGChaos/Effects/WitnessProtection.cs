@@ -9,7 +9,6 @@ namespace FGChaos.Effects
         public WitnessProtection()
         {
             Name = "Witness Protection";
-            ID = "WitnessProtection";
             Duration = 30;
         }
 

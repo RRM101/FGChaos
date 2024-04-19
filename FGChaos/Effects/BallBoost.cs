@@ -9,7 +9,6 @@ namespace FGChaos.Effects
         public BallBoost()
         {
             Name = "Ball Boost";
-            ID = "BallBoost";
         }
 
         public override void Run()

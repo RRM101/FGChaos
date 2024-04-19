@@ -8,7 +8,6 @@ namespace FGChaos.Effects
         public FirstPersonMode()
         {
             Name = "First Person Mode";
-            ID = "FirstPersonMode";
             Duration = 30;
             BlockedEffects = new Type[]
             {
