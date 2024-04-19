@@ -19,7 +19,7 @@ namespace FGChaos.Effects
         public override void Run()
         {
             StartCoroutine(EliminateCoroutine());
-            RunWithoutWait();
+            RunWithoutEnd();
         }
 
         IEnumerator EliminateCoroutine()
@@ -37,18 +37,7 @@ namespace FGChaos.Effects
             }
             else
             {
-                //Addressables.LoadSceneAsync("MainMenu");
                 GlobalGameStateClient.Instance._gameStateMachine.ReplaceCurrentState(new StateMainMenu(GlobalGameStateClient.Instance._gameStateMachine, GlobalGameStateClient.Instance.CreateClientGameStateData(), false).Cast<GameStateMachine.IGameState>());
-                GlobalGameStateClient.Instance.GameStateView.GetLiveClientGameManager(out ClientGameManager cgm);
-                if (cgm != null)
-                {
-                    cgm.Shutdown();
-                }
-                else
-                {
-                    ChaosPluginBehaviour.UnloadBank(CMSLoader.Instance.CMSData.Rounds[NetworkGameData.currentGameOptions_._roundID].IngameMusicSoundBank);
-                    Broadcaster.Instance.Broadcast(new OnTransitionToVictoryScreen());
-                }
                 End();
             }
         }

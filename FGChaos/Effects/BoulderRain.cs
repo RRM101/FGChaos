@@ -13,17 +13,18 @@ namespace FGChaos.Effects
         {
             Name = "Boulder Rain";
             ID = "BoulderRain";
+            destroyEffectName = false;
         }
 
         public override void Run()
         {
             StartCoroutine(BoulderRainCoroutine());
-            base.Run();
+            RunWithoutEnd();
         }
 
         IEnumerator BoulderRainCoroutine()
         {
-            int randomSpawnAmount = UnityEngine.Random.Range(5, 20);
+            int randomSpawnAmount = UnityEngine.Random.Range(10, 50);
             for (int i = 0; i < randomSpawnAmount; i++)
             {
                 yield return BoulderRainSpawn();
@@ -44,8 +45,9 @@ namespace FGChaos.Effects
                 GameObject obj = GameObject.Instantiate(handle.Result);
                 obj.RemoveComponentIfExists<LodController>();
                 obj.transform.position = randomPosition;
-                yield return new WaitForSeconds(5);
+                yield return new WaitForSeconds(1);
             }
+            End();
         }
     }
 }

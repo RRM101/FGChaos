@@ -1,4 +1,5 @@
-﻿using SRF;
+﻿using FGClient.Rendering.XRay;
+using SRF;
 using UnityEngine;
 
 namespace FGChaos.Effects
@@ -18,6 +19,8 @@ namespace FGChaos.Effects
 
         public override void Run()
         {
+            XRayUtils.EnableXRayMeshRenderer(chaos.fallGuy, false);
+
             witnessProtection = chaos.fallGuy.transform.CreateChild("WitnessProtection").transform;
 
             rotation = 0;
@@ -35,7 +38,7 @@ namespace FGChaos.Effects
                 witnessGameObject.transform.localPosition = new Vector3(0, 0, 5);
                 witnessGameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
             }
-            RunWithoutWait();
+            RunWithoutEnd();
         }
 
         public override void Update()
@@ -57,6 +60,11 @@ namespace FGChaos.Effects
             if (witnessProtection != null)
             {
                 GameObject.Destroy(witnessProtection.gameObject);
+            }
+
+            if (chaos.fallGuy != null)
+            {
+                XRayUtils.EnableXRayMeshRenderer(chaos.fallGuy, true);
             }
             base.End();
         }

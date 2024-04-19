@@ -23,10 +23,10 @@ namespace FGChaos.Effects
 
         public static GameObject speedArchGameObject;
 
-        IEnumerator Speed() // very stupid way of doing this
+        IEnumerator Speed()
         {
             COMMON_SpeedArch speedArch;
-            AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>("11374594082ca994d8f12cfff47429da");
+            AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>("11374594082ca994d8f12cfff47429da");  // very stupid way of doing this
             yield return handle;
             if (handle.Result != null)
             {

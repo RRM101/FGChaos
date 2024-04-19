@@ -15,9 +15,11 @@ namespace FGChaos.Effects
 
         public Type[] BlockedEffects = new Type[] {};
 
+        public bool destroyEffectName = true;
+
         public Chaos chaos = ChaosPluginBehaviour.chaosInstance;
 
-        public int actualDuration { get { return (int)(Duration * Time.timeScale); } }
+        public float actualDuration { get { return (int)(Duration * Time.timeScale); } }
 
         bool canRunUpdateMethod = true;
 
@@ -33,7 +35,7 @@ namespace FGChaos.Effects
             StartCoroutine(RunUpdate());
             WaitTillEnd();
 
-            if (Duration == 0)
+            if (Duration == 0 && destroyEffectName)
             {
                 StartCoroutine(DestroyEffectName());
             }
@@ -82,7 +84,7 @@ namespace FGChaos.Effects
             }
         }
 
-        IEnumerator WaitCoroutine(int seconds)
+        IEnumerator WaitCoroutine(float seconds)
         {
             yield return new WaitForSeconds(seconds);
             End();
@@ -120,7 +122,10 @@ namespace FGChaos.Effects
             ChaosPluginBehaviour.instance.RunCoroutine(enumerator);
         }
 
-        public void RunWithoutWait()
+        /// <summary>
+        /// Use this instead of base.Run() if you want to call End() manually.
+        /// </summary>
+        public void RunWithoutEnd()
         {
             AddEffectName();
             isActive = true;
