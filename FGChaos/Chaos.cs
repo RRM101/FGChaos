@@ -9,6 +9,7 @@ using FGChaos.Effects;
 using UnityEngine.UI;
 using BepInEx;
 using UnityEngine.Rendering.PostProcessing;
+using Levels.Progression;
 
 namespace FGChaos
 {
@@ -106,6 +107,16 @@ namespace FGChaos
             {
                 int rng = UnityEngine.Random.RandomRange(0, 11);
                 if (rng != 5)
+                {
+                    RandomEffect();
+                    return;
+                }
+            }
+
+            if (effectInstance.ID == "RespawnAtLastCheckpoint")
+            {
+                CheckpointManager checkpointManager = FindObjectOfType<CheckpointManager>();
+                if (checkpointManager == null)
                 {
                     RandomEffect();
                     return;

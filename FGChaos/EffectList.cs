@@ -37,7 +37,8 @@ namespace FGChaos
             new BallBoost(),
             new Win(),
             new VignetteEffect(),
-            new Creepypasta()
+            new Creepypasta(),
+            new RespawnAtLastCheckpoint()
         };
     }
 }
