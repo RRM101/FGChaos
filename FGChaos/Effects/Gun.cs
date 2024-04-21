@@ -47,7 +47,7 @@ namespace FGChaos.Effects
                 obj.transform.position = new Vector3(chaos.fallGuy.transform.position.x, chaos.fallGuy.transform.position.y + 5, chaos.fallGuy.transform.position.z);
                 obj.GetComponent<Rigidbody>().velocity = chaos.fallGuy.transform.rotation * new Vector3(0, 0, 100);
 
-                obj.GetComponent<Rigidbody>().angularVelocity = chaos.fallGuy.transform.rotation * new Vector3(UnityEngine.Random.Range(100, 200), UnityEngine.Random.Range(100, 199), UnityEngine.Random.Range(100, 201));
+                obj.GetComponent<Rigidbody>().angularVelocity = chaos.fallGuy.transform.rotation * new Vector3(UnityEngine.Random.Range(-100, 200), UnityEngine.Random.Range(-100, 199), UnityEngine.Random.Range(-100, 201));
             }
         }
     }
