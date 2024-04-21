@@ -75,6 +75,7 @@ namespace FGChaos
                 blueberrySprite = ChaosPluginBehaviour.PNGtoSprite(Paths.PluginPath + "/FGChaos/Assets/Images/blueberrybombardment.png");
                 ChaosPluginBehaviour.LoadBank("BNK_Music_GP");
                 ChaosPluginBehaviour.LoadBank("BNK_PlayGo");
+                ChaosPluginBehaviour.LoadBank("BNK_UI_MainMenu");
             }
             catch (Exception e)
             {
@@ -132,6 +133,11 @@ namespace FGChaos
             else
             {
                 effect = effectInstance.Name;
+            }
+
+            if (Plugin.PlayEffectRunSFX.Value)
+            {
+                AudioManager.PlayOneShot("UI_MainMenu_Settings_Accept");
             }
 
             Debug.Log("Effect Ran: " + effectInstance.Name);

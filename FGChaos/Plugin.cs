@@ -22,11 +22,13 @@ namespace FGChaos
     {
         public static ConfigEntry<bool> Disable { get; set; }
         public static ConfigEntry<int> EffectTimer { get; set; }
+        public static ConfigEntry<bool> PlayEffectRunSFX { get; set; }
 
         public override void Load()
         {
-            Disable = Config.Bind("Config", "Disable", false, "Disables the mod.");
+            Disable = Config.Bind("Config", "Disabled", false, "Disables the mod. (Requires Restart)");
             EffectTimer = Config.Bind("Config", "Effect Timer", 10, "The amount of time in seconds for the next effect to run.");
+            PlayEffectRunSFX = Config.Bind("Config", "Play Effect Run Sound Effect", false, "Plays a sound effect when an Effect is ran.");
 
             if (!Disable.Value)
             {

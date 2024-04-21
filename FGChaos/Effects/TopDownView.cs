@@ -55,6 +55,7 @@ namespace FGChaos.Effects
             cameraDirectorTransform.rotation = new Quaternion(0, 0, 0, 0);
             cameraDirectorTransform.GetParent().GetChild(1).gameObject.SetActive(true);
             GameObject.Destroy(parentGameObject);
+            base.End();
         }
 
         public override void End()
@@ -63,7 +64,10 @@ namespace FGChaos.Effects
             {
                 StartCoroutine(EndCoroutine());
             }
-            base.End();
+            else
+            {
+                base.End();
+            }
         }
     }
 }
