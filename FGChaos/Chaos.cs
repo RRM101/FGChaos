@@ -122,6 +122,18 @@ namespace FGChaos
                     RandomEffect();
                     return;
                 }
+
+                if (!checkpointManager.NetIDToCheckpointMap.ContainsKey(fallGuy._pNetObject.NetID))
+                {
+                    RandomEffect();
+                    return;
+                }
+            }
+
+            if (effectInstance.ID == "Speed" && Plugin.DisableGameSpeedEffects.Value)
+            {
+                RandomEffect();
+                return;
             }
 
             effectInstance.Run();

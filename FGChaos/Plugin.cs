@@ -17,18 +17,22 @@ using FGClient.UI;
 
 namespace FGChaos
 {
-    [BepInPlugin("org.rrm1.fgchaos", "FGChaos", "1.0.0")]
+    [BepInPlugin("org.rrm1.fgchaos", "FGChaos", version)]
     public class Plugin : BasePlugin
     {
+        public const string version = "0.1.0";
+
         public static ConfigEntry<bool> Disable { get; set; }
         public static ConfigEntry<int> EffectTimer { get; set; }
         public static ConfigEntry<bool> PlayEffectRunSFX { get; set; }
+        public static ConfigEntry<bool> DisableGameSpeedEffects { get; set; }
 
         public override void Load()
         {
             Disable = Config.Bind("Config", "Disabled", false, "Disables the mod. (Requires Restart)");
             EffectTimer = Config.Bind("Config", "Effect Timer", 10, "The amount of time in seconds for the next effect to run.");
             PlayEffectRunSFX = Config.Bind("Config", "Play Effect Run Sound Effect", false, "Plays a sound effect when an Effect is ran.");
+            DisableGameSpeedEffects = Config.Bind("Config", "Disable Game Speed Effects", false, "Disables the Game Speed Effects");
 
             if (!Disable.Value)
             {
@@ -72,6 +76,11 @@ namespace FGChaos
         void OnEnable()
         {
             SceneManager.add_sceneLoaded((Action<Scene, LoadSceneMode>)OnSceneLoaded);
+        }
+
+        void OnGUI() // Remove in release build
+        {
+            GUI.Label(new Rect(5, Screen.height - 25, 300, 20), $"FGChaos Beta {Plugin.version}");
         }
 
         public void OnSceneLoaded(Scene scene, LoadSceneMode mode)

@@ -28,6 +28,7 @@ namespace FGChaos.Effects
             {
                 yield return BoulderRainSpawn();
             }
+            End();
         }
 
         IEnumerator BoulderRainSpawn()
@@ -46,7 +47,6 @@ namespace FGChaos.Effects
                 obj.transform.position = randomPosition;
                 yield return new WaitForSeconds(1);
             }
-            End();
         }
     }
 }
