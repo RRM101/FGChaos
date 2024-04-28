@@ -29,6 +29,7 @@ namespace FGChaos
         public string effect;
         public static bool jumpingEnabled = true;
         public static bool rocketShip;
+        public static bool invertedControls;
         public GameObject chaosCanvas;
         Slider chaosSlider;
 
@@ -71,6 +72,7 @@ namespace FGChaos
                 delay = Plugin.EffectTimer.Value;
                 addressableAssetsNames = addressableAssetsKeyNamePairs.Keys.ToArray();
                 rocketShip = false;
+                invertedControls = false;
                 chaosCanvas = Instantiate(chaosBundle.LoadAsset("ChaosCanvas").Cast<GameObject>());
                 chaosSlider = chaosCanvas.transform.GetChild(0).GetComponent<Slider>();
                 chaosSliderRectTransform = chaosSlider.GetComponent<RectTransform>();

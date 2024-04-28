@@ -40,7 +40,9 @@ namespace FGChaos
             new Creepypasta(),
             new RespawnAtLastCheckpoint(),
             new Gun(),
-            new SwitchMoment()
+            new SwitchMoment(),
+            new RemoveCoyoteTime(),
+            new InvertedControls()
         };
     }
 }

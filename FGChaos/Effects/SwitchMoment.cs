@@ -18,7 +18,7 @@ namespace FGChaos.Effects
         public override void Run()
         {
             QualitySettings.vSyncCount = 0;
-            Application.targetFrameRate = 20;
+            Application.targetFrameRate = 15;
             base.Run();
         }
 

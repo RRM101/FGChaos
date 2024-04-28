@@ -4,6 +4,8 @@ using FGClient;
 using FGClient.OfflinePlayground;
 using FGClient.UI;
 using HarmonyLib;
+using Rewired;
+using System;
 using UnityEngine;
 
 namespace FGChaos
@@ -52,6 +54,16 @@ namespace FGChaos
 
             __result = h;
             return false;
+        }
+
+        [HarmonyPatch(typeof(Player), "GetAxis", argumentTypes: new Type[] {typeof(string)})]
+        [HarmonyPostfix]
+        static void InvertedControlsPatch(Player __instance, ref float __result)
+        {
+            if (Chaos.invertedControls)
+            {
+                __result = __result * -1;
+            }
         }
 
         [HarmonyPatch(typeof(StateVictoryScreen), "ProceedToNextState")]
