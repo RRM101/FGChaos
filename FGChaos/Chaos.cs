@@ -45,7 +45,12 @@ namespace FGChaos
             {"Wifi", "167d0008aef582c4eb63bb6c88bbc610" },
             {"SS2 Turntable", "51b68558b403c074d8b6eb09e3cf1651" },
             {"Speed Arch", "11374594082ca994d8f12cfff47429da" },
-            {"Blueberry", "PB_DodgeFall_Fruit_Berry_01"}
+            {"Blueberry", "PB_DodgeFall_Fruit_Berry_01"},
+            {"Battery", "PB_Carry_TerritoryControlBattery"},
+            {"Egg", "PB_CarrySmall_DY_EggGrab"},
+            {"Golden Egg", "PB_CarrySmall_DY_EggGrab_Special"},
+            {"Basketball", "PB_BasketFall"},
+            {"Golden Basketball", "PB_BasketFall_Gold"}
         };
         public static string[] addressableAssetsNames;
 

@@ -14,6 +14,8 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using FGClient.UI;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace FGChaos
 {
@@ -149,6 +151,25 @@ namespace FGChaos
 
             PopupManager.Instance.Show(PopupInteractionType.Warning, modalMessageData);
             Harmony.UnpatchID("FGChaosPatches");
+        }
+
+        void SpawnAddressableAsset(string key)
+        {
+            StartCoroutine(ISpawnAddressableAsset(key).WrapToIl2Cpp());
+        }
+
+        IEnumerator ISpawnAddressableAsset(string key)
+        {
+            AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>(key);
+            yield return handle;
+            if (handle.Result != null)
+            {
+                GameObject obj = GameObject.Instantiate(handle.Result);
+            }
+            else
+            {
+                Debug.Log($"object '{key}' not found");
+            }
         }
 
         public static void LoadBank(string bank)
