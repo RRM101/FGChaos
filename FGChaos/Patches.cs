@@ -1,4 +1,5 @@
-﻿using FG.Common;
+﻿using BepInEx.Unity.IL2CPP.Utils.Collections;
+using FG.Common;
 using FG.Common.Character;
 using FGClient;
 using FGClient.OfflinePlayground;
@@ -6,12 +7,20 @@ using FGClient.UI;
 using HarmonyLib;
 using Rewired;
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace FGChaos
 {
     public class Patches
     {
+        static IEnumerator InputDelay(MotorFunctionMovementStateMove instance, Vector3 direction, float magnitude)
+        {
+            float delay = Chaos.switchMode ? 0.3f : 0;
+            yield return new WaitForSeconds(delay);
+            instance._motorFunctionMovement.ApplyNormalMovement(direction, magnitude, MotorFunctionMovement.UpdateVelocityMode.ReduceWithAngle);
+        }
+
         [HarmonyPatch(typeof(OfflinePlaygroundManager), "OnIntroCamerasComplete")]
         [HarmonyPatch(typeof(ClientGameManager), "OnIntroCountdownEnded")]
         [HarmonyPostfix]
@@ -64,6 +73,18 @@ namespace FGChaos
             {
                 __result = __result * -1;
             }
+        }
+
+        [HarmonyPatch(typeof(MotorFunctionMovementStateMove), "OnManagedFixedUpdate_Local")]
+        [HarmonyPrefix]
+        static bool MotorFunctionMovementStateMove(MotorFunctionMovementStateMove __instance)
+        {
+            if (__instance._moveTask.ShouldMove)
+            {
+                __instance.CalculateDirectionAndMagnitude(out Vector3 direction, out float magnitude);
+                ChaosPluginBehaviour.instance.StartCoroutine(InputDelay(__instance, direction, magnitude).WrapToIl2Cpp());
+            }
+            return false;
         }
 
         [HarmonyPatch(typeof(StateVictoryScreen), "ProceedToNextState")]

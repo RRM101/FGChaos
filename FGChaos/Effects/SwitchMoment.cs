@@ -19,6 +19,7 @@ namespace FGChaos.Effects
         {
             QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = 15;
+            Chaos.switchMode = true;
             base.Run();
         }
 
@@ -26,6 +27,7 @@ namespace FGChaos.Effects
         {
             QualitySettings.vSyncCount = GlobalGameStateClient.Instance.PlayerProfile.GraphicsSettings.VSync ? 1 : 0;
             Application.targetFrameRate = GlobalGameStateClient.Instance.PlayerProfile.GraphicsSettings.TargetFrameRate;
+            Chaos.switchMode = false;
             base.End();
         }
     }

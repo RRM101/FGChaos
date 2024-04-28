@@ -30,6 +30,7 @@ namespace FGChaos
         public static bool jumpingEnabled = true;
         public static bool rocketShip;
         public static bool invertedControls;
+        public static bool switchMode;
         public GameObject chaosCanvas;
         Slider chaosSlider;
 
@@ -73,6 +74,7 @@ namespace FGChaos
                 addressableAssetsNames = addressableAssetsKeyNamePairs.Keys.ToArray();
                 rocketShip = false;
                 invertedControls = false;
+                switchMode = false;
                 chaosCanvas = Instantiate(chaosBundle.LoadAsset("ChaosCanvas").Cast<GameObject>());
                 chaosSlider = chaosCanvas.transform.GetChild(0).GetComponent<Slider>();
                 chaosSliderRectTransform = chaosSlider.GetComponent<RectTransform>();
