@@ -39,7 +39,8 @@ namespace FGChaos
             new VignetteEffect(),
             new Creepypasta(),
             new RespawnAtLastCheckpoint(),
-            new Gun()
+            new Gun(),
+            new SwitchMoment()
         };
     }
 }
