@@ -13,7 +13,7 @@ namespace FGChaos.Effects
 
         public string ID => GetType().Name;
 
-        public Type[] BlockedEffects = new Type[] {};
+        public Type[] BlockedEffects = new Type[] {}; // procrastinating making this an Effect array
 
         public bool destroyEffectName = true;
 

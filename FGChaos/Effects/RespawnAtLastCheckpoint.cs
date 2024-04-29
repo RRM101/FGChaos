@@ -9,10 +9,6 @@ using UnityEngine;
 
 namespace FGChaos.Effects
 {
-    /*
-        Effect Idea by DriftBoneYT
-    */
-
     public class RespawnAtLastCheckpoint : Effect
     {
         public RespawnAtLastCheckpoint()

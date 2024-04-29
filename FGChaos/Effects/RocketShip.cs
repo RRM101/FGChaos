@@ -8,7 +8,7 @@ namespace FGChaos.Effects
         {
             Name = "Rocket Ship";
             Duration = 15;
-            BlockedEffects = new Type[] { typeof(Jetpack) };
+            BlockedEffects = new Type[] { typeof(Jetpack), typeof(RocketShip) };
         }
 
         public override void Run()

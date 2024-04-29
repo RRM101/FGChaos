@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine;
+using System;
 
 namespace FGChaos.Effects
 {
@@ -12,6 +13,7 @@ namespace FGChaos.Effects
         {
             Name = "Speed Boost";
             Duration = 15;
+            BlockedEffects = new Type[] { typeof(SpeedBoost) };
         }
 
         public override void Run()

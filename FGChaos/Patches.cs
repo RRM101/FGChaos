@@ -1,6 +1,7 @@
 ﻿using BepInEx.Unity.IL2CPP.Utils.Collections;
 using FG.Common;
 using FG.Common.Character;
+using FG.Common.Character.MotorSystem;
 using FGClient;
 using FGClient.OfflinePlayground;
 using FGClient.UI;
@@ -71,8 +72,30 @@ namespace FGChaos
         {
             if (Chaos.invertedControls)
             {
-                __result = __result * -1;
+                __result *= -1;
             }
+        }
+
+        [HarmonyPatch(typeof(MotorFunctionDiveStateSlide), "Begin")]
+        [HarmonyPrefix]
+        static bool MotorFunctionDiveStateSlideBegin(MotorFunctionDiveStateSlide __instance)
+        {
+            if (Chaos.slideEverywhere)
+            {
+                __instance.MotorAgent.Character.DefaultSurfaceModifier.VelocityCurveModifier = 0.25f;
+            }
+            return true;
+        }
+
+        [HarmonyPatch(typeof(MotorFunctionDiveStateSlide), "End")]
+        [HarmonyPrefix]
+        static bool MotorFunctionDiveStateSlideEnd(MotorFunctionDiveStateSlide __instance)
+        {
+            if (Chaos.slideEverywhere)
+            {
+                __instance.MotorAgent.Character.DefaultSurfaceModifier.VelocityCurveModifier = 1;
+            }
+            return true;
         }
 
         [HarmonyPatch(typeof(MotorFunctionMovementStateMove), "OnManagedFixedUpdate_Local")]

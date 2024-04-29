@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 
 namespace FGChaos.Effects
 {
-    /*
-        Effect Idea by dubtoshi
-    */
-
     public class RemoveCoyoteTime : Effect
     {
         public RemoveCoyoteTime()

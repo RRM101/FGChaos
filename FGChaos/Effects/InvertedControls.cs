@@ -6,16 +6,13 @@ using System.Threading.Tasks;
 
 namespace FGChaos.Effects
 {
-    /*
-        Effect Idea by dubtoshi
-    */
-
     public class InvertedControls : Effect
     {
         public InvertedControls()
         {
             Name = "Inverted Controls";
             Duration = 20;
+            BlockedEffects = new Type[] { typeof(InvertedControls) };
         }
 
         public override void Run()

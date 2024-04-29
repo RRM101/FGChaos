@@ -31,6 +31,7 @@ namespace FGChaos
         public static bool rocketShip;
         public static bool invertedControls;
         public static bool switchMode;
+        public static bool slideEverywhere;
         public GameObject chaosCanvas;
         Slider chaosSlider;
 
@@ -75,6 +76,7 @@ namespace FGChaos
                 rocketShip = false;
                 invertedControls = false;
                 switchMode = false;
+                slideEverywhere = false;
                 chaosCanvas = Instantiate(chaosBundle.LoadAsset("ChaosCanvas").Cast<GameObject>());
                 chaosSlider = chaosCanvas.transform.GetChild(0).GetComponent<Slider>();
                 chaosSliderRectTransform = chaosSlider.GetComponent<RectTransform>();

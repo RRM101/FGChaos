@@ -3,16 +3,13 @@ using UnityEngine;
 
 namespace FGChaos.Effects
 {
-    /*
-        Effect Idea by dubtoshi
-    */
-
     public class SwitchMoment : Effect
     {
         public SwitchMoment()
         {
             Name = "Switch Moment";
             Duration = 30;
+            BlockedEffects = new System.Type[] { typeof(SwitchMoment) };
         }
 
         public override void Run()

@@ -42,7 +42,8 @@ namespace FGChaos
             new Gun(),
             new SwitchMoment(),
             new RemoveCoyoteTime(),
-            new InvertedControls()
+            new InvertedControls(),
+            new SlideEverywhere(),
         };
     }
 }
