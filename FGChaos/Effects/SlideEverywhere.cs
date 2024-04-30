@@ -30,6 +30,7 @@ namespace FGChaos.Effects
             chaos.fallGuy.DefaultSurfaceModifier.SupportSliding = false;
             chaos.fallGuy.DefaultSurfaceModifier.SlideTurningVelocityModifier = 1;
             chaos.fallGuy.DefaultSurfaceModifier.SlideVelocityModifier = 0.9f;
+            chaos.fallGuy.DefaultSurfaceModifier.VelocityCurveModifier = 1;
             base.End();
         }
     }

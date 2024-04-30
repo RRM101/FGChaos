@@ -86,7 +86,11 @@ namespace FGChaos
                 blueberrySprite = ChaosPluginBehaviour.PNGtoSprite(Paths.PluginPath + "/FGChaos/Assets/Images/blueberrybombardment.png");
                 ChaosPluginBehaviour.LoadBank("BNK_Music_GP");
                 ChaosPluginBehaviour.LoadBank("BNK_PlayGo");
-                ChaosPluginBehaviour.LoadBank("BNK_UI_MainMenu");
+
+                if (Plugin.PlayEffectRunSFX.Value)
+                {
+                    ChaosPluginBehaviour.LoadBank("BNK_UI_MainMenu");
+                }
             }
             catch (Exception e)
             {
@@ -125,7 +129,7 @@ namespace FGChaos
                 }
             }
 
-            if (effectInstance.ID == "RespawnAtLastCheckpoint")
+            if (effectInstance.ID == "RespawnAtLastCheckpoint" || effectInstance.ID == "RespawnAtRandomCheckpoint")
             {
                 CheckpointManager checkpointManager = FindObjectOfType<CheckpointManager>();
                 if (checkpointManager == null)
@@ -196,7 +200,7 @@ namespace FGChaos
 
         public static void StopAllEffects()
         {
-            foreach (Effect effect in activeEffects)
+            foreach (Effect effect in activeEffects.ToList())
             {
                 try
                 {
