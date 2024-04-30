@@ -16,7 +16,8 @@ namespace FGChaos.Effects
                 typeof(ClonePlayer),
                 typeof(WhereIsMyFallGuy),
                 typeof(LockCamera),
-                typeof(TopDownView)
+                typeof(TopDownView),
+                typeof(PaperGuys)
             };
         }
 
