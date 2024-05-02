@@ -45,7 +45,8 @@ namespace FGChaos
             new InvertedControls(),
             new SlideEverywhere(),
             new PaperGuys(),
-            new RespawnAtRandomCheckpoint()
+            new RespawnAtRandomCheckpoint(),
+            new NoLights()
         };
     }
 }

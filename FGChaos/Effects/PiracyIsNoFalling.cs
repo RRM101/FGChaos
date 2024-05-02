@@ -1,4 +1,5 @@
 ﻿using FGClient.UI;
+using System;
 
 namespace FGChaos.Effects
 {
@@ -8,6 +9,7 @@ namespace FGChaos.Effects
         {
             Name = "Pirated Game (Jumping Disabled)";
             Duration = 15;
+            BlockedEffects = new Type[] { typeof(PiracyIsNoFalling) };
         }
 
         public override void Run()
