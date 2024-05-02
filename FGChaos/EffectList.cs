@@ -48,7 +48,8 @@ namespace FGChaos
             new RespawnAtRandomCheckpoint(),
             new NoLights(),
             new InfiniteJumps(),
-            new SlipperyFloor()
+            new SlipperyFloor(),
+            new Lag()
         };
     }
 }
