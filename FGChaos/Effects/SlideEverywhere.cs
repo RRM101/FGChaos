@@ -12,7 +12,7 @@ namespace FGChaos.Effects
         {
             Name = "Slide Everywhere";
             Duration = 30;
-            BlockedEffects = new Type[] { typeof(SlideEverywhere) };
+            BlockedEffects = new Type[] { typeof(SlideEverywhere), typeof(SlipperyFloor) };
         }
 
         public override void Run()
