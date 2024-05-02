@@ -24,6 +24,7 @@ namespace FGChaos.Effects
             connectionQualityViewModel = GameObject.FindObjectOfType<ConnectionQualityViewModel>();
             connectionQualityViewModel._trackState = true;
             connectionQualityViewModel._currentNetworkState = FG.Common.FG_NetworkManager.NetConnQuality.Extreme;
+            connectionQualityViewModel.transform.GetChild(1).GetChild(0).gameObject.SetActive(true);
             base.Run();
             StartCoroutine(ILag());
         }
