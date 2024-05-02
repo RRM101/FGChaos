@@ -24,9 +24,7 @@ namespace FGChaos
         public MotorAgent motorAgent;
         public PostProcessVolume postProcessVolume;
         public Sprite blueberrySprite;
-        public static float delay;
-        float roundedDelay;
-        public string effect;
+        public float delay;
         public static bool jumpingEnabled = true;
         public static bool rocketShip;
         public static bool invertedControls;
@@ -156,15 +154,6 @@ namespace FGChaos
 
             effectInstance.Run();
 
-            if (effectInstance.Duration > 0)
-            {
-                effect = $"{effectInstance.Name} ({effectInstance.Duration}s)";
-            }
-            else
-            {
-                effect = effectInstance.Name;
-            }
-
             if (Plugin.PlayEffectRunSFX.Value)
             {
                 AudioManager.PlayOneShot("UI_MainMenu_Settings_Accept");
@@ -185,8 +174,6 @@ namespace FGChaos
             }
 
             chaosSlider.value = delay / Plugin.EffectTimer.Value;
-
-            roundedDelay = (float)Math.Round(delay, 0);
         }
 
         public static bool CanJump(MotorFunctionJump motorFunctionJump)
