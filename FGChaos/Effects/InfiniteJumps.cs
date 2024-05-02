@@ -1,25 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace FGChaos.Effects
 {
-    public class RocketShip : Effect
+    public class InfiniteJumps : Effect
     {
-        public RocketShip()
+        public InfiniteJumps()
         {
-            Name = "Rocket Ship";
-            Duration = 15;
+            Name = "Infinite Jumps";
+            Duration = 20;
             BlockedEffects = new Type[] { typeof(RocketShip), typeof(Jetpack), typeof(PiracyIsNoFalling), typeof(InfiniteJumps) };
         }
 
         public override void Run()
         {
-            Chaos.rocketShip = true;
+            Chaos.infiniteJumps = true;
             base.Run();
         }
 
         public override void End()
         {
-            Chaos.rocketShip = false;
+            Chaos.infiniteJumps = false;
             base.End();
         }
     }

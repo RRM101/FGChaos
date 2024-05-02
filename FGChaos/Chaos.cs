@@ -32,6 +32,7 @@ namespace FGChaos
         public static bool invertedControls;
         public static bool switchMode;
         public static bool slideEverywhere;
+        public static bool infiniteJumps;
         public GameObject chaosCanvas;
         Slider chaosSlider;
 
@@ -53,7 +54,8 @@ namespace FGChaos
             {"Egg", "PB_CarrySmall_DY_EggGrab"},
             {"Golden Egg", "PB_CarrySmall_DY_EggGrab_Special"},
             {"Basketball", "PB_BasketFall"},
-            {"Golden Basketball", "PB_BasketFall_Gold"}
+            {"Golden Basketball", "PB_BasketFall_Gold"},
+            {"Broken Turntable", "6cdb55482c74e5847abe5610d6e3028f"}
         };
         public static string[] addressableAssetsNames;
 
@@ -77,6 +79,7 @@ namespace FGChaos
                 invertedControls = false;
                 switchMode = false;
                 slideEverywhere = false;
+                infiniteJumps = false;
                 chaosCanvas = Instantiate(chaosBundle.LoadAsset("ChaosCanvas").Cast<GameObject>());
                 chaosSlider = chaosCanvas.transform.GetChild(0).GetComponent<Slider>();
                 chaosSliderRectTransform = chaosSlider.GetComponent<RectTransform>();
@@ -190,7 +193,14 @@ namespace FGChaos
         {
             if (ChaosPluginBehaviour.chaosInstance != null)
             {
-                return jumpingEnabled ? motorFunctionJump.CanJump() : false;
+                if (infiniteJumps)
+                {
+                    return true;
+                }
+                else
+                {
+                    return jumpingEnabled ? motorFunctionJump.CanJump() : false;
+                }
             }
             else
             {

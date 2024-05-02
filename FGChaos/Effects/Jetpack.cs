@@ -9,7 +9,7 @@ namespace FGChaos.Effects
         {
             Name = "Jetpack (Hold Jump)";
             Duration = 20;
-            BlockedEffects = new Type[] { typeof(RocketShip), typeof(Jetpack) };
+            BlockedEffects = new Type[] { typeof(RocketShip), typeof(Jetpack), typeof(PiracyIsNoFalling), typeof(InfiniteJumps) };
         }
 
         Player rewiredplayer;

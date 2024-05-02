@@ -9,7 +9,7 @@ namespace FGChaos.Effects
         {
             Name = "Pirated Game (Jumping Disabled)";
             Duration = 15;
-            BlockedEffects = new Type[] { typeof(PiracyIsNoFalling) };
+            BlockedEffects = new Type[] { typeof(RocketShip), typeof(Jetpack), typeof(PiracyIsNoFalling), typeof(InfiniteJumps) };
         }
 
         public override void Run()
