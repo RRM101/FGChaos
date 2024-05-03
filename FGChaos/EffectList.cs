@@ -50,7 +50,8 @@ namespace FGChaos
             new InfiniteJumps(),
             new SlipperyFloor(),
             new Lag(),
-            new Camera2D()
+            new Camera2D(),
+            new ReverseGun()
         };
     }
 }

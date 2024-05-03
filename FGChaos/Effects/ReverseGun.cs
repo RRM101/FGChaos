@@ -1,19 +1,19 @@
 ﻿using FG.Common.LODs;
+using Rewired;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine;
 using System.Collections;
 using SRF;
-using Rewired;
 
 namespace FGChaos.Effects
 {
-    public class Gun : Effect
+    public class ReverseGun : Effect
     {
-        public Gun()
+        public ReverseGun()
         {
-            Name = "Gun (Grab to shoot)";
-            Duration = 30;
+            Name = "Reverse Gun";
+            Duration = 20;
         }
 
         Player rewiredPlayer;
@@ -27,7 +27,7 @@ namespace FGChaos.Effects
 
         public override void Update()
         {
-            if (rewiredPlayer.GetButtonDown(4))
+            if (rewiredPlayer.GetButtonDown(2))
             {
                 AudioManager.PlayOneShot("SFX_OBJ_Cannon_Shoot_Close");
                 StartCoroutine(Shoot());
@@ -44,9 +44,11 @@ namespace FGChaos.Effects
             {
                 GameObject obj = GameObject.Instantiate(handle.Result);
                 obj.RemoveComponentIfExists<LodController>();
-                obj.transform.position = new Vector3(chaos.fallGuy.transform.position.x, chaos.fallGuy.transform.position.y + 5, chaos.fallGuy.transform.position.z);
+                obj.transform.position = new Vector3(chaos.fallGuy.transform.position.x, chaos.fallGuy.transform.position.y + 2, chaos.fallGuy.transform.position.z);
+                obj.transform.Translate(chaos.fallGuy.transform.forward * 5, Space.World);
                 Rigidbody rigidbody = obj.GetComponent<Rigidbody>();
                 rigidbody.velocity = chaos.fallGuy.transform.rotation * new Vector3(0, 0, 100);
+                rigidbody.velocity = new Vector3(-rigidbody.velocity.x, rigidbody.velocity.y, -rigidbody.velocity.z);
 
                 rigidbody.angularVelocity = chaos.fallGuy.transform.rotation * new Vector3(UnityEngine.Random.Range(-100, 200), UnityEngine.Random.Range(-100, 199), UnityEngine.Random.Range(-100, 201));
             }
