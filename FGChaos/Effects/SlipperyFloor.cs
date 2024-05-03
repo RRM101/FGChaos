@@ -10,7 +10,7 @@ namespace FGChaos.Effects
     {
         public SlipperyFloor()
         {
-            Name = "Slipper Floor";
+            Name = "Slippery Floor";
             Duration = 20;
             BlockedEffects = new Type[] { typeof(SlideEverywhere), typeof(SlipperyFloor) };
         }

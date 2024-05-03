@@ -49,7 +49,8 @@ namespace FGChaos
             new NoLights(),
             new InfiniteJumps(),
             new SlipperyFloor(),
-            new Lag()
+            new Lag(),
+            new Camera2D()
         };
     }
 }
