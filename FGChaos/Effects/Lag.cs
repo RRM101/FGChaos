@@ -34,9 +34,9 @@ namespace FGChaos.Effects
             Vector3 previousPosition;
             while (isActive)
             {
-                yield return new WaitForSeconds(0.5f);
+                yield return WaitForSeconds(0.5f);
                 previousPosition = chaos.fallGuy.transform.position;
-                yield return new WaitForSeconds(0.5f);
+                yield return WaitForSeconds(0.5f);
                 chaos.fallGuy.transform.position = previousPosition;
             }
         }

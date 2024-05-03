@@ -39,7 +39,7 @@ namespace FGChaos.Effects
                 speedArch = handle.Result.GetComponent<COMMON_SpeedArch>();
                 speedArch.CreateSpeedBoostDataInstance();
                 SpeedBoostData speedBoostData = speedArch.SpeedBoostData;
-                speedBoostData._duration = actualDuration;
+                speedBoostData._duration = Duration;
                 speedBoostData._instantVelocityBoost = 5.0f;
                 speedBoostData._turnSpeedMultiplier = 5;
                 speedBoostData._moveSpeedMultiplier = 5;

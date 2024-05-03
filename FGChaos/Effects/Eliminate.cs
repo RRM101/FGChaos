@@ -25,13 +25,13 @@ namespace FGChaos.Effects
         {
             EliminatedScreenViewModel.Show("eliminated", null, null);
             AudioManager.PlayGameplayEndAudio(false);
-            yield return new WaitForSeconds(5);
+            yield return WaitForSeconds(5);
             int randomnumber = UnityEngine.Random.Range(0, 3);
             if (randomnumber == 0)
             {
-                yield return new WaitForSeconds(1);
+                yield return WaitForSeconds(1);
                 textMeshPro.text = "Fake Eliminate Player"; // improve later
-                yield return new WaitForSeconds(4);
+                yield return WaitForSeconds(4);
                 End();
             }
             else

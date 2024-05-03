@@ -19,8 +19,6 @@ namespace FGChaos.Effects
 
         public Chaos chaos = ChaosPluginBehaviour.chaosInstance;
 
-        public float actualDuration { get { return (int)(Duration * Time.timeScale); } }
-
         bool canRunUpdateMethod = true;
 
         public bool isActive;
@@ -86,13 +84,13 @@ namespace FGChaos.Effects
 
         IEnumerator WaitCoroutine(float seconds)
         {
-            yield return new WaitForSeconds(seconds);
+            yield return WaitForSeconds(seconds);
             End();
         }
 
         IEnumerator DestroyEffectName()
         {
-            yield return new WaitForSeconds(10);
+            yield return WaitForSeconds(10);
             if (textMeshPro != null)
             {
                 GameObject.Destroy(textMeshPro.gameObject);
@@ -114,7 +112,7 @@ namespace FGChaos.Effects
 
         public void WaitTillEnd()
         {
-            StartCoroutine(WaitCoroutine(actualDuration));
+            StartCoroutine(WaitCoroutine(Duration));
         }
 
         public void StartCoroutine(IEnumerator enumerator)
@@ -134,6 +132,16 @@ namespace FGChaos.Effects
             if (Duration == 0 && destroyEffectName)
             {
                 StartCoroutine(DestroyEffectName());
+            }
+        }
+
+        public IEnumerator WaitForSeconds(float seconds)
+        {
+            float wait = 0;
+            while (wait  < seconds)
+            {
+                wait += Time.deltaTime / Time.timeScale;
+                yield return null;
             }
         }
     }
