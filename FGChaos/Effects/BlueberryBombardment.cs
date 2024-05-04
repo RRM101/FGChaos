@@ -76,6 +76,11 @@ namespace FGChaos.Effects
             {
                 GameObject.Destroy(spawnPosition.gameObject);
             }
+
+            if (blueberryImage != null)
+            {
+                GameObject.Destroy(blueberryImage.gameObject);
+            }
             base.End();
         }
     }

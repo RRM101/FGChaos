@@ -37,11 +37,14 @@ namespace FGChaos.Effects
 
         public override void End()
         {
-            chaos.cameraDirector.MainNativeCam.orthographic = false;
-
-            if (usingDepthOfField && chaos != null)
+            if (chaos != null)
             {
-                StartCoroutine(EnableDOF());
+                chaos.cameraDirector.MainNativeCam.orthographic = false;
+
+                if (usingDepthOfField)
+                {
+                    StartCoroutine(EnableDOF());
+                }
             }
             base.End();
         }

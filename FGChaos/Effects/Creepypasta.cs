@@ -47,10 +47,16 @@ namespace FGChaos.Effects
         {
             postProcessProfile.RemoveSettings<Vignette>();
             GlobalGameStateClient.Instance.GameStateView.GetLiveClientGameManager(out ClientGameManager cgm);
-            cgm._musicInstance.setPitch(1f);
+            if (cgm != null)
+            {
+                cgm._musicInstance.setPitch(1f);
+            }
             foreach (Light light in lights)
             {
-                light.color = lightValues[light];
+                if (light != null)
+                {
+                    light.color = lightValues[light];
+                }
             }
 
             base.End();

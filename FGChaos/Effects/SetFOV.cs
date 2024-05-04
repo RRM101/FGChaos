@@ -36,7 +36,10 @@ namespace FGChaos.Effects
         public override void End()
         {
             lensSettings.FieldOfView = 60;
-            chaos.cameraDirector._closeCamera.m_Lens = lensSettings;
+            if (chaos != null)
+            {
+                chaos.cameraDirector._closeCamera.m_Lens = lensSettings;
+            }
             base.End();
         }
     }

@@ -23,7 +23,10 @@ namespace FGChaos.Effects
 
         public override void End()
         {
-            chaos.fallGuy.DefaultSurfaceModifier.VelocityCurveModifier = 1;
+            if (chaos != null)
+            {
+                chaos.fallGuy.DefaultSurfaceModifier.VelocityCurveModifier = 1;
+            }
             base.End();
         }
     }

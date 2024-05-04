@@ -28,11 +28,14 @@ namespace FGChaos.Effects
         public override void End()
         {
             Chaos.slideEverywhere = false;
-            chaos.fallGuy.DefaultSurfaceModifier.SupportSliding = false;
-            chaos.fallGuy.DefaultSurfaceModifier.ShouldOverrideSlideAngleCheck = false;
-            chaos.fallGuy.DefaultSurfaceModifier.SlideTurningVelocityModifier = 1;
-            chaos.fallGuy.DefaultSurfaceModifier.SlideVelocityModifier = 0.9f;
-            chaos.fallGuy.DefaultSurfaceModifier.VelocityCurveModifier = 1;
+            if (chaos != null)
+            {
+                chaos.fallGuy.DefaultSurfaceModifier.SupportSliding = false;
+                chaos.fallGuy.DefaultSurfaceModifier.ShouldOverrideSlideAngleCheck = false;
+                chaos.fallGuy.DefaultSurfaceModifier.SlideTurningVelocityModifier = 1;
+                chaos.fallGuy.DefaultSurfaceModifier.SlideVelocityModifier = 0.9f;
+                chaos.fallGuy.DefaultSurfaceModifier.VelocityCurveModifier = 1;
+            }
             base.End();
         }
     }

@@ -51,7 +51,10 @@ namespace FGChaos.Effects
 
         public override void End()
         {
-            chaos.fallGuy.SpeedBoostManager.ClearSpeedBoost();
+            if (chaos != null)
+            {
+                chaos.fallGuy.SpeedBoostManager.ClearSpeedBoost();
+            }
             base.End();
         }
     }

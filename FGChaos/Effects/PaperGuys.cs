@@ -24,7 +24,10 @@ namespace FGChaos.Effects
 
         public override void End()
         {
-            chaos.fallGuy.transform.GetChild(0).transform.GetChild(0).localScale = new Vector3(1, 1, 1);
+            if (chaos != null)
+            {
+                chaos.fallGuy.transform.GetChild(0).transform.GetChild(0).localScale = new Vector3(1, 1, 1);
+            }
             base.End();
         }
     }

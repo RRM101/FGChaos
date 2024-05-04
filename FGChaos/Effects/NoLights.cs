@@ -33,7 +33,10 @@ namespace FGChaos.Effects
         {
             foreach (Light light in lights)
             {
-                light.gameObject.SetActive(true);
+                if (light != null)
+                {
+                    light.gameObject.SetActive(true);
+                }
             }
 
             base.End();
