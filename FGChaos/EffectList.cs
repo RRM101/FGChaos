@@ -52,7 +52,8 @@ namespace FGChaos
             new Lag(),
             new Camera2D(),
             new ReverseGun(),
-            new SetFOV()
+            new SetFOV(),
+            new RussianRoulette()
         };
     }
 }
