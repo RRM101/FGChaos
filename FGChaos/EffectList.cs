@@ -51,7 +51,8 @@ namespace FGChaos
             new SlipperyFloor(),
             new Lag(),
             new Camera2D(),
-            new ReverseGun()
+            new ReverseGun(),
+            new SetFOV()
         };
     }
 }

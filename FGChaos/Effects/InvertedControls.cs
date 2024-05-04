@@ -25,6 +25,7 @@ namespace FGChaos.Effects
         {
             Chaos.invertedControls = false;
             base.End();
+
         }
     }
 }

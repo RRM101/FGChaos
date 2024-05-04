@@ -22,7 +22,6 @@ namespace FGChaos.Effects
             CheckpointZone checkpointZone = checkpointManager._checkpointZones.Last();
             checkpointZone.GetNextSpawnPositionAndRotation(out Vector3 position, out Quaternion rotation);
             chaos.fallGuy.MotorAgent.GetMotorFunction<MotorFunctionTeleport>().RequestTeleport(position, rotation);
-
             base.Run();
         }
     }

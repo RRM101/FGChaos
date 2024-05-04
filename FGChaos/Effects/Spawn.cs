@@ -17,6 +17,7 @@ namespace FGChaos.Effects
 
                 SpawnName = Chaos.addressableAssetsNames[randomnumber];
                 SpawnGUID = Chaos.addressableAssetsKeyNamePairs[SpawnName];
+
                 Name = $"Spawn {SpawnName}";
             }
             else

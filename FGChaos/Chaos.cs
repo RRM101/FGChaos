@@ -173,6 +173,7 @@ namespace FGChaos
                 RandomEffect();
             }
 
+            delay = Math.Min(delay, Plugin.EffectTimer.Value);
             chaosSlider.value = delay / Plugin.EffectTimer.Value;
         }
 

@@ -9,7 +9,7 @@ namespace FGChaos.Effects
         {
             Name = "Switch Moment";
             Duration = 30;
-            BlockedEffects = new System.Type[] { typeof(SwitchMoment) };
+            BlockedEffects = new System.Type[] { typeof(SwitchMoment) };    
         }
 
         public override void Run()

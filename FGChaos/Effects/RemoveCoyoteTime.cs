@@ -19,7 +19,7 @@ namespace FGChaos.Effects
             CMSGlobalSettings.CharacterJumpCoyoteTime = 0;
             base.Run();
         }
-
+            
         public override void End()
         {
             CMSGlobalSettings.CharacterJumpCoyoteTime = 0.15f;

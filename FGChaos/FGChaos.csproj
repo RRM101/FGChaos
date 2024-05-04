@@ -22,6 +22,9 @@
   </ItemGroup>
   
   <ItemGroup>
+    <Reference Include="Cinemachine">
+      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\Cinemachine.dll</HintPath>
+    </Reference>
     <Reference Include="DOTween">
       <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\DOTween.dll</HintPath>
     </Reference>
