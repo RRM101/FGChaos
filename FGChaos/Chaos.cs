@@ -31,6 +31,7 @@ namespace FGChaos
         public static bool switchMode;
         public static bool slideEverywhere;
         public static bool infiniteJumps;
+        public static bool WKeyStuck;
         public GameObject chaosCanvas;
         Slider chaosSlider;
 
@@ -78,6 +79,7 @@ namespace FGChaos
                 switchMode = false;
                 slideEverywhere = false;
                 infiniteJumps = false;
+                WKeyStuck = false;
                 chaosCanvas = Instantiate(chaosBundle.LoadAsset("ChaosCanvas").Cast<GameObject>());
                 chaosSlider = chaosCanvas.transform.GetChild(0).GetComponent<Slider>();
                 chaosSliderRectTransform = chaosSlider.GetComponent<RectTransform>();

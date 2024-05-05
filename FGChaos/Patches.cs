@@ -67,8 +67,13 @@ namespace FGChaos
 
         [HarmonyPatch(typeof(Player), "GetAxis", argumentTypes: new Type[] {typeof(string)})]
         [HarmonyPostfix]
-        static void InvertedControlsPatch(Player __instance, ref float __result)
+        static void InvertedControlsPatch(Player __instance, string actionName, ref float __result)
         {
+            if (actionName == "Move Vertical" && Chaos.WKeyStuck)
+            {
+                __result = 1;
+            }
+
             if (Chaos.invertedControls)
             {
                 __result *= -1;
