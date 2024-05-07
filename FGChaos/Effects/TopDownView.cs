@@ -34,7 +34,7 @@ namespace FGChaos.Effects
             cameraDirectorTransform.DOLocalMove(new Vector3(0, 20, 0), 1).SetEase(Ease.InOutSine);
             cameraDirectorTransform.DORotate(new Vector3(90, 0, 0), 1).SetEase(Ease.InOutSine);
             input = chaos.fallGuy.GetComponent<FallGuysCharacterControllerInput>();
-            input._camera = parentGameObject.transform;
+            input._movementInput._cameraTransform = parentGameObject.transform;
 
             base.Run();
         }
@@ -49,7 +49,7 @@ namespace FGChaos.Effects
             cameraDirectorTransform.DOLocalMove(Vector3.zero, 1).SetEase(Ease.InOutSine);
             Tween tween = cameraDirectorTransform.GetChild(0).DORotate(chaos.fallGuy.transform.eulerAngles, 1).SetEase(Ease.InOutSine);
             yield return tween.WaitForCompletion();
-            input._camera = cameraDirectorTransform;
+            input._movementInput._cameraTransform = cameraDirectorTransform;
             cameraDirectorTransform.GetParent().SetParent(null);
             cameraDirectorTransform.position = Vector3.zero;
             cameraDirectorTransform.rotation = new Quaternion(0, 0, 0, 0);

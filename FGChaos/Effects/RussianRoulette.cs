@@ -34,6 +34,7 @@ namespace FGChaos.Effects
             if (number == 5)
             {
                 textMeshPro.text = "You will die.";
+                textMeshPro.color = Color.red;
                 yield return WaitForSeconds(2);
                 yield return Shoot();
                 yield return WaitForSeconds(1);
