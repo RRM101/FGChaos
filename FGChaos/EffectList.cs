@@ -54,7 +54,8 @@ namespace FGChaos
             new ReverseGun(),
             new SetFOV(),
             new RussianRoulette(),
-            new WKeyStuck()
+            new WKeyStuck(),
+            new ChangeMusic()
         };
     }
 }

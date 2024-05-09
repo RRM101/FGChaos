@@ -85,7 +85,10 @@ namespace FGChaos.Effects
         IEnumerator WaitCoroutine(float seconds)
         {
             yield return WaitForSeconds(seconds);
-            End();
+            if (isActive)
+            {
+                End();
+            }
         }
 
         IEnumerator DestroyEffectName()

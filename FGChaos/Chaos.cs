@@ -206,7 +206,10 @@ namespace FGChaos
                 {
                     effect.End();
                 }
-                catch { }
+                catch (Exception e)
+                {
+                    Debug.LogError(e.Message);
+                }
             }
         }
 
