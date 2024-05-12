@@ -42,6 +42,7 @@ namespace FGChaos.Effects
             }
             else
             {
+                textMeshPro.color = Color.green;
                 textMeshPro.text = "You got lucky.";
             }
         }

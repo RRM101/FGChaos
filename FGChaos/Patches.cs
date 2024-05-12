@@ -18,7 +18,10 @@ namespace FGChaos
         {
             float delay = Chaos.switchMode ? 0.3f : 0;
             yield return new WaitForSeconds(delay);
-            instance._motorFunctionMovement.ApplyNormalMovement(direction, magnitude, MotorFunctionMovement.UpdateVelocityMode.ReduceWithAngle);
+            if (instance != null)
+            {
+                instance._motorFunctionMovement.ApplyNormalMovement(direction, magnitude, MotorFunctionMovement.UpdateVelocityMode.ReduceWithAngle);
+            }
         }
 
         [HarmonyPatch(typeof(OfflinePlaygroundManager), "OnIntroCamerasComplete")]
@@ -109,7 +112,14 @@ namespace FGChaos
             if (__instance._moveTask.ShouldMove)
             {
                 __instance.CalculateDirectionAndMagnitude(out Vector3 direction, out float magnitude);
-                ChaosPluginBehaviour.instance.StartCoroutine(InputDelay(__instance, direction, magnitude).WrapToIl2Cpp());
+                if (Chaos.switchMode)
+                {
+                    ChaosPluginBehaviour.instance.StartCoroutine(InputDelay(__instance, direction, magnitude).WrapToIl2Cpp());
+                }
+                else
+                {
+                    __instance._motorFunctionMovement.ApplyNormalMovement(direction, magnitude, MotorFunctionMovement.UpdateVelocityMode.ReduceWithAngle);
+                }
             }
             return false;
         }

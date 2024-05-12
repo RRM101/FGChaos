@@ -56,7 +56,8 @@ namespace FGChaos
             new RussianRoulette(),
             new WKeyStuck(),
             new ChangeMusic(),
-            new WideGuys()
+            new WideGuys(),
+            new HeavenTeleport()
         };
     }
 }
