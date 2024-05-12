@@ -18,7 +18,8 @@ namespace FGChaos.Effects
                 typeof(LockCamera),
                 typeof(TopDownView),
                 typeof(PaperGuys),
-                typeof(Camera2D)
+                typeof(Camera2D),
+                typeof(WideGuys)
             };
         }
 

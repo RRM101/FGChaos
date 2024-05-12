@@ -52,7 +52,7 @@ namespace FGChaos.Effects
             while (blueberryImage.color.a > 0)
             {
                 blueberryImage.SetAlpha(blueberryImage.color.a - Time.deltaTime);
-                yield return new WaitForEndOfFrame();
+                yield return null;
             }
             GameObject.Destroy(blueberryImage.gameObject);
         }

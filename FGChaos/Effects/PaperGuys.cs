@@ -13,7 +13,7 @@ namespace FGChaos.Effects
         {
             Name = "Paper Guys";
             Duration = 20;
-            BlockedEffects = new Type[] { typeof(FirstPersonMode), typeof(PaperGuys) };
+            BlockedEffects = new Type[] { typeof(FirstPersonMode), typeof(PaperGuys), typeof(WideGuys) };
         }
 
         public override void Run()
