@@ -57,7 +57,8 @@ namespace FGChaos
             new WKeyStuck(),
             new ChangeMusic(),
             new WideGuys(),
-            new HeavenTeleport()
+            new HeavenTeleport(),
+            new FakeCrash()
         };
     }
 }

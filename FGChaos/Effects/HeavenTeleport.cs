@@ -28,7 +28,6 @@ namespace FGChaos.Effects
             base.Run();
         }
 
-
         IEnumerator Fake(Vector3 previousPosition)
         {
             yield return WaitForSeconds(5);
