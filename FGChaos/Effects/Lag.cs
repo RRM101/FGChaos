@@ -13,7 +13,7 @@ namespace FGChaos.Effects
     {
         public Lag()
         {
-            Name = "Lag";
+            Name = "Server-side Movement";
             Duration = 20;
         }
 
