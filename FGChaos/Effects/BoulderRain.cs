@@ -29,6 +29,7 @@ namespace FGChaos.Effects
                 yield return BoulderRainSpawn();
             }
             End();
+            GameObject.Destroy(textMeshPro.gameObject);
         }
 
         IEnumerator BoulderRainSpawn()

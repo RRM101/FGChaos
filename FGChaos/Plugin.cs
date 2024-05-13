@@ -80,7 +80,7 @@ namespace FGChaos
             SceneManager.add_sceneLoaded((Action<Scene, LoadSceneMode>)OnSceneLoaded);
         }
 
-        void OnGUI() // Remove in release build
+        void OnGUI()
         {
             GUI.Label(new Rect(5, Screen.height - 25, 300, 20), $"FGChaos Beta {Plugin.version}");
         }

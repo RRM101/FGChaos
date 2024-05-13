@@ -58,7 +58,8 @@ namespace FGChaos
             new ChangeMusic(),
             new WideGuys(),
             new HeavenTeleport(),
-            new FakeCrash()
+            new FakeCrash(),
+            new RandomGameSpeed()
         };
     }
 }

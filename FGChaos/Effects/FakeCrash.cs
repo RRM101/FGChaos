@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEngine;
 
 namespace FGChaos.Effects
 {
@@ -22,7 +21,6 @@ namespace FGChaos.Effects
             while (time.Second != endTime.Second)
             {
                 time = DateTime.Now;
-                Debug.Log(time.Second);
             }
 
             base.Run();
