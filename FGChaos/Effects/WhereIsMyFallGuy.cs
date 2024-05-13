@@ -9,7 +9,7 @@ namespace FGChaos.Effects
         {
             Name = "Where is my Fall Guy?";
             Duration = 15;
-            BlockedEffects = new Type[] { typeof(FirstPersonMode) };
+            BlockedEffects = new Type[] { typeof(FirstPersonMode), typeof(PlayAsBert) };
         }
 
         GameObject model;
@@ -23,7 +23,10 @@ namespace FGChaos.Effects
 
         public override void End()
         {
-            model.SetActive(true);
+            if (model != null)
+            {
+                model.SetActive(true);
+            }
             base.End();
         }
     }

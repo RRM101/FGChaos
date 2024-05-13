@@ -59,7 +59,8 @@ namespace FGChaos
             new WideGuys(),
             new HeavenTeleport(),
             new FakeCrash(),
-            new RandomGameSpeed()
+            new RandomGameSpeed(),
+            new PlayAsBert()
         };
     }
 }
