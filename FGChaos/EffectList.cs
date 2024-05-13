@@ -60,7 +60,8 @@ namespace FGChaos
             new HeavenTeleport(),
             new FakeCrash(),
             new RandomGameSpeed(),
-            new PlayAsBert()
+            new PlayAsBert(),
+            new RandomFPS()
         };
     }
 }
