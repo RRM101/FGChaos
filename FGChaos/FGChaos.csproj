@@ -23,97 +23,97 @@
   
   <ItemGroup>
     <Reference Include="Cinemachine">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\Cinemachine.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepInEx\interop\Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\DOTween.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepInEx\interop\DOTween.dll</HintPath>
     </Reference>
     <Reference Include="DOTween.Modules">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\DOTween.Modules.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepInEx\interop\DOTween.Modules.dll</HintPath>
     </Reference>
     <Reference Include="FMODUnity">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\FMODUnity.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepInEx\interop\FMODUnity.dll</HintPath>
     </Reference>
     <Reference Include="Il2Cppmscorlib">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\Il2Cppmscorlib.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\Il2Cppmscorlib.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\Il2CppSystem.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\Il2CppSystem.dll</HintPath>
     </Reference>
     <Reference Include="MT.FGClient">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\MT.FGClient.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\MT.FGClient.dll</HintPath>
     </Reference>
     <Reference Include="mvvmbindings">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\mvvmbindings.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\mvvmbindings.dll</HintPath>
     </Reference>
     <Reference Include="ParsingUtils_Runtime">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\ParsingUtils_Runtime.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepInEx\interop\ParsingUtils_Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Rewired_Core">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\Rewired_Core.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepInEx\interop\Rewired_Core.dll</HintPath>
     </Reference>
     <Reference Include="TheMultiplayerGuys.FGCommon">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\TheMultiplayerGuys.FGCommon.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\TheMultiplayerGuys.FGCommon.dll</HintPath>
     </Reference>
     <Reference Include="TheMultiplayerGuys.Utility">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\TheMultiplayerGuys.Utility.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\TheMultiplayerGuys.Utility.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Addressables">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\Unity.Addressables.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\Unity.Addressables.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\Unity.Postprocessing.Runtime.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepInEx\interop\Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ResourceManager">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\Unity.ResourceManager.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\Unity.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepInEx\interop\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepInEx\interop\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextCoreFontEngineModule">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepInEx\interop\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextCoreTextEngineModule">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepInEx\interop\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepInEx\interop\UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
 	<Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.UI.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\UnityEngine.UI.dll</HintPath>
     </Reference>
 	<Reference Include="UnityEngine.UIElementsModule">
-	  <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\UnityEngine.UIElementsModule.dll</HintPath>
+	  <HintPath>C:\Users\rrm1\FallGuys10.8\BepInEx\interop\UnityEngine.UIElementsModule.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEngine.UIElementsNativeModule">
-	  <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepInEx\interop\UnityEngine.UIElementsNativeModule.dll</HintPath>
+	  <HintPath>C:\Users\rrm1\FallGuys10.8\BepInEx\interop\UnityEngine.UIElementsNativeModule.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEngine.UIModule">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.UIModule.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\UnityEngine.UIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.InputLegacyModule.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="Wushu.LevelEditor.Runtime">
-      <HintPath>..\..\..\..\..\..\Program Files\Epic Games\FallGuys\BepinEx\interop\Wushu.LevelEditor.Runtime.dll</HintPath>
+      <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\Wushu.LevelEditor.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
