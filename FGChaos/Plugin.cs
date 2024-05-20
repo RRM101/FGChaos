@@ -86,7 +86,7 @@ namespace FGChaos
         {
             if (Plugin.ShowWatermark.Value)
             {
-                GUI.Label(new Rect(5, Screen.height - 25, 300, 20), $"FGChaos Beta {Plugin.version}");
+                GUI.Label(new Rect(5, Screen.height - 25, 300, 20), $"FGChaos Pre-Release {Plugin.version}");
             }
         }
 
