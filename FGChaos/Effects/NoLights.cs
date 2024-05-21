@@ -15,13 +15,21 @@ namespace FGChaos.Effects
             Duration = 20;
         }
 
-        Light[] lights;
+        List<Light> Lights = new();
 
         public override void Run()
         {
-            lights = Resources.FindObjectsOfTypeAll<Light>();
+            Light[] allLights = Resources.FindObjectsOfTypeAll<Light>();
 
-            foreach (Light light in lights)
+            foreach (Light light_ in allLights)
+            {
+                if (light_.gameObject.active)
+                {
+                    Lights.Add(light_);
+                }
+            }
+
+            foreach (Light light in Lights)
             {
                 light.gameObject.SetActive(false);
             }
@@ -31,7 +39,7 @@ namespace FGChaos.Effects
 
         public override void End()
         {
-            foreach (Light light in lights)
+            foreach (Light light in Lights)
             {
                 if (light != null)
                 {
