@@ -1,5 +1,7 @@
 # FGChaos
 
+![Logo](Images/FGChaosLogoTransparent128x128.png)
+
 FGChaos is a mod where a random effect is ran every few seconds
 
 This mod takes heavy inspiration from [ChaosModV](https://github.com/gta-chaos-mod/ChaosModV)
@@ -12,8 +14,8 @@ This mod takes heavy inspiration from [ChaosModV](https://github.com/gta-chaos-m
 
 # Screenshots
 
-![Screenshot](Screenshots/Screenshot1.png)
+![Screenshot](Images/Screenshot1.png)
 
-![Screenshot](Screenshots/Screenshot2.png)
+![Screenshot](Images/Screenshot2.png)
 
-![Screenshot](Screenshots/Screenshot3.png)
+![Screenshot](Images/Screenshot3.png)
