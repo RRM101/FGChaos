@@ -22,7 +22,7 @@ namespace FGChaos
     [BepInPlugin("org.rrm1.fgchaos", "FGChaos", version)]
     public class Plugin : BasePlugin
     {
-        public const string version = "1.0.0";
+        public const string version = "1.0.1";
 
         public static ConfigEntry<bool> Disable { get; set; }
         public static ConfigEntry<int> EffectTimer { get; set; }
@@ -36,7 +36,7 @@ namespace FGChaos
             EffectTimer = Config.Bind("Config", "Effect Timer", 10, "The amount of time in seconds for the next effect to run.");
             PlayEffectRunSFX = Config.Bind("Config", "Play Effect Run Sound Effect", false, "Plays a sound effect when an Effect is ran.");
             DisableGameSpeedEffects = Config.Bind("Config", "Disable Game Speed Effects", false, "Disables the Game Speed Effects.");
-            ShowWatermark = Config.Bind("Config", "Show Watermark", true, "When enabled, shows a Watermark at the Bottom-Left side of the Screen.");
+            ShowWatermark = Config.Bind("Config", "Show Watermark", true, "Shows a Watermark at the Bottom-Left side of the Screen.");
 
             if (!Disable.Value)
             {
@@ -174,8 +174,8 @@ namespace FGChaos
 
             ModalMessageData modalMessageData = new ModalMessageData
             {
-                Title = "FGChaos",
-                Message = $"You are on Fall Guys version {Application.version}, the mod is only for Fall Guys 10.8.1",
+                Title = "FGChaos - ERROR!",
+                Message = $"You are on Fall Guys {Application.version}, the mod is only for Fall Guys 10.8.1",
                 LocaliseTitle = UIModalMessage.LocaliseOption.NotLocalised,
                 LocaliseMessage = UIModalMessage.LocaliseOption.NotLocalised,
                 ModalType = UIModalMessage.ModalType.MT_BLOCKING,
@@ -201,7 +201,7 @@ namespace FGChaos
                 ModalType = UIModalMessage.ModalType.MT_OK
             };
 
-            PopupManager.Instance.Show(PopupInteractionType.Error, modalMessageData);
+            PopupManager.Instance.Show(PopupInteractionType.Warning, modalMessageData);
         }
 
         void SpawnAddressableAsset(string key)
