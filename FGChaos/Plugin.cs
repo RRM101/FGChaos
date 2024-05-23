@@ -115,6 +115,16 @@ namespace FGChaos
                     effectName.rectTransform.sizeDelta = new Vector2(Screen.width, 50);
                 }
 
+                if (Application.version != "10.8.1")
+                {
+                    ShowWrongGameVersionPopup();
+                }
+
+                if (Directory.Exists($"{Paths.PluginPath}/FGTools/"))
+                {
+                    ShowFGToolsPopup();
+                }
+
                 if (hasMissingFiles)
                 {
                     ShowMissingFilesPopup();
@@ -154,8 +164,44 @@ namespace FGChaos
                 ModalType = UIModalMessage.ModalType.MT_OK
             };
 
-            PopupManager.Instance.Show(PopupInteractionType.Warning, modalMessageData);
+            PopupManager.Instance.Show(PopupInteractionType.Error, modalMessageData);
             Harmony.UnpatchID("FGChaosPatches");
+        }
+
+        void ShowWrongGameVersionPopup()
+        {
+            Action<bool> stupid = StupidMTBoolQuitGame;
+
+            ModalMessageData modalMessageData = new ModalMessageData
+            {
+                Title = "FGChaos",
+                Message = $"You are on Fall Guys version {Application.version}, the mod is only for Fall Guys 10.8.1",
+                LocaliseTitle = UIModalMessage.LocaliseOption.NotLocalised,
+                LocaliseMessage = UIModalMessage.LocaliseOption.NotLocalised,
+                ModalType = UIModalMessage.ModalType.MT_BLOCKING,
+                OnCloseButtonPressed = stupid
+            };
+
+            PopupManager.Instance.Show(PopupInteractionType.Error, modalMessageData);
+        }
+
+        void StupidMTBoolQuitGame(bool stupid)
+        {
+            Application.Quit();
+        }
+
+        void ShowFGToolsPopup()
+        {
+            ModalMessageData modalMessageData = new ModalMessageData
+            {
+                Title = "FGChaos - WARNING!",
+                Message = $"You are using FGTools which is not currently supported by FGChaos, the mod will still work, but there might be unexpected bugs.",
+                LocaliseTitle = UIModalMessage.LocaliseOption.NotLocalised,
+                LocaliseMessage = UIModalMessage.LocaliseOption.NotLocalised,
+                ModalType = UIModalMessage.ModalType.MT_OK
+            };
+
+            PopupManager.Instance.Show(PopupInteractionType.Error, modalMessageData);
         }
 
         void SpawnAddressableAsset(string key)
