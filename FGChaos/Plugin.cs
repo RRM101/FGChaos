@@ -22,7 +22,7 @@ namespace FGChaos
     [BepInPlugin("org.rrm1.fgchaos", "FGChaos", version)]
     public class Plugin : BasePlugin
     {
-        public const string version = "0.3.0";
+        public const string version = "1.0.0";
 
         public static ConfigEntry<bool> Disable { get; set; }
         public static ConfigEntry<int> EffectTimer { get; set; }
@@ -86,7 +86,7 @@ namespace FGChaos
         {
             if (Plugin.ShowWatermark.Value)
             {
-                GUI.Label(new Rect(5, Screen.height - 25, 300, 20), $"FGChaos Pre-Release {Plugin.version}");
+                GUI.Label(new Rect(5, Screen.height - 25, 300, 20), $"FGChaos {Plugin.version}");
             }
         }
 
