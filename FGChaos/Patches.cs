@@ -132,5 +132,15 @@ namespace FGChaos
             __instance._gsm.ReplaceCurrentState(new StateMainMenu(__instance._gsm, __instance._gameStateData, false).Cast<GameStateMachine.IGameState>());
             return false;
         }
+
+        [HarmonyPatch(typeof(MotorFunctionJumpStateLiftOff), "Begin")]
+        [HarmonyPostfix]
+        static void OnJump()
+        {
+            foreach (Action action in Chaos.OnJumpActions)
+            {
+                action.Invoke();
+            }
+        }
     }
 }

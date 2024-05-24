@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace FGChaos.Effects
 
         public override void Run()
         {
-            chaos.fallGuy.transform.GetChild(0).transform.GetChild(0).localScale = new Vector3(5, 1, 1);
+            chaos.fallGuy.transform.GetChild(0).transform.GetChild(0).DOScaleX(5, 1);
             base.Run();
         }
 

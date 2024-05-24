@@ -32,6 +32,7 @@ namespace FGChaos
         public static bool slideEverywhere;
         public static bool infiniteJumps;
         public static bool WKeyStuck;
+        public static List<Action> OnJumpActions = new List<Action>();
         public GameObject chaosCanvas;
         Slider chaosSlider;
 

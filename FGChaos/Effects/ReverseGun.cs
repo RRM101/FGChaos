@@ -14,24 +14,20 @@ namespace FGChaos.Effects
         {
             Name = "Reverse Gun";
             Duration = 20;
+            BlockedEffects = new System.Type[] { typeof(ReverseGun) };
         }
-
-        Player rewiredPlayer;
 
         public override void Run()
         {
-            rewiredPlayer = chaos.fallGuy.GetComponent<FallGuysCharacterControllerInput>()._rewiredPlayer;
             ChaosPluginBehaviour.LoadBank("BNK_SFX_OBJ_Cannon");
+            Chaos.OnJumpActions.Add(DoShoot);
             base.Run();
         }
 
-        public override void Update()
+        void DoShoot()
         {
-            if (rewiredPlayer.GetButtonDown(2))
-            {
-                AudioManager.PlayOneShot("SFX_OBJ_Cannon_Shoot_Close");
-                StartCoroutine(Shoot());
-            }
+            AudioManager.PlayOneShot("SFX_OBJ_Cannon_Shoot_Close");
+            StartCoroutine(Shoot());
         }
 
         IEnumerator Shoot()
@@ -52,6 +48,15 @@ namespace FGChaos.Effects
 
                 rigidbody.angularVelocity = chaos.fallGuy.transform.rotation * new Vector3(UnityEngine.Random.Range(-100, 200), UnityEngine.Random.Range(-100, 199), UnityEngine.Random.Range(-100, 201));
             }
+        }
+
+        public override void End()
+        {
+            if (Chaos.OnJumpActions.Contains(DoShoot))
+            {
+                Chaos.OnJumpActions.Remove(DoShoot);
+            }
+            base.End();
         }
     }
 }
