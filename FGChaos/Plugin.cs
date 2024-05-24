@@ -158,7 +158,7 @@ namespace FGChaos
             ModalMessageData modalMessageData = new ModalMessageData
             {
                 Title = "FGChaos - Missing Files!",
-                Message = $"The Missing Files are:\n{missingFiles}\nMake you sure you placed the mod in the currect folder.",
+                Message = $"The Missing Files are:\n{missingFiles}\nMake you sure you placed the mod in the correct folder.",
                 LocaliseTitle = UIModalMessage.LocaliseOption.NotLocalised,
                 LocaliseMessage = UIModalMessage.LocaliseOption.NotLocalised,
                 ModalType = UIModalMessage.ModalType.MT_OK
