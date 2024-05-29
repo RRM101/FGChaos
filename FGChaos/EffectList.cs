@@ -62,7 +62,8 @@ namespace FGChaos
             new RandomGameSpeed(),
             new PlayAsBert(),
             new RandomFPS(),
-            new SuperJump()
+            new SuperJump(),
+            new BouncyPlayer()
         };
     }
 }
