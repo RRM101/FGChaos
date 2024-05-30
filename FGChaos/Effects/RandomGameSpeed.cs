@@ -13,7 +13,7 @@ namespace FGChaos.Effects
         {
             Name = "Random Game Speed";
             Duration = 20;
-            BlockedEffects = new Type[] { typeof(Speed), typeof(RandomGameSpeed) };
+            BlockedEffects = new Type[] { typeof(Speed), typeof(RandomGameSpeed), typeof(SuperHot) };
         }
 
         float delay = 0;
