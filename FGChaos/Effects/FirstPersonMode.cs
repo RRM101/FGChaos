@@ -7,7 +7,7 @@ namespace FGChaos.Effects
     {
         public FirstPersonMode()
         {
-            Name = "First Person Mode";
+            Name = Plugin.EasyFirstPersonMode.Value ? "Easy First Person Mode" : "First Person Mode";
             Duration = 30;
             BlockedEffects = new Type[]
             {
@@ -33,7 +33,7 @@ namespace FGChaos.Effects
             cameraDirectorTransform.GetChild(0).position = Vector3.zero;
             cameraDirectorTransform.GetChild(0).localPosition = Vector3.zero;
             cameraDirectorTransform.GetChild(0).rotation = new Quaternion(0, 0, 0, 0);
-            cameraDirectorTransform.SetParent(chaos.fallGuy.transform.FindChild("Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Head_C_jnt01/"));
+            cameraDirectorTransform.SetParent(Plugin.EasyFirstPersonMode.Value ? chaos.fallGuy.transform : chaos.fallGuy.transform.FindChild("Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Head_C_jnt01/"));
             cameraDirectorTransform.localPosition = new Vector3(0, 2, 0);
             cameraDirectorTransform.rotation = new Quaternion(0, 0, 0, 0);
             base.Run();
