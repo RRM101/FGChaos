@@ -16,6 +16,9 @@ using System.Collections.Generic;
 using FGClient.UI;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UniverseLib.UI;
+using FGChaos.Effects;
+using System.Linq;
 
 namespace FGChaos
 {
@@ -67,6 +70,7 @@ namespace FGChaos
         };
         bool hasMissingFiles;
         List<string> missingFilePaths = new List<string>();
+        UIBase UI;
         
         public void Awake()
         {
@@ -76,6 +80,14 @@ namespace FGChaos
             }
             instance = this;
 
+            UniverseLib.Universe.Init(1, null, null, new()
+            {
+                Disable_EventSystem_Override = false,
+                Force_Unlock_Mouse = true,
+                Unhollowed_Modules_Folder = Paths.BepInExRootPath + "/interop"
+            });
+
+            DisableEffects();
             CheckForMissingFiles();
         }
 
@@ -98,6 +110,13 @@ namespace FGChaos
 
             if (scene.name == "MainMenu")
             {
+                if (UI == null)
+                {
+                    UI = UniversalUI.RegisterUI("org.rrm1.fgchaos", null);
+                    new EffectOptionsUI(UI);
+                    UI.Enabled = false;
+                }
+
                 if (effectName == null)
                 {
                     GameObject effectNameGameObject = new GameObject("Effect Name");
@@ -139,6 +158,12 @@ namespace FGChaos
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.L) && chaosInstance != null)
             {
                 Destroy(chaosInstance.gameObject);
+            }
+
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                UI.Enabled = !UI.Enabled;
+                CursorManager.Instance.OnApplicationFocus(true);
             }
         }
 
@@ -204,6 +229,27 @@ namespace FGChaos
             };
 
             PopupManager.Instance.Show(PopupInteractionType.Warning, modalMessageData);
+        }
+
+        public static void DisableEffects()
+        {
+            if (File.Exists($"{Paths.PluginPath}/FGChaos/disabledeffects.txt"))
+            {
+                string[] disabledEffects = File.ReadAllLines($"{Paths.PluginPath}/FGChaos/disabledeffects.txt");
+
+                EffectList.enabledEffects = EffectList.effects.ToList();
+
+                foreach (Effect effect in EffectList.effects)
+                {
+                    foreach (string disabledEffect in disabledEffects)
+                    {
+                        if (effect.ID == disabledEffect)
+                        {
+                            EffectList.enabledEffects.Remove(effect);
+                        }
+                    }
+                }
+            }
         }
 
         void SpawnAddressableAsset(string key)
@@ -286,6 +332,5 @@ namespace FGChaos
         {
             StartCoroutine(enumerator.WrapToIl2Cpp());
         }
-    }
-    
+    }    
 }

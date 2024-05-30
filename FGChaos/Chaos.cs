@@ -15,7 +15,7 @@ namespace FGChaos
 {
     public class Chaos : MonoBehaviour
     {
-        List<Effect> effects = EffectList.effects;
+        List<Effect> effects = EffectList.enabledEffects;
         public static List<Effect> activeEffects = new List<Effect>();
         public FallGuysCharacterController fallGuy;
         public Rigidbody fgrb;

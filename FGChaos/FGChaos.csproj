@@ -112,6 +112,9 @@
     <Reference Include="UnityEngine.PhysicsModule">
       <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
+    <Reference Include="UniverseLib.IL2CPP.Interop">
+      <HintPath>..\..\..\..\FallGuys10.8\BepInEx\plugins\sinai-dev-UnityExplorer\UniverseLib.IL2CPP.Interop.dll</HintPath>
+    </Reference>
     <Reference Include="Wushu.LevelEditor.Runtime">
       <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\Wushu.LevelEditor.Runtime.dll</HintPath>
     </Reference>

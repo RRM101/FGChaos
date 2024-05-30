@@ -1,11 +1,12 @@
 ﻿using FGChaos.Effects;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FGChaos
 {
     public static class EffectList
     {
-        public static List<Effect> effects = new List<Effect>()
+        public static Effect[] effects = new Effect[]
         {
             new FlingPlayer(),
             new TeleportToStartingPosition(),
@@ -66,5 +67,7 @@ namespace FGChaos
             new BouncyPlayer(),
             new SuperHot()
         };
+
+        public static List<Effect> enabledEffects = effects.ToList();
     }
 }
