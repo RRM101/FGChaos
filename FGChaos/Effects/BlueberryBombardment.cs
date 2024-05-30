@@ -1,4 +1,5 @@
-﻿using FG.Common.LODs;
+﻿using DG.Tweening;
+using FG.Common.LODs;
 using Mediatonic.Tools.Utils;
 using SRF;
 using System.Collections;
@@ -48,12 +49,9 @@ namespace FGChaos.Effects
         }
 
         IEnumerator ImageFade()
-        {   
-            while (blueberryImage.color.a > 0)
-            {
-                blueberryImage.SetAlpha(blueberryImage.color.a - Time.deltaTime);
-                yield return null;
-            }
+        {
+            Tween tween = blueberryImage.DOColor(new Color(blueberryImage.color.r, blueberryImage.color.g, blueberryImage.color.b, 0), 1.3f);
+            yield return tween.WaitForCompletion();
             GameObject.Destroy(blueberryImage.gameObject);
         }
 
