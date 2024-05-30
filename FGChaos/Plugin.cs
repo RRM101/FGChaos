@@ -195,7 +195,7 @@ namespace FGChaos
             ModalMessageData modalMessageData = new ModalMessageData
             {
                 Title = "FGChaos - WARNING!",
-                Message = $"You are using FGTools which is not currently supported by FGChaos, the mod will still work, but there might be unexpected bugs.",
+                Message = "You are using FGTools which is not currently supported by FGChaos, the mod will still work, but there might be unexpected bugs.",
                 LocaliseTitle = UIModalMessage.LocaliseOption.NotLocalised,
                 LocaliseMessage = UIModalMessage.LocaliseOption.NotLocalised,
                 ModalType = UIModalMessage.ModalType.MT_OK

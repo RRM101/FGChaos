@@ -16,6 +16,14 @@ namespace FGChaos.Effects
             BlockedEffects = new Type[] { typeof(Speed), typeof(RandomGameSpeed), typeof(SuperHot) };
         }
 
+        public static bool active;
+
+        public override void Run()
+        {
+            active = true;
+            base.Run();
+        }
+
         public override void Update()
         {
             float gameSpeed = chaos.fgrb.velocity.magnitude / 8.5f;
@@ -25,6 +33,7 @@ namespace FGChaos.Effects
 
         public override void End()
         {
+            active = false;
             Time.timeScale = 1;
             base.End();
         }
