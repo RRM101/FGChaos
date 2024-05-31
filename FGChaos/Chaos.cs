@@ -125,8 +125,17 @@ namespace FGChaos
 
             if (effectInstance.ID == "Eliminate" || effectInstance.ID == "Win")
             {
-                int rng = UnityEngine.Random.RandomRange(0, 11);
+                int rng = UnityEngine.Random.RandomRange(0, 8);
                 if (rng != 5)
+                {
+                    RandomEffect();
+                    return;
+                }
+            }
+
+            if (effectInstance.ID == "RageQuit")
+            {
+                if (UnityEngine.Random.Range(0, 4) != 2)
                 {
                     RandomEffect();
                     return;
@@ -178,6 +187,11 @@ namespace FGChaos
 
             delay = Math.Min(delay, Plugin.EffectTimer.Value);
             chaosSlider.value = delay / Plugin.EffectTimer.Value;
+
+            if (fallGuy == null)
+            {
+                Destroy(this);
+            }
         }
 
         public static bool CanJump(MotorFunctionJump motorFunctionJump)

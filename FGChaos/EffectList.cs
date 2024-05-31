@@ -65,7 +65,8 @@ namespace FGChaos
             new RandomFPS(),
             new SuperJump(),
             new BouncyPlayer(),
-            new SuperHot()
+            new SuperHot(),
+            new RageQuit()
         };
 
         public static List<Effect> enabledEffects = effects.ToList();
