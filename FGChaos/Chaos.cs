@@ -178,7 +178,7 @@ namespace FGChaos
         {
             if (delay > 0)
             {
-                delay -= SuperHot.active ? Time.deltaTime : Time.deltaTime / Time.timeScale; 
+                delay -= SuperHot.active ? Time.deltaTime : Time.unscaledDeltaTime; 
             }
             else
             {

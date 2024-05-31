@@ -143,7 +143,7 @@ namespace FGChaos.Effects
             float wait = 0;
             while (wait  < seconds)
             {
-                wait += Time.deltaTime / Time.timeScale;
+                wait += Time.unscaledDeltaTime;
                 yield return null;
             }
         }
