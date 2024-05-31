@@ -135,7 +135,7 @@ namespace FGChaos
 
             if (effectInstance.ID == "RageQuit")
             {
-                if (UnityEngine.Random.Range(0, 4) != 2)
+                if (UnityEngine.Random.Range(0, 3) != 2)
                 {
                     RandomEffect();
                     return;
