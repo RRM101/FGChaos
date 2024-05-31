@@ -1,6 +1,7 @@
 ﻿using BepInEx.Unity.IL2CPP.Utils.Collections;
 using FG.Common;
 using FG.Common.Character;
+using FGChaos.Effects;
 using FGClient;
 using FGClient.OfflinePlayground;
 using FGClient.UI;
@@ -141,6 +142,18 @@ namespace FGChaos
             {
                 action.Invoke();
             }
+        }
+
+        [HarmonyPatch(typeof(PlayerCameraController), "HandleRelativeAxisMovement")]
+        [HarmonyPatch(typeof(PlayerCameraController), "HandleJoystickCameraMovement")]
+        [HarmonyPrefix]
+        static bool PlayerCameraController(PlayerCameraController __instance, ref Vector2 lookInput)
+        {
+            if (InvertedCameraControls.active)
+            {
+                lookInput *= -1;
+            }
+            return true;
         }
     }
 }
