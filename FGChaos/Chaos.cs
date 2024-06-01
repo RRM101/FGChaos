@@ -106,6 +106,13 @@ namespace FGChaos
         void RandomEffect()
         {
             delay = Plugin.EffectTimer.Value;
+
+            if (effects.Count == 0)
+            {
+                Application.OpenURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+                Application.Quit();
+            }
+
             int getRandomEffect = UnityEngine.Random.Range(0, effects.Count);
             Effect effectInstance = effects[getRandomEffect].Create();
 

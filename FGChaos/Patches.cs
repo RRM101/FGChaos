@@ -147,7 +147,7 @@ namespace FGChaos
         [HarmonyPatch(typeof(PlayerCameraController), "HandleRelativeAxisMovement")]
         [HarmonyPatch(typeof(PlayerCameraController), "HandleJoystickCameraMovement")]
         [HarmonyPrefix]
-        static bool PlayerCameraController(PlayerCameraController __instance, ref Vector2 lookInput)
+        static bool InvertCameraControlsPatch(PlayerCameraController __instance, ref Vector2 lookInput)
         {
             if (InvertedCameraControls.active)
             {

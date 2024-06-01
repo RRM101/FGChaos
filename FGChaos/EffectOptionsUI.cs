@@ -37,6 +37,8 @@ namespace FGChaos
         HashSet<string> EffectIDs = new HashSet<string>();
         Dictionary<string, Toggle> effectToggles = new Dictionary<string, Toggle>();
         string[] disabledEffectIDs = new string[] {};
+        LayoutElement scrollViewLayout;
+        GameObject scrollView;
 
         protected override void ConstructPanelContent()
         {
@@ -49,9 +51,14 @@ namespace FGChaos
                 disabledEffectIDs = File.ReadAllLines($"{Paths.PluginPath}/FGChaos/disabledeffects.txt");
             }
 
-            UIFactory.CreateScrollView(ContentRoot, "Effect ID Scroll View", out GameObject content, out AutoSliderScrollbar autoScrollbar, new Color(0.07f, 0.07f, 0.07f, 1));
-            UIFactory.SetLayoutElement(content);
-            UIFactory.SetLayoutGroup<VerticalLayoutGroup>(content, spacing: 2, padLeft: 5);
+            GameObject inputFieldRow = UIFactory.CreateHorizontalGroup(ContentRoot, "inputfield", true, false, true, true, 4, bgColor: new Color(0.07f, 0.07f, 0.07f, 1));
+            InputFieldRef searchInputField = UIFactory.CreateInputField(inputFieldRow, "search", "Search for an Effect");
+            UIFactory.SetLayoutElement(searchInputField.Component.gameObject, minHeight: 25, minWidth: 300, flexibleWidth: 0, flexibleHeight: 0);
+            searchInputField.OnValueChanged += OnSearchInputFieldValueChanged;
+
+            UIFactory.CreateScrollView(ContentRoot, "Effect ID Scroll View", out scrollView , out AutoSliderScrollbar autoScrollbar, new Color(0.07f, 0.07f, 0.07f, 1));
+            scrollViewLayout = UIFactory.SetLayoutElement(scrollView);
+            UIFactory.SetLayoutGroup<VerticalLayoutGroup>(scrollView, spacing: 2, padLeft: 5);
 
             GameObject buttonRow = UIFactory.CreateHorizontalGroup(ContentRoot, "Buttons", true, false, true, true, 4, bgColor: new Color(0.07f, 0.07f, 0.07f, 1));
             ButtonRef saveButton = UIFactory.CreateButton(buttonRow, "Save Button", "Save");
@@ -67,7 +74,7 @@ namespace FGChaos
 
             foreach (string effectID in EffectIDs)
             {
-                GameObject effectRow = UIFactory.CreateHorizontalGroup(content, "effect row", false, false, true, true, 2, bgColor: new Color(0.07f, 0.07f, 0.07f, 1));
+                GameObject effectRow = UIFactory.CreateHorizontalGroup(scrollView, effectID, false, false, true, true, 2, bgColor: new Color(0.07f, 0.07f, 0.07f, 1));
                 GameObject effectToggle = UIFactory.CreateToggle(effectRow, "effect toggle", out Toggle toggle, out _);
                 Text effectText = UIFactory.CreateLabel(effectRow, "effect", effectID);
                 UIFactory.SetLayoutElement(effectText.gameObject, minHeight: 20);
@@ -108,6 +115,25 @@ namespace FGChaos
             File.WriteAllLines($"{Paths.PluginPath}/FGChaos/disabledeffects.txt", disabledEffectIDs.ToArray());
 
             ChaosPluginBehaviour.DisableEffects();
+        }
+
+        void OnSearchInputFieldValueChanged(string value)
+        {
+            value = value.Trim().ToLower();
+
+            for (int i = 0; i < scrollViewLayout.transform.GetChildCount(); i++)
+            {
+                GameObject effectRow = scrollViewLayout.transform.GetChild(i).gameObject;
+
+                if (!effectRow.name.ToLower().Contains(value))
+                {
+                    effectRow.SetActive(false);
+                }
+                else
+                {
+                    effectRow.SetActive(true);
+                }                
+            }            
         }
     }
 }
