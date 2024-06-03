@@ -138,14 +138,17 @@ namespace FGChaos.Effects
             }
         }
 
-        public IEnumerator WaitForSeconds(float seconds)
+        public IEnumerator WaitForSeconds(float seconds) // will change for everything later
         {
-            float wait = 0;
+            /*float wait = 0;
             while (wait  < seconds)
             {
                 wait += Time.unscaledDeltaTime;
                 yield return null;
-            }
+            }*/
+
+
+            yield return new WaitForSecondsRealtime(seconds);
         }
     }
 }

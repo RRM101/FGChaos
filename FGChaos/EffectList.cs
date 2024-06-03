@@ -68,7 +68,8 @@ namespace FGChaos
             new SuperHot(),
             new RageQuit(),
             new InvertedCameraControls(),
-            new LaunchPlayerUp()
+            new LaunchPlayerUp(),
+            new Boulders()
         };
 
         public static List<Effect> enabledEffects = effects.ToList();

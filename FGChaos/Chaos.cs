@@ -10,6 +10,8 @@ using UnityEngine.UI;
 using BepInEx;
 using UnityEngine.Rendering.PostProcessing;
 using Levels.Progression;
+using System.Collections;
+using BepInEx.Unity.IL2CPP.Utils.Collections;
 
 namespace FGChaos
 {
@@ -179,6 +181,17 @@ namespace FGChaos
             }
 
             Debug.Log("Effect Ran: " + effectInstance.Name);
+        }
+
+        void RunEffectWithDelay(Effect effect, float delay)
+        {
+            StartCoroutine(IRunEffectWithDelay(effect, delay).WrapToIl2Cpp());
+        }
+
+        IEnumerator IRunEffectWithDelay(Effect effect, float delay)
+        {
+            yield return new WaitForSecondsRealtime(delay);
+            effect.Run();
         }
 
         void Update()
