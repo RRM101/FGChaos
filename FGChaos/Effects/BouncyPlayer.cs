@@ -22,6 +22,7 @@ namespace FGChaos.Effects
             physicMaterial = chaos.fallGuy.GetComponent<CapsuleCollider>().material;
             physicMaterial.bounciness = 1;
             physicMaterial.bounceCombine = PhysicMaterialCombine.Maximum;
+            chaos.fallGuy.gameObject.AddComponent<MonoBehaviours.BouncyPlayer>();
             base.Run();
         }
 
@@ -29,6 +30,11 @@ namespace FGChaos.Effects
         {
             physicMaterial.bounciness = 0;
             physicMaterial.bounceCombine = PhysicMaterialCombine.Minimum;
+
+            if (chaos != null)
+            {
+                UnityEngine.Object.Destroy(chaos.fallGuy.gameObject.GetComponent<MonoBehaviours.BouncyPlayer>());
+            }
             base.End();
         }
     }
