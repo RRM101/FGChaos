@@ -34,7 +34,10 @@ namespace FGChaos.Effects
 
         IEnumerator BoulderRainSpawn()
         {
-            Vector3 randompoint = chaos.fallGuy.transform.position + (Vector3)(20 * UnityEngine.Random.insideUnitCircle);
+            Quaternion rotation = Quaternion.Euler(0, chaos.fallGuy.transform.eulerAngles.y, chaos.fallGuy.transform.eulerAngles.z);
+            Vector3 position = chaos.fallGuy.transform.position + rotation * new Vector3(0, 0, 25);
+
+            Vector3 randompoint = position + (Vector3)(20 * UnityEngine.Random.insideUnitCircle);
             int randomy = UnityEngine.Random.Range(50, 100);
             Vector3 randomPosition = new Vector3(randompoint.x, chaos.fallGuy.transform.position.y + randomy, randompoint.z);
             string[] boulderKeys = { "PB_Boulder_Large", "PB_Boulder_Large_01", "PB_Boulder_Large_02", "PB_Boulder_Large_03", "PB_Boulder_Large_04" };
