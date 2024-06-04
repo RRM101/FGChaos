@@ -27,9 +27,10 @@ namespace FGChaos.Effects
 
         IEnumerator SpawnBoulders(Vector3 fgpos)
         {
+            Quaternion rotation = Quaternion.Euler(0, chaos.fallGuy.transform.eulerAngles.y, chaos.fallGuy.transform.eulerAngles.z);
             GameObject gameObject = new GameObject("Boulders.");
-            gameObject.transform.position = fgpos + chaos.fallGuy.transform.rotation * new Vector3(-30, 0, -5);
-            gameObject.transform.rotation = chaos.fallGuy.transform.rotation;
+            gameObject.transform.position = fgpos + rotation * new Vector3(-30, 0, -5);
+            gameObject.transform.rotation = rotation;
             int spacing = 6;
             AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>("PB_Boulder_Large");
             yield return handle;

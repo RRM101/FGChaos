@@ -115,7 +115,7 @@ namespace FGChaos
                 if (UI == null)
                 {
                     UI = UniversalUI.RegisterUI("org.rrm1.fgchaos", null);
-                    new EffectOptionsUI(UI);
+                    new UI.EffectOptionsUI(UI);
                     UI.Enabled = false;
                 }
 
