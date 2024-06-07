@@ -71,7 +71,8 @@ namespace FGChaos
             new LaunchPlayerUp(),
             new Boulders(),
             new GlitchyPlayer(),
-            new BertCamera()
+            new BertCamera(),
+            new BertTeleport()
         };
 
         public static List<Effect> enabledEffects = effects.ToList();
