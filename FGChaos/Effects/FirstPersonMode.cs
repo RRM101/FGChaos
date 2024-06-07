@@ -20,7 +20,8 @@ namespace FGChaos.Effects
                 typeof(PaperGuys),
                 typeof(Camera2D),
                 typeof(WideGuys),
-                typeof(PlayAsBert)
+                typeof(PlayAsBert),
+                typeof(BertCamera)
             };
         }
 

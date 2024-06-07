@@ -15,7 +15,8 @@ namespace FGChaos.Effects
             {
                 typeof(FirstPersonMode),
                 typeof(LockCamera),
-                typeof(TopDownView)
+                typeof(TopDownView),
+                typeof(BertCamera)
             };
         }
 
