@@ -22,7 +22,7 @@ namespace FGChaos.MonoBehaviours
             Vector3 incomingVelocity = rb.velocity;
             Vector3 reflectedVelocity = Vector3.Reflect(incomingVelocity, normal);
 
-            rb.velocity = reflectedVelocity * 5;
+            rb.velocity = reflectedVelocity * 10;
         }
     }
 }

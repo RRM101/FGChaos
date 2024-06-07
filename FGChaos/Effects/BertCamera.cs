@@ -41,12 +41,7 @@ namespace FGChaos.Effects
             {
                 chaos.cameraDirector._selectedCloseCameraTarget = chaos.fallGuy.transform;
                 chaos.cameraDirector.UseCloseShot();
-            }
-
-            if (bert != null)
-            {
                 chaos.cameraDirector._closeCameraTargets.Remove(bert.transform);
-                GameObject.Destroy(bert);
             }
 
             base.End();

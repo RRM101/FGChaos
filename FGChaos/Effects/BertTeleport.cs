@@ -59,11 +59,6 @@ namespace FGChaos.Effects
                 chaos.fallGuy.transform.position = bert.transform.position;
             }
 
-            if (bert != null)
-            {
-                GameObject.Destroy(bert);
-            }
-
             if (textMeshPro != null)
             {
                 GameObject.Destroy(textMeshPro.gameObject);

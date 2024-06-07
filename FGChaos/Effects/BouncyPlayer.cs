@@ -13,6 +13,7 @@ namespace FGChaos.Effects
         {
             Name = "Bouncy Fall Guy";
             Duration = 20;
+            BlockedEffects = new Type[] { typeof(BouncyPlayer) };
         }
 
         PhysicMaterial physicMaterial;
