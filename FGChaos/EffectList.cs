@@ -63,7 +63,7 @@ namespace FGChaos
             new RandomGameSpeed(),
             new PlayAsBert(),
             new RandomFPS(),
-            new SuperJump(),
+            new Leap(),
             new BouncyPlayer(),
             new SuperHot(),
             new RageQuit(),

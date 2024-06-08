@@ -71,6 +71,7 @@ namespace FGChaos
             "/FGChaos/Assets/Images/blueberrybombardment.png"
         };
         bool hasMissingFiles;
+        bool showFGToolsPopup = Directory.Exists($"{Paths.PluginPath}/FGTools/");
         List<string> missingFilePaths = new List<string>();
         UIBase UI;
         
@@ -141,11 +142,6 @@ namespace FGChaos
                 if (Application.version != "10.8.1")
                 {
                     ShowWrongGameVersionPopup();
-                }
-
-                if (Directory.Exists($"{Paths.PluginPath}/FGTools/"))
-                {
-                    ShowFGToolsPopup();
                 }
 
                 if (hasMissingFiles)
@@ -315,6 +311,12 @@ namespace FGChaos
 
         public void EnableChaos()
         {
+            if (showFGToolsPopup)
+            {
+                ShowFGToolsPopup();
+                showFGToolsPopup = false;
+            }
+
             try
             {
                 if (chaosInstance == null)

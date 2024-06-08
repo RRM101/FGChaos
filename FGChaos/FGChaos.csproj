@@ -73,6 +73,9 @@
     <Reference Include="UnityEngine">
       <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>..\..\..\..\FallGuys10.8\BepInEx\interop\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
       <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>

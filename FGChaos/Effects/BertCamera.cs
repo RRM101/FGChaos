@@ -20,6 +20,7 @@ namespace FGChaos.Effects
         }
 
         GameObject bert;
+        Vector3 previousPosition;
 
         public override void Run()
         {
@@ -29,10 +30,22 @@ namespace FGChaos.Effects
 
         IEnumerator Bert()
         {
+            previousPosition = chaos.fallGuy.transform.position;
             AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>("PB_Penguin_NoScore");
             yield return handle;
-            bert = GameObject.Instantiate(handle.Result, chaos.fallGuy.transform.position, new Quaternion(0,0,0,0));
+            bert = GameObject.Instantiate(handle.Result, previousPosition, new Quaternion(0,0,0,0));
             chaos.cameraDirector.AddCloseCameraTarget(bert, true);
+        }
+
+        public override void Update()
+        {
+            if (bert != null)
+            {
+                if (bert.transform.position.y < -40)
+                {
+                    bert.transform.position = previousPosition;
+                }
+            }
         }
 
         public override void End()
