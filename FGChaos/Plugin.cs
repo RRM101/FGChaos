@@ -25,7 +25,7 @@ namespace FGChaos
     [BepInPlugin("org.rrm1.fgchaos", "FGChaos", version)]
     public class Plugin : BasePlugin
     {
-        public const string version = "1.0.1";
+        public const string version = "1.1.0";
 
         public static ConfigEntry<bool> Disable { get; set; }
         public static ConfigEntry<int> EffectTimer { get; set; }

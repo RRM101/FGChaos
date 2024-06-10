@@ -27,8 +27,11 @@ namespace FGChaos.Effects
             chaos.cameraDirector.IntroCams.GetComponent<Animator>().enabled = true;
             chaos.cameraDirector.IntroCams.Play(1);
             yield return new WaitForSeconds(chaos.cameraDirector.IntroCamerasDuration);
-            chaos.cameraDirector._cachedCurrentCamera.gameObject.SetActive(true);
-            chaos.cameraDirector.IntroCams.gameObject.SetActive(false);
+            if (chaos != null)
+            {
+                chaos.cameraDirector._cachedCurrentCamera.gameObject.SetActive(true);
+                chaos.cameraDirector.IntroCams.gameObject.SetActive(false);
+            }
         }
     }
 }

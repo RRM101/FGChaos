@@ -13,6 +13,9 @@ namespace FGChaos.Effects
 
         public string ID => GetType().Name;
 
+        /// <summary>
+        /// Prevent effects from running when this effect is active.
+        /// </summary>
         public Type[] BlockedEffects = new Type[] {}; // procrastinating making this an Effect array
 
         public bool destroyEffectName = true;
