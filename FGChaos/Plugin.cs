@@ -19,6 +19,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UniverseLib.UI;
 using FGChaos.Effects;
 using System.Linq;
+using NAudio.Wave;
 
 namespace FGChaos
 {
@@ -68,7 +69,13 @@ namespace FGChaos
         {
             "/FGChaos/FGChaos.dll",
             "/FGChaos/Assets/fgchaosbundle",
-            "/FGChaos/Assets/Images/blueberrybombardment.png"
+            "/FGChaos/Assets/Images/blueberrybombardment.png",
+            "/FGChaos/Libs/NAudio.dll",
+            "/FGChaos/Libs/NAudio.Asio.dll",
+            "/FGChaos/Libs/NAudio.Core.dll",
+            "/FGChaos/Libs/NAudio.Midi.dll",
+            "/FGChaos/Libs/NAudio.Wasapi.dll",
+            "/FGChaos/Libs/NAudio.WinMM.dll",
         };
         bool hasMissingFiles;
         bool showFGToolsPopup = Directory.Exists($"{Paths.PluginPath}/FGTools/");
@@ -335,6 +342,14 @@ namespace FGChaos
         public void RunCoroutine(IEnumerator enumerator)
         {
             StartCoroutine(enumerator.WrapToIl2Cpp());
+        }
+
+        void NAudioTest()
+        {
+            WaveOutEvent waveOut = new WaveOutEvent();
+            Mp3FileReader mp3FileReader = new Mp3FileReader("C:/Users/rrm1/Downloads/Dash.mp3");
+            waveOut.Init(mp3FileReader);
+            waveOut.Play();
         }
     }    
 }
