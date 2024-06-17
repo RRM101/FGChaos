@@ -70,6 +70,7 @@ namespace FGChaos
             "/FGChaos/FGChaos.dll",
             "/FGChaos/Assets/fgchaosbundle",
             "/FGChaos/Assets/Images/blueberrybombardment.png",
+            "/FGChaos/Assets/Audio/wideputin.mp3",
             "/FGChaos/Libs/NAudio.dll",
             "/FGChaos/Libs/NAudio.Asio.dll",
             "/FGChaos/Libs/NAudio.Core.dll",
