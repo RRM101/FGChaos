@@ -34,6 +34,7 @@ namespace FGChaos
         public static ConfigEntry<bool> DisableGameSpeedEffects { get; set; }
         public static ConfigEntry<bool> ShowWatermark { get; set; } 
         public static ConfigEntry<bool> EasyFirstPersonMode { get; set; }
+        public static ConfigEntry<bool> CustomAudio { get; set; }
 
         public override void Load()
         {
@@ -43,6 +44,7 @@ namespace FGChaos
             DisableGameSpeedEffects = Config.Bind("Config", "Disable Game Speed Effects", false, "Disables the Game Speed Effects. (Deprecated)");
             ShowWatermark = Config.Bind("Config", "Show Watermark", true, "Shows a Watermark at the Bottom-Left side of the Screen.");
             EasyFirstPersonMode = Config.Bind("Config", "Easy First Person Mode", false, "Makes First Person Mode easier.");
+            CustomAudio = Config.Bind("Config", "Enable Custom Audio", true, "Enables Custom Audio.");
 
             if (!Disable.Value)
             {

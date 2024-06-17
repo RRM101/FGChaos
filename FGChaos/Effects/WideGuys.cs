@@ -28,7 +28,10 @@ namespace FGChaos.Effects
         public override void Run()
         {
             chaos.fallGuy.transform.GetChild(0).transform.GetChild(0).DOScaleX(5, 1);
-            PlayAudio();
+            if (Plugin.CustomAudio.Value)
+            {
+                PlayAudio();
+            }
             base.Run();
         }
 
@@ -55,7 +58,11 @@ namespace FGChaos.Effects
 
         public override void End()
         {
-            StopAudio();
+            if (waveOut != null)
+            {
+                StopAudio();
+            }
+
             if (chaos != null)
             {
                 chaos.fallGuy.transform.GetChild(0).transform.GetChild(0).localScale = new Vector3(1, 1, 1);
