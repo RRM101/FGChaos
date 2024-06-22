@@ -35,6 +35,7 @@ namespace FGChaos
         public static ConfigEntry<bool> ShowWatermark { get; set; } 
         public static ConfigEntry<bool> EasyFirstPersonMode { get; set; }
         public static ConfigEntry<bool> CustomAudio { get; set; }
+        public static ConfigEntry<int> CustomAudioVolume { get; set; }
 
         public override void Load()
         {
@@ -45,6 +46,7 @@ namespace FGChaos
             ShowWatermark = Config.Bind("Config", "Show Watermark", true, "Shows a Watermark at the Bottom-Left side of the Screen.");
             EasyFirstPersonMode = Config.Bind("Config", "Easy First Person Mode", false, "Makes First Person Mode easier.");
             CustomAudio = Config.Bind("Config", "Enable Custom Audio", true, "Enables Custom Audio.");
+            CustomAudioVolume = Config.Bind("Config", "Custom Audio Volume", 50, "Volume for custom audio. (Max 100)");
 
             if (!Disable.Value)
             {
@@ -345,14 +347,6 @@ namespace FGChaos
         public void RunCoroutine(IEnumerator enumerator)
         {
             StartCoroutine(enumerator.WrapToIl2Cpp());
-        }
-
-        void NAudioTest()
-        {
-            WaveOutEvent waveOut = new WaveOutEvent();
-            Mp3FileReader mp3FileReader = new Mp3FileReader("C:/Users/rrm1/Downloads/Dash.mp3");
-            waveOut.Init(mp3FileReader);
-            waveOut.Play();
         }
     }    
 }

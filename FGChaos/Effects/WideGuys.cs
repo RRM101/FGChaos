@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using BepInEx.Configuration;
 using DG.Tweening;
 using FGClient;
 using NAudio.Wave;
@@ -23,6 +24,7 @@ namespace FGChaos.Effects
 
         WaveOutEvent waveOut;
         ClientGameManager cgm;
+        VolumeWaveProvider16 volumeWaveProvider;
         float fgMusicVolume;
 
         public override void Run()
@@ -31,6 +33,7 @@ namespace FGChaos.Effects
             if (Plugin.CustomAudio.Value)
             {
                 PlayAudio();
+                Plugin.CustomAudioVolume.SettingChanged += CustomAudioVolumeSettingChanged;
             }
             base.Run();
         }
@@ -39,17 +42,27 @@ namespace FGChaos.Effects
         {
             waveOut = new WaveOutEvent();
             Mp3FileReader mp3File = new Mp3FileReader($"{Paths.PluginPath}/FGChaos/Assets/Audio/wideputin.mp3");
-            waveOut.Init(mp3File);
+            volumeWaveProvider = new VolumeWaveProvider16(mp3File);
+            volumeWaveProvider.Volume = Math.Min((float)Plugin.CustomAudioVolume.Value / 100, 100);
+            waveOut.Init(volumeWaveProvider);
             waveOut.Play();
             GlobalGameStateClient.Instance.GameStateView.GetLiveClientGameManager(out cgm);
             cgm._musicInstance.getVolume(out fgMusicVolume);
             cgm._musicInstance.setVolume(0.3f);
         }
 
+        void CustomAudioVolumeSettingChanged(object sender, EventArgs eventArgs)
+        {
+            SettingChangedEventArgs settingChangedEventArgs = (SettingChangedEventArgs)eventArgs;
+            float volume = Math.Min((float)Convert.ToInt32(settingChangedEventArgs.ChangedSetting.BoxedValue) / 100, 100);
+            volumeWaveProvider.Volume = volume;
+        }
+
         void StopAudio()
         {
             waveOut.Stop();
             waveOut.Dispose();
+            Plugin.CustomAudioVolume.SettingChanged -= CustomAudioVolumeSettingChanged;
             if (!cgm.IsShutdown)
             {
                 cgm._musicInstance.setVolume(fgMusicVolume);
