@@ -8,7 +8,7 @@ namespace FGChaos.Effects
 {
     public class OpenCalculator : Effect
     {
-        public OpenCalculator() // wont be in 1.1
+        public OpenCalculator()
         {
             Name = "Open Calculator";
         }

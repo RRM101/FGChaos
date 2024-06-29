@@ -23,7 +23,7 @@ namespace FGChaos
             new BoulderRain(),
             new PlanetAssault(),
             new WitnessProtection(),
-            //new ClonePlayer(),  // Temporarily disabled because its bugged
+            //new ClonePlayer(),  // Permanently disabled because its bugged
             new FirstPersonMode(),
             new PiracyIsNoFalling(),
             new RocketShip(),
@@ -72,7 +72,9 @@ namespace FGChaos
             new Boulders(),
             new GlitchyPlayer(),
             new BertCamera(),
-            new BertTeleport()
+            new BertTeleport(),
+            new PlayIntroCamera(),
+            new OpenCalculator()
         };
 
         public static List<Effect> enabledEffects = effects.ToList();

@@ -21,7 +21,8 @@ namespace FGChaos.Effects
                 typeof(Camera2D),
                 typeof(WideGuys),
                 typeof(PlayAsBert),
-                typeof(BertCamera)
+                typeof(BertCamera),
+                typeof(PlayIntroCamera)
             };
         }
 
