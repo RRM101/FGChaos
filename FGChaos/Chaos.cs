@@ -125,7 +125,7 @@ namespace FGChaos
                     Effect effect = (Effect)Activator.CreateInstance(effectType);
                     if (effect.ID == effectInstance.ID)
                     {
-                        Debug.Log($"Blocked {effectInstance.ID} because {activeEffect.ID} is active");
+                        Plugin.Logs.LogInfo($"Blocked {effectInstance.ID} because {activeEffect.ID} is active");
                         RandomEffect();
                         return;
                     }
@@ -180,7 +180,7 @@ namespace FGChaos
                 AudioManager.PlayOneShot("UI_MainMenu_Settings_Accept");
             }
 
-            Debug.Log("Effect Ran: " + effectInstance.Name);
+            Plugin.Logs.LogInfo("Effect Ran: " + effectInstance.Name);
         }
 
         void RunEffectWithDelay(Effect effect, float delay)

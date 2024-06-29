@@ -78,7 +78,7 @@ namespace FGChaos.Effects
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError($"Error occured while running Update method: {e.Message} in effect {ID}");
+                    Plugin.Logs.LogError($"Error occured while running Update method: {e.Message} in effect {ID}");
                     canRunUpdateMethod = false;
                 }
                 yield return null;

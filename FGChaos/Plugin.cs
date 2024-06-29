@@ -20,6 +20,7 @@ using UniverseLib.UI;
 using FGChaos.Effects;
 using System.Linq;
 using NAudio.Wave;
+using BepInEx.Logging;
 
 namespace FGChaos
 {
@@ -27,6 +28,8 @@ namespace FGChaos
     public class Plugin : BasePlugin
     {
         public const string version = "1.1.0";
+
+        public static ManualLogSource Logs = new("FGChaos");
 
         public static ConfigEntry<bool> Disable { get; set; }
         public static ConfigEntry<int> EffectTimer { get; set; }
@@ -47,6 +50,8 @@ namespace FGChaos
             EasyFirstPersonMode = Config.Bind("Config", "Easy First Person Mode", false, "Makes First Person Mode easier.");
             CustomAudio = Config.Bind("Config", "Enable Custom Audio", true, "Enables Custom Audio.");
             CustomAudioVolume = Config.Bind("Config", "Custom Audio Volume", 50, "Volume for custom audio. (Max 100)");
+
+            BepInEx.Logging.Logger.Sources.Add(Logs);
 
             if (!Disable.Value)
             {
@@ -201,6 +206,8 @@ namespace FGChaos
                 ModalType = UIModalMessage.ModalType.MT_OK
             };
 
+            Plugin.Logs.LogError("Missing Files!");
+
             PopupManager.Instance.Show(PopupInteractionType.Error, modalMessageData);
             Harmony.UnpatchID("FGChaosPatches");
         }
@@ -218,6 +225,8 @@ namespace FGChaos
                 ModalType = UIModalMessage.ModalType.MT_BLOCKING,
                 OnCloseButtonPressed = stupid
             };
+
+            Plugin.Logs.LogError($"Wrong Game Version: {Application.version}");
 
             PopupManager.Instance.Show(PopupInteractionType.Error, modalMessageData);
         }
