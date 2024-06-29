@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>FGChaos</AssemblyName>
     <Description>FGChaos</Description>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RestoreAdditionalProjectSources>
@@ -123,4 +123,8 @@
       <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\Wushu.LevelEditor.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	<Exec Command="PowerShell .\DebugPostBuild.ps1" />
+	</Target>
 </Project>

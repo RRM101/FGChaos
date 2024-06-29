@@ -19,7 +19,6 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UniverseLib.UI;
 using FGChaos.Effects;
 using System.Linq;
-using NAudio.Wave;
 using BepInEx.Logging;
 
 namespace FGChaos
@@ -200,7 +199,7 @@ namespace FGChaos
             ModalMessageData modalMessageData = new ModalMessageData
             {
                 Title = "FGChaos - Missing Files!",
-                Message = $"The Missing Files are:\n{missingFiles}\nMake you sure you placed the mod in the correct folder.",
+                Message = $"The Missing Files are:\n{missingFiles}\n<b>Make you sure you have placed the mod in the correct folder.</b>",
                 LocaliseTitle = UIModalMessage.LocaliseOption.NotLocalised,
                 LocaliseMessage = UIModalMessage.LocaliseOption.NotLocalised,
                 ModalType = UIModalMessage.ModalType.MT_OK
