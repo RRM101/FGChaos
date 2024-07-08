@@ -74,7 +74,8 @@ namespace FGChaos
             new BertCamera(),
             new BertTeleport(),
             new PlayIntroCamera(),
-            new OpenCalculator()
+            new OpenCalculator(),
+            new ReplayRecording()
         };
 
         public static List<Effect> enabledEffects = effects.ToList();

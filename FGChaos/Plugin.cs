@@ -57,6 +57,7 @@ namespace FGChaos
                 Harmony.CreateAndPatchAll(typeof(Patches), "FGChaosPatches");
 
                 ClassInjector.RegisterTypeInIl2Cpp<MonoBehaviours.BouncyPlayer>();
+                ClassInjector.RegisterTypeInIl2Cpp<MonoBehaviours.ReplayRecorder>();
 
                 ClassInjector.RegisterTypeInIl2Cpp<ChaosPluginBehaviour>();
                 ClassInjector.RegisterTypeInIl2Cpp<Chaos>();

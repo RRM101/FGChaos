@@ -50,12 +50,15 @@ namespace FGChaos.Effects
             cameraDirectorTransform.DOLocalMove(Vector3.zero, 1).SetEase(Ease.InOutSine);
             Tween tween = cameraDirectorTransform.GetChild(0).DORotate(chaos.fallGuy.transform.eulerAngles, 1).SetEase(Ease.InOutSine);
             yield return tween.WaitForCompletion();
-            input._camera = cameraDirectorTransform;
-            cameraDirectorTransform.GetParent().SetParent(null);
-            cameraDirectorTransform.position = Vector3.zero;
-            cameraDirectorTransform.rotation = new Quaternion(0, 0, 0, 0);
-            cameraDirectorTransform.GetParent().GetChild(1).gameObject.SetActive(true);
-            GameObject.Destroy(parentGameObject);
+            if (cameraDirectorTransform != null)
+            {
+                input._camera = cameraDirectorTransform;
+                cameraDirectorTransform.GetParent().SetParent(null);
+                cameraDirectorTransform.position = Vector3.zero;
+                cameraDirectorTransform.rotation = new Quaternion(0, 0, 0, 0);
+                cameraDirectorTransform.GetParent().GetChild(1).gameObject.SetActive(true);
+                GameObject.Destroy(parentGameObject);
+            }
             base.End();
         }
 
