@@ -1,4 +1,6 @@
 ﻿using FGChaos.MonoBehaviours;
+using FGClient;
+using FGClient.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,11 +21,15 @@ namespace FGChaos.Effects
         }
 
         ReplayRecorder recorder;
+        ClientGameManager cgm;
 
         public override void Run()
         {
             recorder = chaos.fallGuy.gameObject.AddComponent<ReplayRecorder>();
             StartCoroutine(PlayRecordingAfter10s());
+            recorder.effect = this;
+            GlobalGameStateClient.Instance.GameStateView.GetLiveClientGameManager(out cgm);
+
 
             base.Run();
         }
@@ -36,6 +42,24 @@ namespace FGChaos.Effects
             {
                 recorder.recording = false;
                 textMeshPro.text = $"Playing Replay ({Duration})";
+                SetUIState(true);
+            }
+        }
+
+        void SetUIState(bool spectator)
+        {
+            cgm._inGameUiManager._switchableView._views[4].GetComponentInChildren<GameplayQualificationStatusPromptViewModel>().UpdateDisplay(true, false);
+            cgm._inGameUiManager._switchableView._views[4].GetComponentInChildren<NameTagViewModel>().UpdateDisplay(GlobalGameStateClient.Instance.GetLocalPlayerKey(), "", GlobalGameStateClient.Instance._playerProfile.CustomisationSelections);
+
+            if (spectator)
+            {
+                cgm._inGameUiManager._switchableView.SetViewVisibility(2, false);
+                cgm._inGameUiManager._switchableView.SetViewVisibility(4, true);
+            }
+            else
+            {
+                cgm._inGameUiManager._switchableView.SetViewVisibility(2, true);
+                cgm._inGameUiManager._switchableView.SetViewVisibility(4, false);
             }
         }
 
@@ -45,6 +69,11 @@ namespace FGChaos.Effects
             {
                 recorder.StopRecording();
                 UnityEngine.Object.Destroy(recorder);
+            }
+
+            if (!cgm.IsShutdown)
+            {
+                SetUIState(false);
             }
             base.End();
         }
