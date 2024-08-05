@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-using static FG.Common.CharacterStateRecorder.SavedArchive;
 
 namespace FGChaos
 {
     public class FGChaosDebug : MonoBehaviour
     {
+        bool showDebugMenu = false;
+
         string nextEffectID 
         { 
             get 
@@ -21,20 +22,43 @@ namespace FGChaos
             } 
         }
 
+        string activeEffects
+        {
+            get
+            {
+                List<string> activeEffectIDs = new();
+                
+                foreach (Effect effect in Chaos.activeEffects)
+                {
+                    activeEffectIDs.Add(effect.ID);
+                }
+
+                return Chaos.activeEffects.Count > 0 ? string.Join("\n", activeEffectIDs.ToArray()) : "null";
+            }
+        }
+
         string command;
         bool runCommand;
 
         void OnGUI()
         {
-            GUI.Label(new Rect(5, 5, Screen.width, Screen.height), $"<size=25>Debug FGChaos v{Plugin.version}\nRoundID: {NetworkGameData.currentGameOptions_._roundID}\nSeed: {GlobalGameStateClient.Instance.GameStateView.RoundRandomSeed}\nNextEffect: {nextEffectID}</size>");
-            
-            GUI.Box(new Rect(Screen.width - 265, 10f, 260f, 75f), "");
-            command = GUI.TextField(new Rect(Screen.width - 255, 20f, 240f, 25f), command);
-            runCommand = GUI.Button(new Rect(Screen.width - 255, 50f, 240f, 25f), "Run");
+            if (showDebugMenu)
+            {
+                GUI.Label(new Rect(5, 5, Screen.width, Screen.height), $"<size=25>Debug FGChaos v{Plugin.version}\nRoundID: {NetworkGameData.currentGameOptions_._roundID}\nSeed: {GlobalGameStateClient.Instance.GameStateView.RoundRandomSeed}\nNextEffect: {nextEffectID}\n\nActiveEffects:\n{activeEffects}</size>");
+
+                GUI.Box(new Rect(Screen.width - 265, 10f, 260f, 75f), "");
+                command = GUI.TextField(new Rect(Screen.width - 255, 20f, 240f, 25f), command);
+                runCommand = GUI.Button(new Rect(Screen.width - 255, 50f, 240f, 25f), "Run");
+            }
         }
 
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.F3))
+            {
+                showDebugMenu = !showDebugMenu;
+            }
+
             if (runCommand)
             {
                 Run(command);
