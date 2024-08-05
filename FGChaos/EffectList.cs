@@ -75,7 +75,8 @@ namespace FGChaos
             new BertTeleport(),
             new PlayIntroCamera(),
             new OpenCalculator(),
-            new ReplayRecording()
+            new ReplayRecording(),
+            new FallGuyRain()
         };
 
         public static List<Effect> enabledEffects = effects.ToList();
