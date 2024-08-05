@@ -19,7 +19,7 @@ namespace FGChaos
     {
         List<Effect> effects = EffectList.enabledEffects;
         public static List<Effect> activeEffects = new List<Effect>();
-        Effect nextEffect;
+        public Effect nextEffect;
 
         public FallGuysCharacterController fallGuy;
         public Rigidbody fgrb;
