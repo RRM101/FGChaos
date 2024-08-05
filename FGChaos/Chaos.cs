@@ -19,6 +19,8 @@ namespace FGChaos
     {
         List<Effect> effects = EffectList.enabledEffects;
         public static List<Effect> activeEffects = new List<Effect>();
+        Effect nextEffect;
+
         public FallGuysCharacterController fallGuy;
         public Rigidbody fgrb;
         public MultiplayerStartingPosition startingPosition;
@@ -92,6 +94,7 @@ namespace FGChaos
                 blueberrySprite = ChaosPluginBehaviour.PNGtoSprite(Paths.PluginPath + "/FGChaos/Assets/Images/blueberrybombardment.png");
                 ChaosPluginBehaviour.LoadBank("BNK_Music_GP");
                 ChaosPluginBehaviour.LoadBank("BNK_PlayGo");
+                ChooseRandomEffect();
 
                 if (Plugin.PlayEffectRunSFX.Value)
                 {
@@ -105,7 +108,7 @@ namespace FGChaos
             }
         }
 
-        void RandomEffect()
+        void ChooseRandomEffect()
         {
             delay = Plugin.EffectTimer.Value;
 
@@ -126,7 +129,7 @@ namespace FGChaos
                     if (effect.ID == effectInstance.ID)
                     {
                         Plugin.Logs.LogInfo($"Blocked {effectInstance.ID} because {activeEffect.ID} is active");
-                        RandomEffect();
+                        ChooseRandomEffect();
                         return;
                     }
                 }
@@ -137,7 +140,8 @@ namespace FGChaos
                 int rng = UnityEngine.Random.RandomRange(0, 8);
                 if (rng != 5)
                 {
-                    RandomEffect();
+                    Plugin.Logs.LogInfo($"Blocked {effectInstance.ID} because you got lucky/unlucky");
+                    ChooseRandomEffect();
                     return;
                 }
             }
@@ -146,7 +150,8 @@ namespace FGChaos
             {
                 if (UnityEngine.Random.Range(0, 3) != 2)
                 {
-                    RandomEffect();
+                    Plugin.Logs.LogInfo($"Blocked {effectInstance.ID} because you got weren't angry enough");
+                    ChooseRandomEffect();
                     return;
                 }
             }
@@ -156,31 +161,36 @@ namespace FGChaos
                 CheckpointManager checkpointManager = FindObjectOfType<CheckpointManager>();
                 if (checkpointManager == null)
                 {
-                    RandomEffect();
+                    Plugin.Logs.LogInfo($"Blocked {effectInstance.ID} because there isn't a Checkpoint Manager");
+                    ChooseRandomEffect();
                     return;
                 }
 
                 if (!checkpointManager.NetIDToCheckpointMap.ContainsKey(fallGuy._pNetObject.NetID))
                 {
-                    RandomEffect();
+                    Plugin.Logs.LogInfo($"Blocked {effectInstance.ID} because the Checkpoint Manager doesn't contain the player FallGuy");
+                    ChooseRandomEffect();
                     return;
                 }
             }
 
             if (effectInstance.ID == "Speed" && Plugin.DisableGameSpeedEffects.Value)
             {
-                RandomEffect();
+                ChooseRandomEffect();
                 return;
             }
 
-            effectInstance.Run();
+            nextEffect = effectInstance;
+            Plugin.Logs.LogInfo("Effect Chosen: " + effectInstance.Name);
+
+            /*effectInstance.Run();
 
             if (Plugin.PlayEffectRunSFX.Value)
             {
                 AudioManager.PlayOneShot("UI_MainMenu_Settings_Accept");
             }
 
-            Plugin.Logs.LogInfo("Effect Ran: " + effectInstance.Name);
+            Plugin.Logs.LogInfo("Effect Ran: " + effectInstance.Name);*/
         }
 
         void RunEffectWithDelay(Effect effect, float delay)
@@ -194,6 +204,18 @@ namespace FGChaos
             effect.Run();
         }
 
+        void RunEffect()
+        {
+            nextEffect.Create().Run();
+
+            if (Plugin.PlayEffectRunSFX.Value)
+            {
+                AudioManager.PlayOneShot("UI_MainMenu_Settings_Accept");
+            }
+
+            Plugin.Logs.LogInfo("Effect Ran: " + nextEffect.Name);
+        }
+
         void Update()
         {
             if (delay > 0)
@@ -202,7 +224,8 @@ namespace FGChaos
             }
             else
             {
-                RandomEffect();
+                RunEffect();
+                ChooseRandomEffect();
             }
 
             delay = Math.Min(delay, Plugin.EffectTimer.Value);

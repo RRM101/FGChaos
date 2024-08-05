@@ -20,6 +20,7 @@ namespace FGChaos.Effects
         }
 
         GameObject bert;
+        Rigidbody bertrb;
         Vector3 previousPosition;
 
         public override void Run()
@@ -34,6 +35,7 @@ namespace FGChaos.Effects
             AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>("PB_Penguin_NoScore");
             yield return handle;
             bert = GameObject.Instantiate(handle.Result, previousPosition, new Quaternion(0,0,0,0));
+            bertrb = bert.GetComponent<Rigidbody>();
             chaos.cameraDirector.AddCloseCameraTarget(bert, true);
         }
 
@@ -44,6 +46,7 @@ namespace FGChaos.Effects
                 if (bert.transform.position.y < -40)
                 {
                     bert.transform.position = previousPosition;
+                    bertrb.velocity = Vector3.zero;
                 }
             }
         }

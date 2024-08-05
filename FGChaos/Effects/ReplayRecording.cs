@@ -27,7 +27,6 @@ namespace FGChaos.Effects
         {
             recorder = chaos.fallGuy.gameObject.AddComponent<ReplayRecorder>();
             StartCoroutine(PlayRecordingAfter10s());
-            recorder.effect = this;
             GlobalGameStateClient.Instance.GameStateView.GetLiveClientGameManager(out cgm);
 
 
@@ -36,12 +35,12 @@ namespace FGChaos.Effects
 
         IEnumerator PlayRecordingAfter10s()
         {
-            yield return new WaitForSecondsRealtime(10);
+            yield return new WaitForSecondsRealtime(Duration/2);
 
             if (isActive)
             {
                 recorder.recording = false;
-                textMeshPro.text = $"Playing Replay ({Duration})";
+                textMeshPro.text = $"Playing Replay ({Duration}s)";
                 SetUIState(true);
             }
         }

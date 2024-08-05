@@ -1,5 +1,4 @@
-﻿using FGChaos.Effects;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +10,6 @@ namespace FGChaos.MonoBehaviours
     public class ReplayRecorder : MonoBehaviour
     {
         public bool recording = true;
-        public ReplayRecording effect;
         bool stopped;
         List<Vector3> positions = new();
         List<Quaternion> rotations = new();

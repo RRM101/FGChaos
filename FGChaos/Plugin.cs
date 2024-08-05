@@ -56,6 +56,8 @@ namespace FGChaos
             {
                 Harmony.CreateAndPatchAll(typeof(Patches), "FGChaosPatches");
 
+                ClassInjector.RegisterTypeInIl2Cpp<FGChaosDebug>();
+
                 ClassInjector.RegisterTypeInIl2Cpp<MonoBehaviours.BouncyPlayer>();
                 ClassInjector.RegisterTypeInIl2Cpp<MonoBehaviours.ReplayRecorder>();
 
@@ -65,6 +67,7 @@ namespace FGChaos
                 GameObject.DontDestroyOnLoad(obj);
                 obj.hideFlags = HideFlags.HideAndDontSave;
                 obj.AddComponent<ChaosPluginBehaviour>();
+                obj.AddComponent<FGChaosDebug>();
                 Log.LogInfo($"Plugin FGChaos has been loaded!");
             }
         }
@@ -219,7 +222,7 @@ namespace FGChaos
             ModalMessageData modalMessageData = new ModalMessageData
             {
                 Title = "FGChaos - ERROR!",
-                Message = $"You are on Fall Guys {Application.version}, the mod is only for Fall Guys 10.8.1",
+                Message = $"You are on Fall Guys {Application.version}, this mod is only for Fall Guys 10.8.1",
                 LocaliseTitle = UIModalMessage.LocaliseOption.NotLocalised,
                 LocaliseMessage = UIModalMessage.LocaliseOption.NotLocalised,
                 ModalType = UIModalMessage.ModalType.MT_BLOCKING,
@@ -322,7 +325,7 @@ namespace FGChaos
             ModalMessageData modalMessageData = new ModalMessageData()
             {
                 Title = "FGChaos - ERROR!",
-                Message = $"An error occured while starting chaos.\nThe Error:\n{e.Message}",
+                Message = $"An error occured while starting chaos.\nThe Error:\n{e.StackTrace}",
                 LocaliseTitle = UIModalMessage.LocaliseOption.NotLocalised,
                 LocaliseMessage = UIModalMessage.LocaliseOption.NotLocalised,
                 ModalType = UIModalMessage.ModalType.MT_OK
