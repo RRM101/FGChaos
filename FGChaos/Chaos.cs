@@ -181,7 +181,7 @@ namespace FGChaos
             }
 
             nextEffect = effectInstance;
-            Plugin.Logs.LogInfo("Effect Chosen: " + effectInstance.Name);
+            Plugin.Logs.LogInfo("Effect Chosen: " + effectInstance.ID);
 
             /*effectInstance.Run();
 
@@ -213,7 +213,7 @@ namespace FGChaos
                 AudioManager.PlayOneShot("UI_MainMenu_Settings_Accept");
             }
 
-            Plugin.Logs.LogInfo("Effect Ran: " + nextEffect.Name);
+            Plugin.Logs.LogInfo("Effect Ran: " + nextEffect.ID);
         }
 
         void Update()

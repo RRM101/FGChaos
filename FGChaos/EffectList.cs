@@ -76,7 +76,8 @@ namespace FGChaos
             new PlayIntroCamera(),
             new OpenCalculator(),
             new ReplayRecording(),
-            new FallGuyRain()
+            new FallGuyRain(),
+            //new SomethingHappened() // Disabled because it takes too long
         };
 
         public static List<Effect> enabledEffects = effects.ToList();

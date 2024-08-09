@@ -14,6 +14,7 @@ namespace FGChaos.Effects
         {
             Name = "Fall Guy Rain";
             Duration = 30;
+            BlockedEffects = new Type[] { typeof(FirstPersonMode) };
         }
 
         float delay = 0.2f;
