@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FG.Common.Character;
+using FG.Common.Character.MotorSystem;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,11 +16,18 @@ namespace FGChaos.MonoBehaviours
         List<Vector3> positions = new();
         List<Quaternion> rotations = new();
         int replayFrameIndex;
+
         Rigidbody rb;
+        FallGuysCharacterController fallGuysCharacter;
+        MotorAgent motorAgent;
+        MotorFunctionMovement movement;
 
         void Start()
         {
             rb = GetComponent<Rigidbody>();
+            fallGuysCharacter = GetComponent<FallGuysCharacterController>();
+            motorAgent = GetComponent<MotorAgent>();
+            movement = motorAgent.GetMotorFunction<MotorFunctionMovement>();
         }
 
         void FixedUpdate()
@@ -35,6 +44,9 @@ namespace FGChaos.MonoBehaviours
                     rb.velocity = Vector3.zero;
                     transform.position = positions[replayFrameIndex];
                     transform.rotation = rotations[replayFrameIndex];
+                    fallGuysCharacter.SetDesiredRotation(rotations[replayFrameIndex]);
+                    motorAgent.Animator.SetBool(new HashedAnimatorString("Moving"), true);
+                    movement.SetDesiredLean(1);
                     replayFrameIndex++;
                 }
             }
