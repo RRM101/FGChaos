@@ -1,6 +1,7 @@
 ﻿using BepInEx.Unity.IL2CPP.Utils.Collections;
 using FG.Common;
 using FG.Common.Character;
+using FG.Common.CMS;
 using FGChaos.Effects;
 using FGClient;
 using FGClient.OfflinePlayground;
@@ -154,6 +155,38 @@ namespace FGChaos
                 lookInput *= -1;
             }
             return true;
+        }
+
+        [HarmonyPatch(typeof(LocalisedStrings), "GetString", argumentTypes: new Type[] { typeof(string) })]
+        [HarmonyPostfix]
+        static void LocalisedStringsGetString(ref string __result)
+        {
+            if (__result != null && SomethingHappened.isEvil)
+            {
+                __result = "EVIL " + __result;
+            }
+        }
+
+        [HarmonyPatch(typeof(Prefab_UI_Intro_Overlay), "InitTexts")]
+        [HarmonyPostfix]
+        static void Prefab_UI_Intro_OverlayInitTexts(Prefab_UI_Intro_Overlay __instance)
+        {
+            if (SomethingHappened.isEvil)
+            {
+                __instance.LevelNameText = "EVIL " + __instance.LevelNameText;
+                __instance.LevelDescriptionText = "EVIL " + __instance.LevelDescriptionText;
+            }
+        }
+
+        [HarmonyPatch(typeof(LoadingGameScreenViewModel), "InitTexts")]
+        [HarmonyPostfix]
+        static void LoadingGameScreenViewModelInitTexts(LoadingGameScreenViewModel __instance)
+        {
+            if (SomethingHappened.isEvil)
+            {
+                __instance.RoundNameText = "EVIL " + __instance.RoundNameText;
+                __instance.RoundDescriptionText = "EVIL " + __instance.RoundDescriptionText;
+            }
         }
     }
 }
