@@ -77,7 +77,7 @@ namespace FGChaos
             new OpenCalculator(),
             new ReplayRecording(),
             new FallGuyRain(),
-            new SomethingHappened()
+            new EvilFallGuys()
         };
 
         public static List<Effect> enabledEffects = effects.ToList();

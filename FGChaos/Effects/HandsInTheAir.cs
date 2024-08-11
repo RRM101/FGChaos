@@ -21,7 +21,13 @@ namespace FGChaos.Effects
 
         public override void End()
         {
-            stateRollOver.End(0);
+            if (chaos != null)
+            {
+                if (chaos.fallGuy != null)
+                {
+                    stateRollOver.End(0);
+                }
+            }
             base.End();
         }
     }

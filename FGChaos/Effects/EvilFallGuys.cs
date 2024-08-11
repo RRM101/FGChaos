@@ -9,13 +9,13 @@ using UnityEngine;
 
 namespace FGChaos.Effects
 {
-    public class SomethingHappened : Effect
+    public class EvilFallGuys : Effect
     {
         public static bool isEvil = false;
 
-        public SomethingHappened()
+        public EvilFallGuys()
         {
-            Name = "Something Happened";
+            Name = "Evil Fall Guys";
         }
 
         public override void Run()

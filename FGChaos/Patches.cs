@@ -161,7 +161,7 @@ namespace FGChaos
         [HarmonyPostfix]
         static void LocalisedStringsGetString(ref string __result)
         {
-            if (__result != null && SomethingHappened.isEvil)
+            if (__result != null && EvilFallGuys.isEvil)
             {
                 __result = "EVIL " + __result;
             }
@@ -171,7 +171,7 @@ namespace FGChaos
         [HarmonyPostfix]
         static void Prefab_UI_Intro_OverlayInitTexts(Prefab_UI_Intro_Overlay __instance)
         {
-            if (SomethingHappened.isEvil)
+            if (EvilFallGuys.isEvil)
             {
                 __instance.LevelNameText = "EVIL " + __instance.LevelNameText;
                 __instance.LevelDescriptionText = "EVIL " + __instance.LevelDescriptionText;
@@ -182,7 +182,7 @@ namespace FGChaos
         [HarmonyPostfix]
         static void LoadingGameScreenViewModelInitTexts(LoadingGameScreenViewModel __instance)
         {
-            if (SomethingHappened.isEvil)
+            if (EvilFallGuys.isEvil)
             {
                 __instance.RoundNameText = "EVIL " + __instance.RoundNameText;
                 __instance.RoundDescriptionText = "EVIL " + __instance.RoundDescriptionText;
