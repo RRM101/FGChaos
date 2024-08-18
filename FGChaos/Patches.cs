@@ -31,15 +31,20 @@ namespace FGChaos
         [HarmonyPostfix]
         static void StartChaos()
         {
-            ChaosPluginBehaviour.instance.EnableChaos();
+            if (!Plugin.Disable.Value && !Plugin.tempDisable)
+            {
+                ChaosPluginBehaviour.instance.EnableChaos();
+            }
         }
 
         [HarmonyPatch(typeof(GameplayTimerViewModel), "Initialise")]
-        [HarmonyPrefix]
-        static bool GameplayTimerViewModelInitialise(GameplayTimerViewModel __instance)
+        [HarmonyPostfix]
+        static void GameplayTimerViewModelInitialise(GameplayTimerViewModel __instance)
         {
-            GameObject.Destroy(__instance.gameObject);
-            return false;
+            if (!Plugin.Disable.Value)
+            {
+                GameObject.Destroy(__instance.gameObject);
+            }
         }
 
         [HarmonyPatch(typeof(MotorFunctionJumpStateInactive), "UpdateState")]

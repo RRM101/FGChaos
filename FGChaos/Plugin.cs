@@ -30,6 +30,8 @@ namespace FGChaos
 
         public static ManualLogSource Logs = new("FGChaos");
 
+        public static bool tempDisable = false;
+
         public static ConfigEntry<bool> Disable { get; set; }
         public static ConfigEntry<int> EffectTimer { get; set; }
         public static ConfigEntry<bool> PlayEffectRunSFX { get; set; }
@@ -41,7 +43,7 @@ namespace FGChaos
 
         public override void Load()
         {
-            Disable = Config.Bind("Config", "Disabled", false, "Disables the mod. (Requires Restart)");
+            Disable = Config.Bind("Config", "Disabled", false, "Disables the mod.");
             EffectTimer = Config.Bind("Config", "Effect Timer", 10, "The amount of time in seconds for the next effect to run.");
             PlayEffectRunSFX = Config.Bind("Config", "Play Effect Run Sound Effect", false, "Plays a sound effect when an Effect is ran.");
             DisableGameSpeedEffects = Config.Bind("Config", "Disable Game Speed Effects", false, "Disables the Game Speed Effects. (Deprecated)");
@@ -52,24 +54,21 @@ namespace FGChaos
 
             BepInEx.Logging.Logger.Sources.Add(Logs);
 
-            if (!Disable.Value)
-            {
-                Harmony.CreateAndPatchAll(typeof(Patches), "FGChaosPatches");
+            Harmony.CreateAndPatchAll(typeof(Patches), "FGChaosPatches");
 
-                ClassInjector.RegisterTypeInIl2Cpp<FGChaosDebug>();
+            ClassInjector.RegisterTypeInIl2Cpp<FGChaosDebug>();
 
-                ClassInjector.RegisterTypeInIl2Cpp<MonoBehaviours.BouncyPlayer>();
-                ClassInjector.RegisterTypeInIl2Cpp<MonoBehaviours.ReplayRecorder>();
+            ClassInjector.RegisterTypeInIl2Cpp<MonoBehaviours.BouncyPlayer>();
+            ClassInjector.RegisterTypeInIl2Cpp<MonoBehaviours.ReplayRecorder>();
 
-                ClassInjector.RegisterTypeInIl2Cpp<ChaosPluginBehaviour>();
-                ClassInjector.RegisterTypeInIl2Cpp<Chaos>();
-                GameObject obj = new GameObject("FGChaos Behaviour");
-                GameObject.DontDestroyOnLoad(obj);
-                obj.hideFlags = HideFlags.HideAndDontSave;
-                obj.AddComponent<ChaosPluginBehaviour>();
-                obj.AddComponent<FGChaosDebug>();
-                Log.LogInfo($"Plugin FGChaos has been loaded!");
-            }
+            ClassInjector.RegisterTypeInIl2Cpp<ChaosPluginBehaviour>();
+            ClassInjector.RegisterTypeInIl2Cpp<Chaos>();
+            GameObject obj = new GameObject("FGChaos Behaviour");
+            GameObject.DontDestroyOnLoad(obj);
+            obj.hideFlags = HideFlags.HideAndDontSave;
+            obj.AddComponent<ChaosPluginBehaviour>();
+            obj.AddComponent<FGChaosDebug>();
+            Log.LogInfo($"Plugin FGChaos has been loaded!");            
         }
     }
     public class ChaosPluginBehaviour : MonoBehaviour
