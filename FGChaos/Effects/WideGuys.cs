@@ -41,7 +41,7 @@ namespace FGChaos.Effects
         void PlayAudio()
         {
             waveOut = new WaveOutEvent();
-            Mp3FileReader mp3File = new Mp3FileReader($"{Paths.PluginPath}/FGChaos/Assets/Audio/wideputin.mp3");
+            Mp3FileReader mp3File = new Mp3FileReader($"{Plugin.GetModFolder()}/Assets/Audio/wideputin.mp3");
             volumeWaveProvider = new VolumeWaveProvider16(mp3File);
             volumeWaveProvider.Volume = Math.Min((float)Plugin.CustomAudioVolume.Value / 100, 100);
             waveOut.Init(volumeWaveProvider);

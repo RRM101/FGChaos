@@ -68,7 +68,7 @@ namespace FGChaos
             try
             {
                 RectTransform chaosSliderRectTransform;
-                AssetBundle chaosBundle = AssetBundle.LoadFromFile(Paths.PluginPath + "/FGChaos/Assets/fgchaosbundle");
+                AssetBundle chaosBundle = AssetBundle.LoadFromFile(Plugin.GetModFolder() + "/Assets/fgchaosbundle");
 
                 fallGuy = FindObjectOfType<FallGuysCharacterController>();
                 fgrb = fallGuy.GetComponent<Rigidbody>();
@@ -91,7 +91,7 @@ namespace FGChaos
                 chaosSliderRectTransform.sizeDelta = new Vector2(Screen.width + 5, chaosSliderRectTransform.sizeDelta.y);
                 chaosCanvas.transform.GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
                 chaosBundle.Unload(false);
-                blueberrySprite = ChaosPluginBehaviour.PNGtoSprite(Paths.PluginPath + "/FGChaos/Assets/Images/blueberrybombardment.png");
+                blueberrySprite = ChaosPluginBehaviour.PNGtoSprite(Plugin.GetModFolder() + "/Assets/Images/blueberrybombardment.png");
                 ChaosPluginBehaviour.LoadBank("BNK_Music_GP");
                 ChaosPluginBehaviour.LoadBank("BNK_PlayGo");
                 ChooseRandomEffect();

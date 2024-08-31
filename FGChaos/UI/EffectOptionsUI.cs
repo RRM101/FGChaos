@@ -46,9 +46,9 @@ namespace FGChaos.UI
             Rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, MinHeight);
             Dragger.OnEndResize();
 
-            if (File.Exists($"{Paths.PluginPath}/FGChaos/disabledeffects.txt"))
+            if (File.Exists($"{Plugin.GetModFolder()} /disabledeffects.txt"))
             {
-                disabledEffectIDs = File.ReadAllLines($"{Paths.PluginPath}/FGChaos/disabledeffects.txt");
+                disabledEffectIDs = File.ReadAllLines($"{Plugin.GetModFolder()} /disabledeffects.txt");
             }
 
             GameObject inputFieldRow = UIFactory.CreateHorizontalGroup(ContentRoot, "inputfield", true, false, true, true, 4, bgColor: new Color(0.07f, 0.07f, 0.07f, 1));
@@ -112,7 +112,7 @@ namespace FGChaos.UI
                 }
             }
 
-            File.WriteAllLines($"{Paths.PluginPath}/FGChaos/disabledeffects.txt", disabledEffectIDs.ToArray());
+            File.WriteAllLines($"{Plugin.GetModFolder()} /disabledeffects.txt", disabledEffectIDs.ToArray());
 
             ChaosPluginBehaviour.DisableEffects();
         }

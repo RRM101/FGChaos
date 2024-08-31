@@ -70,6 +70,11 @@ namespace FGChaos
             obj.AddComponent<FGChaosDebug>();
             Log.LogInfo($"Plugin FGChaos has been loaded!");            
         }
+
+        public static string GetModFolder()
+        {
+            return Directory.Exists($"{Paths.PluginPath}/FGChaos/FGChaos") ? $"{Paths.PluginPath}/FGChaos/FGChaos" : $"{Paths.PluginPath}/FGChaos";
+        }
     }
     public class ChaosPluginBehaviour : MonoBehaviour
     {
@@ -78,16 +83,16 @@ namespace FGChaos
         public static TextMeshProUGUI effectName;
         string[] modFiles = new string[]
         {
-            "/FGChaos/FGChaos.dll",
-            "/FGChaos/Assets/fgchaosbundle",
-            "/FGChaos/Assets/Images/blueberrybombardment.png",
-            "/FGChaos/Assets/Audio/wideputin.mp3",
-            "/FGChaos/Libs/NAudio.dll",
-            "/FGChaos/Libs/NAudio.Asio.dll",
-            "/FGChaos/Libs/NAudio.Core.dll",
-            "/FGChaos/Libs/NAudio.Midi.dll",
-            "/FGChaos/Libs/NAudio.Wasapi.dll",
-            "/FGChaos/Libs/NAudio.WinMM.dll",
+            "/FGChaos.dll",
+            "/Assets/fgchaosbundle",
+            "/Assets/Images/blueberrybombardment.png",
+            "/Assets/Audio/wideputin.mp3",
+            "/Libs/NAudio.dll",
+            "/Libs/NAudio.Asio.dll",
+            "/Libs/NAudio.Core.dll",
+            "/Libs/NAudio.Midi.dll",
+            "/Libs/NAudio.Wasapi.dll",
+            "/Libs/NAudio.WinMM.dll",
         };
         bool hasMissingFiles;
         bool showFGToolsPopup = Directory.Exists($"{Paths.PluginPath}/FGTools/");
@@ -188,10 +193,10 @@ namespace FGChaos
         {
             foreach (string path in modFiles)
             {
-                if (!File.Exists(Paths.PluginPath + path))
+                if (!File.Exists(Plugin.GetModFolder() + path))
                 {
                     hasMissingFiles = true;
-                    missingFilePaths.Add(Paths.PluginPath + path);
+                    missingFilePaths.Add(Plugin.GetModFolder() + path);
                 }
             }
         }
@@ -254,9 +259,9 @@ namespace FGChaos
 
         public static void DisableEffects()
         {
-            if (File.Exists($"{Paths.PluginPath}/FGChaos/disabledeffects.txt"))
+            if (File.Exists($"{Plugin.GetModFolder()}/disabledeffects.txt"))
             {
-                string[] disabledEffects = File.ReadAllLines($"{Paths.PluginPath}/FGChaos/disabledeffects.txt");
+                string[] disabledEffects = File.ReadAllLines($"{Plugin.GetModFolder()}/disabledeffects.txt");
 
                 EffectList.enabledEffects = EffectList.effects.ToList();
 
