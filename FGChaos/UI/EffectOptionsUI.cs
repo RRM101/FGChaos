@@ -46,14 +46,14 @@ namespace FGChaos.UI
             Rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, MinHeight);
             Dragger.OnEndResize();
 
-            if (File.Exists($"{Plugin.GetModFolder()} /disabledeffects.txt"))
+            if (File.Exists($"{Plugin.GetModFolder()}/disabledeffects.txt"))
             {
-                disabledEffectIDs = File.ReadAllLines($"{Plugin.GetModFolder()} /disabledeffects.txt");
+                disabledEffectIDs = File.ReadAllLines($"{Plugin.GetModFolder()}/disabledeffects.txt");
             }
 
             GameObject inputFieldRow = UIFactory.CreateHorizontalGroup(ContentRoot, "inputfield", true, false, true, true, 4, bgColor: new Color(0.07f, 0.07f, 0.07f, 1));
             InputFieldRef searchInputField = UIFactory.CreateInputField(inputFieldRow, "search", "Search for an Effect");
-            UIFactory.SetLayoutElement(searchInputField.Component.gameObject, minHeight: 25, minWidth: 300, flexibleWidth: 0, flexibleHeight: 0);
+            UIFactory.SetLayoutElement(searchInputField.Component.gameObject, minHeight: 25, minWidth: 0, flexibleWidth: 0, flexibleHeight: 0);
             searchInputField.OnValueChanged += OnSearchInputFieldValueChanged;
 
             UIFactory.CreateScrollView(ContentRoot, "Effect ID Scroll View", out scrollView, out AutoSliderScrollbar autoScrollbar, new Color(0.07f, 0.07f, 0.07f, 1));
@@ -62,7 +62,7 @@ namespace FGChaos.UI
 
             GameObject buttonRow = UIFactory.CreateHorizontalGroup(ContentRoot, "Buttons", true, false, true, true, 4, bgColor: new Color(0.07f, 0.07f, 0.07f, 1));
             ButtonRef saveButton = UIFactory.CreateButton(buttonRow, "Save Button", "Save");
-            UIFactory.SetLayoutElement(saveButton.Component.gameObject, minHeight: 25, minWidth: 300, flexibleWidth: 0, flexibleHeight: 0);
+            UIFactory.SetLayoutElement(saveButton.Component.gameObject, minHeight: 25, minWidth: 0, flexibleWidth: 0, flexibleHeight: 0);
             saveButton.OnClick += Save;
 
             ChaosPluginBehaviour.instance.RunCoroutine(WorkAroundForInvisibleSlider(autoScrollbar.Slider.GetComponent<Mask>()));
@@ -112,7 +112,7 @@ namespace FGChaos.UI
                 }
             }
 
-            File.WriteAllLines($"{Plugin.GetModFolder()} /disabledeffects.txt", disabledEffectIDs.ToArray());
+            File.WriteAllLines($"{Plugin.GetModFolder()}/disabledeffects.txt", disabledEffectIDs.ToArray());
 
             ChaosPluginBehaviour.DisableEffects();
         }

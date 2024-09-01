@@ -118,6 +118,13 @@ namespace FGChaos
                 Application.Quit();
             }
 
+            if (!CanContinue())
+            {
+                nextEffect = null;
+                Plugin.Logs.LogInfo("No available effects");
+                return;
+            }
+
             int getRandomEffect = UnityEngine.Random.Range(0, effects.Count);
             Effect effectInstance = effects[getRandomEffect].Create();
 
@@ -182,38 +189,50 @@ namespace FGChaos
 
             nextEffect = effectInstance;
             Plugin.Logs.LogInfo("Effect Chosen: " + effectInstance.ID);
+        }
 
-            /*effectInstance.Run();
-
-            if (Plugin.PlayEffectRunSFX.Value)
+        bool CanContinue()
+        {
+            foreach (Effect effect in effects)
             {
-                AudioManager.PlayOneShot("UI_MainMenu_Settings_Accept");
+                if (!isEffectBlocked(effect))
+                    return true;
+            }
+            return false;
+        }
+
+        bool isEffectBlocked(Effect effect)
+        {
+            foreach (Effect activeEffect in activeEffects)
+            {
+                foreach (Type effectType in activeEffect.BlockedEffects)
+                {
+                    Effect effectInstance = (Effect)Activator.CreateInstance(effectType);
+                    if (effectInstance.ID == effect.ID)
+                    {
+                        return true;
+                    }
+                }
             }
 
-            Plugin.Logs.LogInfo("Effect Ran: " + effectInstance.Name);*/
-        }
-
-        void RunEffectWithDelay(Effect effect, float delay)
-        {
-            StartCoroutine(IRunEffectWithDelay(effect, delay).WrapToIl2Cpp());
-        }
-
-        IEnumerator IRunEffectWithDelay(Effect effect, float delay)
-        {
-            yield return new WaitForSecondsRealtime(delay);
-            effect.Run();
+            return false;
         }
 
         void RunEffect()
         {
-            nextEffect.Create().Run();
-
-            if (Plugin.PlayEffectRunSFX.Value)
+            if (nextEffect != null)
             {
-                AudioManager.PlayOneShot("UI_MainMenu_Settings_Accept");
-            }
+                nextEffect.Create().Run();
 
-            Plugin.Logs.LogInfo("Effect Ran: " + nextEffect.ID);
+                if (Plugin.PlayEffectRunSFX.Value)
+                {
+                    AudioManager.PlayOneShot("UI_MainMenu_Settings_Accept");
+                }
+
+                Plugin.Logs.LogInfo("Effect Ran: " + nextEffect.ID);
+                return;
+            }
+            Plugin.Logs.LogInfo("No effect ran because nextEffect is null");
         }
 
         void Update()
@@ -224,6 +243,10 @@ namespace FGChaos
             }
             else
             {
+                if (nextEffect == null && CanContinue())
+                {
+                    ChooseRandomEffect();
+                }
                 RunEffect();
                 ChooseRandomEffect();
             }

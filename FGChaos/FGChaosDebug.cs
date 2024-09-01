@@ -18,7 +18,14 @@ namespace FGChaos
         { 
             get 
             {
-                return ChaosPluginBehaviour.chaosInstance != null ? ChaosPluginBehaviour.chaosInstance.nextEffect.ID : "null";
+                if (ChaosPluginBehaviour.chaosInstance != null)
+                {
+                    if (ChaosPluginBehaviour.chaosInstance.nextEffect != null)
+                    {
+                        return ChaosPluginBehaviour.chaosInstance.nextEffect.ID;
+                    }
+                }
+                return "null";
             } 
         }
 
