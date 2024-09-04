@@ -15,15 +15,17 @@ namespace FGChaos.Effects
             BlockedEffects = new Type[] { typeof(InvertedControls) };
         }
 
+        public static bool active;
+
         public override void Run()
         {
-            Chaos.invertedControls = true;
+            active = true;
             base.Run();
         }
 
         public override void End()
         {
-            Chaos.invertedControls = false;
+            active = false;
             base.End();
         }
     }

@@ -27,17 +27,13 @@ namespace FGChaos
         public CameraDirector cameraDirector;
         public MotorAgent motorAgent;
         public PostProcessVolume postProcessVolume;
-        public Sprite blueberrySprite;
+        //public Sprite blueberrySprite;
         public float delay;
         public static bool jumpingEnabled = true;
         public static bool rocketShip;
-        public static bool invertedControls;
-        public static bool switchMode;
-        public static bool slideEverywhere;
-        public static bool infiniteJumps;
-        public static bool WKeyStuck;
         public static List<Action> OnJumpActions = new List<Action>();
         public GameObject chaosCanvas;
+        public Dictionary<string, UnityEngine.Object> loadedObjects = new();
         Slider chaosSlider;
 
         public static Dictionary<string, string> addressableAssetsKeyNamePairs = new Dictionary<string, string>()
@@ -80,18 +76,13 @@ namespace FGChaos
                 delay = Plugin.EffectTimer.Value;
                 addressableAssetsNames = addressableAssetsKeyNamePairs.Keys.ToArray();
                 rocketShip = false;
-                invertedControls = false;
-                switchMode = false;
-                slideEverywhere = false;
-                infiniteJumps = false;
-                WKeyStuck = false;
                 chaosCanvas = Instantiate(chaosBundle.LoadAsset("ChaosCanvas").Cast<GameObject>());
                 chaosSlider = chaosCanvas.transform.GetChild(0).GetComponent<Slider>();
                 chaosSliderRectTransform = chaosSlider.GetComponent<RectTransform>();
                 chaosSliderRectTransform.sizeDelta = new Vector2(Screen.width + 5, chaosSliderRectTransform.sizeDelta.y);
                 chaosCanvas.transform.GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
                 chaosBundle.Unload(false);
-                blueberrySprite = ChaosPluginBehaviour.PNGtoSprite(Plugin.GetModFolder() + "/Assets/Images/blueberrybombardment.png");
+                loadedObjects.Add("Blueberry Sprite", ChaosPluginBehaviour.PNGtoSprite(Plugin.GetModFolder() + "/Assets/Images/blueberrybombardment.png"));
                 ChaosPluginBehaviour.LoadBank("BNK_Music_GP");
                 ChaosPluginBehaviour.LoadBank("BNK_PlayGo");
                 ChooseRandomEffect();
@@ -264,7 +255,7 @@ namespace FGChaos
         {
             if (ChaosPluginBehaviour.chaosInstance != null)
             {
-                if (infiniteJumps)
+                if (InfiniteJumps.active)
                 {
                     return true;
                 }

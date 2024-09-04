@@ -15,9 +15,11 @@ namespace FGChaos.Effects
             BlockedEffects = new Type[] { typeof(SlideEverywhere), typeof(SlipperyFloor) };
         }
 
+        public static bool active;
+
         public override void Run()
         {
-            Chaos.slideEverywhere = true;
+            active = true;
             chaos.fallGuy.DefaultSurfaceModifier.SupportSliding = true;
             chaos.fallGuy.DefaultSurfaceModifier.ShouldOverrideSlideAngleCheck = true;
             chaos.fallGuy.DefaultSurfaceModifier.SlideTurningVelocityModifier = 1.19f;
@@ -27,7 +29,7 @@ namespace FGChaos.Effects
 
         public override void End()
         {
-            Chaos.slideEverywhere = false;
+            active = false;
             if (chaos != null)
             {
                 chaos.fallGuy.DefaultSurfaceModifier.SupportSliding = false;

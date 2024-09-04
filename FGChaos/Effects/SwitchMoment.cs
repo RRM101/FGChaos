@@ -12,11 +12,13 @@ namespace FGChaos.Effects
             BlockedEffects = new System.Type[] { typeof(SwitchMoment), typeof(RandomFPS) };
         }
 
+        public static bool active;
+
         public override void Run()
         {
             QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = 15;
-            Chaos.switchMode = true;
+            active = true;
             base.Run();
         }
 
@@ -24,7 +26,7 @@ namespace FGChaos.Effects
         {
             QualitySettings.vSyncCount = GlobalGameStateClient.Instance.PlayerProfile.GraphicsSettings.VSync ? 1 : 0;
             Application.targetFrameRate = GlobalGameStateClient.Instance.PlayerProfile.GraphicsSettings.TargetFrameRate;
-            Chaos.switchMode = false;
+            active = false;
             base.End();
         }
     }

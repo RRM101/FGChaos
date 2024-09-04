@@ -15,15 +15,17 @@ namespace FGChaos.Effects
             BlockedEffects = new Type[] { typeof(RocketShip), typeof(Jetpack), typeof(PiracyIsNoFalling), typeof(InfiniteJumps) };
         }
 
+        public static bool active;
+
         public override void Run()
         {
-            Chaos.infiniteJumps = true;
+            active = true;
             base.Run();
         }
 
         public override void End()
         {
-            Chaos.infiniteJumps = false;
+            active = false;
             base.End();
         }
     }

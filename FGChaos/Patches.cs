@@ -18,7 +18,7 @@ namespace FGChaos
     {
         static IEnumerator InputDelay(MotorFunctionMovementStateMove instance, Vector3 direction, float magnitude)
         {
-            float delay = Chaos.switchMode ? 0.3f : 0;
+            float delay = SwitchMoment.active ? 0.3f : 0;
             yield return new WaitForSeconds(delay);
             if (instance != null)
             {
@@ -79,12 +79,12 @@ namespace FGChaos
         [HarmonyPostfix]
         static void InvertedControlsPatch(Player __instance, string actionName, ref float __result)
         {
-            if (actionName == "Move Vertical" && Chaos.WKeyStuck)
+            if (actionName == "Move Vertical" && WKeyStuck.active)
             {
                 __result = 1;
             }
 
-            if (Chaos.invertedControls)
+            if (InvertedControls.active)
             {
                 __result *= -1;
             }
@@ -94,7 +94,7 @@ namespace FGChaos
         [HarmonyPrefix]
         static bool MotorFunctionDiveStateSlideBegin(MotorFunctionDiveStateSlide __instance)
         {
-            if (Chaos.slideEverywhere)
+            if (SlideEverywhere.active)
             {
                 __instance.MotorAgent.Character.DefaultSurfaceModifier.VelocityCurveModifier = 0.25f;
             }
@@ -105,7 +105,7 @@ namespace FGChaos
         [HarmonyPrefix]
         static bool MotorFunctionDiveStateSlideEnd(MotorFunctionDiveStateSlide __instance)
         {
-            if (Chaos.slideEverywhere)
+            if (SlideEverywhere.active)
             {
                 __instance.MotorAgent.Character.DefaultSurfaceModifier.VelocityCurveModifier = 1;
             }
@@ -119,7 +119,7 @@ namespace FGChaos
             if (__instance._moveTask.ShouldMove)
             {
                 __instance.CalculateDirectionAndMagnitude(out Vector3 direction, out float magnitude);
-                if (Chaos.switchMode)
+                if (SwitchMoment.active)
                 {
                     ChaosPluginBehaviour.instance.StartCoroutine(InputDelay(__instance, direction, magnitude).WrapToIl2Cpp());
                 }

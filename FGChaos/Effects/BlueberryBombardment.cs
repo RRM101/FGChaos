@@ -28,7 +28,7 @@ namespace FGChaos.Effects
             spawnPosition.localPosition = new Vector3(0, 10, 1);
             blueberryImage = chaos.chaosCanvas.transform.CreateChild("Blueberry Image").AddComponent<Image>();
             blueberryImage.rectTransform.anchoredPosition = Vector2.zero;
-            blueberryImage.sprite = chaos.blueberrySprite;
+            blueberryImage.sprite = chaos.loadedObjects["Blueberry Sprite"].Cast<Sprite>();
             blueberryImage.SetNativeSize();
             StartCoroutine(ImageFade());
 

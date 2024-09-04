@@ -15,15 +15,17 @@ namespace FGChaos.Effects
             BlockedEffects = new Type[] { typeof(WKeyStuck) };
         }
 
+        public static bool active;
+
         public override void Run()
         {
-            Chaos.WKeyStuck = true;
+            active = true;
             base.Run();
         }
 
         public override void End()
         {
-            Chaos.WKeyStuck = false;
+            active = false;
             base.End();
         }
     }
