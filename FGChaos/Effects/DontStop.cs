@@ -39,7 +39,7 @@ namespace FGChaos.Effects
 
         public override void Update()
         {
-            bool isMoving = Math.Abs(new Vector2(rewiredPlayer.GetAxis("Move Horizontal"), rewiredPlayer.GetAxis("Move Vertical")).magnitude) > 0;
+            bool isMoving = new Vector2(rewiredPlayer.GetAxis("Move Horizontal"), rewiredPlayer.GetAxis("Move Vertical")).magnitude > 0;
 
             if (!isMoving && punish)
             {
