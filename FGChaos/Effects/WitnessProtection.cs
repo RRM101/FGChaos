@@ -61,7 +61,7 @@ namespace FGChaos.Effects
                 GameObject.Destroy(witnessProtection.gameObject);
             }
 
-            if (chaos.fallGuy != null)
+            if (chaos != null)
             {
                 XRayUtils.EnableXRayMeshRenderer(chaos.fallGuy, true);
             }

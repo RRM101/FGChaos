@@ -51,7 +51,7 @@ namespace FGChaos
         {
             if (showDebugMenu)
             {
-                GUI.Label(new Rect(5, 5, Screen.width, Screen.height), $"<size=25>Debug FGChaos v{Plugin.version}\nRoundID: {NetworkGameData.currentGameOptions_._roundID}\nSeed: {GlobalGameStateClient.Instance.GameStateView.RoundRandomSeed}\nNextEffect: {nextEffectID}\n\nActiveEffects:\n{activeEffects}</size>");
+                GUI.Label(new Rect(5, 5, Screen.width, Screen.height), $"<size=25>Debug FGChaos v{Plugin.version}\nFPS: {(int)(1/Time.deltaTime)}\nRoundID: {NetworkGameData.currentGameOptions_._roundID}\nSeed: {GlobalGameStateClient.Instance.GameStateView.RoundRandomSeed}\nNextEffect: {nextEffectID}\n\nActiveEffects:\n{activeEffects}</size>");
 
                 GUI.Box(new Rect(Screen.width - 265, 10f, 260f, 75f), "");
                 command = GUI.TextField(new Rect(Screen.width - 255, 20f, 240f, 25f), command);

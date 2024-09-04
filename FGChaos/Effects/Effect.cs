@@ -22,7 +22,7 @@ namespace FGChaos.Effects
 
         public Chaos chaos = ChaosPluginBehaviour.chaosInstance;
 
-        bool canRunUpdateMethod = true;
+        bool canRunUpdateMethod = false;
 
         public bool isActive;
 
@@ -30,6 +30,7 @@ namespace FGChaos.Effects
 
         public virtual void Run()
         {
+            canRunUpdateMethod = true;
             AddEffectName();
             isActive = true;
             Chaos.activeEffects.Add(this);
@@ -131,6 +132,7 @@ namespace FGChaos.Effects
         /// </summary>
         public void RunWithoutEnd()
         {
+            canRunUpdateMethod = true;
             AddEffectName();
             isActive = true;
             Chaos.activeEffects.Add(this);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FGClient.Rendering.XRay;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,15 @@ namespace FGChaos.Effects
         }
 
         float delay = 0.2f;
+
+        public override void Run()
+        {
+            if (chaos != null)
+            {
+                XRayUtils.EnableXRayMeshRenderer(chaos.fallGuy, false);
+            }
+            base.Run();
+        }
 
         public override void Update()
         {
@@ -51,6 +61,15 @@ namespace FGChaos.Effects
             gameObject.transform.position = position;
             GameObject model = GameObject.Instantiate(chaos.fallGuy.transform.GetChild(0).gameObject, gameObject.transform);
             model.transform.localPosition = Vector3.zero;
+        }
+
+        public override void End()
+        {
+            if (chaos != null)
+            {
+                XRayUtils.EnableXRayMeshRenderer(chaos.fallGuy, true);
+            }
+            base.End();
         }
     }
 }

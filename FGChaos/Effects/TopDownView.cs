@@ -45,11 +45,8 @@ namespace FGChaos.Effects
             parentGameObject.transform.position = chaos.fallGuy.transform.position;
         }
 
-        IEnumerator EndCoroutine()
+        public override void End()
         {
-            cameraDirectorTransform.DOLocalMove(Vector3.zero, 1).SetEase(Ease.InOutSine);
-            Tween tween = cameraDirectorTransform.GetChild(0).DORotate(chaos.fallGuy.transform.eulerAngles, 1).SetEase(Ease.InOutSine);
-            yield return tween.WaitForCompletion();
             if (cameraDirectorTransform != null)
             {
                 input._camera = cameraDirectorTransform;
@@ -60,18 +57,6 @@ namespace FGChaos.Effects
                 GameObject.Destroy(parentGameObject);
             }
             base.End();
-        }
-
-        public override void End()
-        {
-            if (cameraDirectorTransform != null)
-            {
-                StartCoroutine(EndCoroutine());
-            }
-            else
-            {
-                base.End();
-            }
         }
     }
 }
