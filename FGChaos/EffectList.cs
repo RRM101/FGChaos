@@ -78,7 +78,8 @@ namespace FGChaos
             new ReplayRecording(),
             new FallGuyRain(),
             new EvilFallGuys(),
-            new DontStop()
+            new DontStop(),
+            new CinematicCamera()
         };
 
         public static List<Effect> enabledEffects = effects.ToList();

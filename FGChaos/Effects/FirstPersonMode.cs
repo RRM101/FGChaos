@@ -23,7 +23,8 @@ namespace FGChaos.Effects
                 typeof(PlayAsBert),
                 typeof(BertCamera),
                 typeof(PlayIntroCamera),
-                typeof(FallGuyRain)
+                typeof(FallGuyRain),
+                typeof(CinematicCamera)
             };
         }
 

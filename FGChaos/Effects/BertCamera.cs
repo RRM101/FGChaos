@@ -16,7 +16,7 @@ namespace FGChaos.Effects
         {
             Name = "Camera On Bert";
             Duration = 30;
-            BlockedEffects = new Type[] { typeof(BertCamera), typeof(FirstPersonMode), typeof(TopDownView) };
+            BlockedEffects = new Type[] { typeof(BertCamera), typeof(FirstPersonMode), typeof(TopDownView), typeof(CinematicCamera) };
         }
 
         GameObject bert;
