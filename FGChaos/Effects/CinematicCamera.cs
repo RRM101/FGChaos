@@ -31,6 +31,9 @@ namespace FGChaos.Effects
 
         float delay = 5;
         bool zoomed = false;
+        Vector3 originalCameraPositon;
+        bool isAtOriginalCameraPositon = false;
+        bool isSettingCameraPosition = false;
 
         public override void Run()
         {
@@ -73,9 +76,18 @@ namespace FGChaos.Effects
                 zoomed = false;
             }
 
-            //camera.fieldOfView = FOV;
+            bool isMoving = new Vector2(input._rewiredPlayer.GetAxis("Move Horizontal"), input._rewiredPlayer.GetAxis("Move Vertical")).magnitude > 0;
 
-            Debug.Log($"Distance: {cameraDistance}");
+            if (!isMoving)
+            {
+                cameraDirectorTransform.position += chaos.fallGuy.transform.rotation * new Vector3(0, 0, 0.05f);
+                isAtOriginalCameraPositon = false;
+                isSettingCameraPosition = false;
+            }
+            else if (!isAtOriginalCameraPositon && !isSettingCameraPosition)
+            {
+                cameraDirectorTransform.DOMove(originalCameraPositon, 0.1f).SetEase(Ease.InOutSine);
+            }
         }
 
         public override void End()
@@ -91,10 +103,21 @@ namespace FGChaos.Effects
 
         void SetCameraPositon()
         {
+            isSettingCameraPosition = true;
             Vector3 randompoint = chaos.fallGuy.transform.position + (50 * UnityEngine.Random.insideUnitSphere);
             randompoint.y = chaos.fallGuy.transform.position.y + 20;
 
             cameraDirectorTransform.position = randompoint;
+            originalCameraPositon = randompoint;
+
+            if ((cameraDirectorTransform.position - chaos.fallGuy.transform.position).magnitude > 35)
+            {
+                camera.fieldOfView = 10;
+            }
+            else
+            {
+                camera.fieldOfView = 30;
+            }
         }
     }
 }
