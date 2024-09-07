@@ -105,7 +105,8 @@ namespace FGChaos.Effects
         {
             isSettingCameraPosition = true;
             Vector3 randompoint = chaos.fallGuy.transform.position + (50 * UnityEngine.Random.insideUnitSphere);
-            randompoint.y = chaos.fallGuy.transform.position.y + 20;
+
+            randompoint.y = chaos.fallGuy.transform.position.y + UnityEngine.Random.Range(5, 30);
 
             cameraDirectorTransform.position = randompoint;
             originalCameraPositon = randompoint;
