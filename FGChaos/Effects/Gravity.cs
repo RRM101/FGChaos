@@ -14,7 +14,7 @@ namespace FGChaos.Effects
             Name = $"{gravityType} Gravity";
             gravity = gravityDictionary[gravityType];
             Duration = 20;
-            BlockedEffects = new Type[] { typeof(Gravity) };
+            BlockedEffects = new Type[] { typeof(Gravity), typeof(ToTheMoon) };
         }
 
         int gravity;
