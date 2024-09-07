@@ -34,12 +34,14 @@ namespace FGChaos.Effects
         {
             rewiredPlayer = chaos.fallGuy.GetComponent<FallGuysCharacterControllerInput>()._rewiredPlayer;
             onElimBannerClosed = ReplaceStateMainMenu;
+            SetRespawnDelay(true);
             base.Run();
         }
 
         public override void Update()
         {
-            bool isMoving = new Vector2(rewiredPlayer.GetAxis("Move Horizontal"), rewiredPlayer.GetAxis("Move Vertical")).magnitude > 0;
+            //bool isMoving = new Vector2(rewiredPlayer.GetAxis("Move Horizontal"), rewiredPlayer.GetAxis("Move Vertical")).magnitude > 0;
+            bool isMoving = chaos.fgrb.velocity.magnitude > 6;
 
             if (!isMoving && punish)
             {
@@ -55,6 +57,12 @@ namespace FGChaos.Effects
                 Punish(eliminate);
                 timer = 0;
             }
+        }
+
+        public override void End()
+        {
+            SetRespawnDelay(false);
+            base.End();
         }
 
         void Punish(bool eliminate)
@@ -75,6 +83,11 @@ namespace FGChaos.Effects
         void ReplaceStateMainMenu()
         {
             GlobalGameStateClient.Instance._gameStateMachine.ReplaceCurrentState(new StateMainMenu(GlobalGameStateClient.Instance._gameStateMachine, GlobalGameStateClient.Instance.CreateClientGameStateData(), false).Cast<GameStateMachine.IGameState>());
+        }
+
+        void SetRespawnDelay(bool start)
+        {
+            MotorFunctionTeleportStateActive.PostTeleportDelayCooldown = start ? 0 : 0.65f;
         }
     }
 }
