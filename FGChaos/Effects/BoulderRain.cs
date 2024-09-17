@@ -26,7 +26,14 @@ namespace FGChaos.Effects
             int randomSpawnAmount = UnityEngine.Random.Range(10, 50);
             for (int i = 0; i < randomSpawnAmount; i++)
             {
-                yield return BoulderRainSpawn();
+                if (chaos != null)
+                {
+                    yield return BoulderRainSpawn();
+                }
+                else
+                {
+                    break;
+                }
             }
             End();
             GameObject.Destroy(textMeshPro.gameObject);

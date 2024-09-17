@@ -21,10 +21,10 @@ namespace FGChaos.Effects
 
         public override void Run()
         {
-            connectionQualityViewModel = GameObject.FindObjectOfType<ConnectionQualityViewModel>();
+            /*connectionQualityViewModel = GameObject.FindObjectOfType<ConnectionQualityViewModel>();
             connectionQualityViewModel._trackState = true;
             connectionQualityViewModel._currentNetworkState = FG.Common.FG_NetworkManager.NetConnQuality.Extreme;
-            connectionQualityViewModel.transform.GetChild(1).GetChild(0).gameObject.SetActive(true);
+            connectionQualityViewModel.transform.GetChild(1).GetChild(0).gameObject.SetActive(true);*/
             base.Run();
             StartCoroutine(ILag());
         }
@@ -41,11 +41,11 @@ namespace FGChaos.Effects
             }
         }
 
-        public override void End()
+        /*public override void End()
         {
             connectionQualityViewModel._trackState = false;
             connectionQualityViewModel._currentNetworkState = FG.Common.FG_NetworkManager.NetConnQuality.Disconnected;
             base.End();
-        }
+        }*/
     }
 }

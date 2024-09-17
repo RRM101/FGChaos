@@ -16,7 +16,7 @@ namespace FGChaos.Effects
         public override void Run()
         {
             DateTime time = DateTime.Now;
-            DateTime endTime = DateTime.Now.AddSeconds(10);
+            DateTime endTime = DateTime.Now.AddSeconds(Plugin.EffectTimer.Value);
 
             while (time.Second != endTime.Second)
             {
