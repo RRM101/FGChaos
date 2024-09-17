@@ -22,9 +22,8 @@ namespace FGChaos.Effects
             BlockedEffects = new Type[] { typeof(FirstPersonMode), typeof(PaperGuys), typeof(WideGuys) };
         }
 
-        WaveOutEvent waveOut;
         ClientGameManager cgm;
-        VolumeWaveProvider16 volumeWaveProvider;
+        CustomVolumeWaveProvider volumeWaveProvider;
         float fgMusicVolume;
 
         public override void Run()
@@ -33,47 +32,29 @@ namespace FGChaos.Effects
             if (Plugin.CustomAudio.Value)
             {
                 PlayAudio();
-                Plugin.CustomAudioVolume.SettingChanged += CustomAudioVolumeSettingChanged;
             }
             base.Run();
         }
 
         void PlayAudio()
         {
-            waveOut = new WaveOutEvent();
             Mp3FileReader mp3File = new Mp3FileReader($"{Plugin.GetModFolder()}/Assets/Audio/wideputin.mp3");
-            volumeWaveProvider = new VolumeWaveProvider16(mp3File);
-            volumeWaveProvider.Volume = Math.Min((float)Plugin.CustomAudioVolume.Value / 100, 100);
-            waveOut.Init(volumeWaveProvider);
-            waveOut.Play();
+            volumeWaveProvider = new(mp3File);
+            volumeWaveProvider.InitAndPlay();
             GlobalGameStateClient.Instance.GameStateView.GetLiveClientGameManager(out cgm);
             cgm._musicInstance.getVolume(out fgMusicVolume);
-            cgm._musicInstance.setVolume(0.3f);
-        }
-
-        void CustomAudioVolumeSettingChanged(object sender, EventArgs eventArgs)
-        {
-            SettingChangedEventArgs settingChangedEventArgs = (SettingChangedEventArgs)eventArgs;
-            float volume = Math.Min((float)Convert.ToInt32(settingChangedEventArgs.ChangedSetting.BoxedValue) / 100, 100);
-            volumeWaveProvider.Volume = volume;
-        }
-
-        void StopAudio()
-        {
-            waveOut.Stop();
-            waveOut.Dispose();
-            Plugin.CustomAudioVolume.SettingChanged -= CustomAudioVolumeSettingChanged;
-            if (!cgm.IsShutdown)
-            {
-                cgm._musicInstance.setVolume(fgMusicVolume);
-            }
+            cgm._musicInstance.setVolume(0);
         }
 
         public override void End()
         {
-            if (waveOut != null)
+            if (volumeWaveProvider != null)
             {
-                StopAudio();
+                volumeWaveProvider.StopAudio();
+                if (!cgm.IsShutdown)
+                {
+                    cgm._musicInstance.setVolume(1);
+                }
             }
 
             if (chaos != null)

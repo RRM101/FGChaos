@@ -80,7 +80,8 @@ namespace FGChaos
             new EvilFallGuys(),
             new DontStop(),
             new CinematicCamera(),
-            new ToTheMoon()
+            new ToTheMoon(),
+            new Flashbang()
         };
 
         public static List<Effect> enabledEffects = effects.ToList();

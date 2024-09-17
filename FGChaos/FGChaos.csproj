@@ -89,6 +89,9 @@
     <Reference Include="UnityEngine.IMGUIModule">
       <HintPath>C:\Users\rrm1\FallGuys10.8\BepinEx\interop\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>..\..\..\..\FallGuys10.8\BepInEx\interop\UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.TextCoreFontEngineModule">
       <HintPath>C:\Users\rrm1\FallGuys10.8\BepInEx\interop\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
     </Reference>

@@ -32,8 +32,9 @@ namespace FGChaos
         public static bool jumpingEnabled = true;
         public static bool rocketShip;
         public static List<Action> OnJumpActions = new List<Action>();
+        public static Dictionary<string, object> LoadedObjects => ChaosPluginBehaviour.chaosInstance.loadedObjects;
         public GameObject chaosCanvas;
-        public Dictionary<string, UnityEngine.Object> loadedObjects = new();
+        public Dictionary<string, object> loadedObjects = new();
         Slider chaosSlider;
 
         public static Dictionary<string, string> addressableAssetsKeyNamePairs = new Dictionary<string, string>()
@@ -82,10 +83,10 @@ namespace FGChaos
                 chaosSliderRectTransform.sizeDelta = new Vector2(Screen.width + 5, chaosSliderRectTransform.sizeDelta.y);
                 chaosCanvas.transform.GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
                 chaosBundle.Unload(false);
-                loadedObjects.Add("Blueberry Sprite", ChaosPluginBehaviour.PNGtoSprite(Plugin.GetModFolder() + "/Assets/Images/blueberrybombardment.png"));
                 ChaosPluginBehaviour.LoadBank("BNK_Music_GP");
                 ChaosPluginBehaviour.LoadBank("BNK_PlayGo");
                 ChooseRandomEffect();
+                LoadAssets();
 
                 if (Plugin.PlayEffectRunSFX.Value)
                 {
@@ -97,6 +98,19 @@ namespace FGChaos
                 ChaosPluginBehaviour.ChaosStartError(e);
                 throw;
             }
+        }
+
+        void LoadAssets()
+        {
+            if (loadedObjects.Count == 0)
+            {
+                loadedObjects.Add("Blueberry Sprite", ChaosPluginBehaviour.PNGtoSprite(Plugin.GetModFolder() + "/Assets/Images/blueberrybombardment.png"));
+            }
+        }
+
+        public static object GetLoadedAsset(string assetName)
+        {
+            return LoadedObjects[assetName];
         }
 
         void ChooseRandomEffect()

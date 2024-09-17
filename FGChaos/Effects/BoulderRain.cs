@@ -36,7 +36,10 @@ namespace FGChaos.Effects
                 }
             }
             End();
-            GameObject.Destroy(textMeshPro.gameObject);
+            if (textMeshPro != null)
+            {
+                GameObject.Destroy(textMeshPro.gameObject);
+            }
         }
 
         IEnumerator BoulderRainSpawn()

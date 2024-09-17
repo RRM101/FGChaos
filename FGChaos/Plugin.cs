@@ -88,6 +88,7 @@ namespace FGChaos
             "/Assets/Images/blueberrybombardment.png",
             "/Assets/Audio/wideputin.mp3",
             "/Assets/Audio/tothemoon.mp3",
+            "/Assets/Audio/flashbang.mp3",
             "/Libs/NAudio.dll",
             "/Libs/NAudio.Asio.dll",
             "/Libs/NAudio.Core.dll",
