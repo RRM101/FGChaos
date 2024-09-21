@@ -26,7 +26,7 @@ namespace FGChaos
     [BepInPlugin("org.rrm1.fgchaos", "FGChaos", version)]
     public class Plugin : BasePlugin
     {
-        public const string version = "1.1.0";
+        public const string version = "1.2.0";
 
         public static ManualLogSource Logs = new("FGChaos");
 

@@ -81,7 +81,7 @@ namespace FGChaos
             new DontStop(),
             new CinematicCamera(),
             new ToTheMoon(),
-            new Flashbang()
+            //new Flashbang() // disabled because its bad
         };
 
         public static List<Effect> enabledEffects = effects.ToList();
