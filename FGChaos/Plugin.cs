@@ -88,7 +88,6 @@ namespace FGChaos
             "/Assets/Images/blueberrybombardment.png",
             "/Assets/Audio/wideputin.mp3",
             "/Assets/Audio/tothemoon.mp3",
-            "/Assets/Audio/flashbang.mp3",
             "/Libs/NAudio.dll",
             "/Libs/NAudio.Asio.dll",
             "/Libs/NAudio.Core.dll",
@@ -297,33 +296,6 @@ namespace FGChaos
             {
                 Debug.Log($"object '{key}' not found");
             }
-        }
-
-        public static void LoadBank(string bank)
-        {
-            if (!RuntimeManager.HasBankLoaded(bank))
-            {
-                RuntimeManager.LoadBank(bank);
-                RuntimeManager.LoadBank($"{bank}.assets");
-            }
-        }
-
-        public static void UnloadBank(string bank)
-        {
-            if (RuntimeManager.HasBankLoaded(bank))
-            {
-                RuntimeManager.UnloadBank(bank);
-                RuntimeManager.UnloadBank($"{bank}.assets");
-            }
-        }
-
-        public static Sprite PNGtoSprite(string path)
-        {
-            byte[] imagedata = File.ReadAllBytes(path);
-            Texture2D texture = new Texture2D(0, 0, TextureFormat.ARGB32, false);
-            ImageConversion.LoadImage(texture, imagedata);
-            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));
-            return sprite;
         }
 
         public static void ChaosStartError(Exception e)

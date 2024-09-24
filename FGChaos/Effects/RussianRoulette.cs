@@ -22,7 +22,7 @@ namespace FGChaos.Effects
         public override void Run()
         {
             int random = UnityEngine.Random.Range(0, 6);
-            ChaosPluginBehaviour.LoadBank("BNK_SFX_OBJ_Cannon");
+            FGChaosUtils.LoadBank("BNK_SFX_OBJ_Cannon");
             StartCoroutine(Fate(random));
 
             base.Run();

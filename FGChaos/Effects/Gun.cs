@@ -21,7 +21,7 @@ namespace FGChaos.Effects
         public override void Run()
         {
             rewiredPlayer = chaos.fallGuy.GetComponent<FallGuysCharacterControllerInput>()._rewiredPlayer;
-            ChaosPluginBehaviour.LoadBank("BNK_SFX_OBJ_Cannon");
+            FGChaosUtils.LoadBank("BNK_SFX_OBJ_Cannon");
             base.Run();
         }
 

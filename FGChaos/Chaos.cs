@@ -83,14 +83,14 @@ namespace FGChaos
                 chaosSliderRectTransform.sizeDelta = new Vector2(Screen.width + 5, chaosSliderRectTransform.sizeDelta.y);
                 chaosCanvas.transform.GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
                 chaosBundle.Unload(false);
-                ChaosPluginBehaviour.LoadBank("BNK_Music_GP");
-                ChaosPluginBehaviour.LoadBank("BNK_PlayGo");
+                FGChaosUtils.LoadBank("BNK_Music_GP");
+                FGChaosUtils.LoadBank("BNK_PlayGo");
                 ChooseRandomEffect();
                 LoadAssets();
 
                 if (Plugin.PlayEffectRunSFX.Value)
                 {
-                    ChaosPluginBehaviour.LoadBank("BNK_UI_MainMenu");
+                    FGChaosUtils.LoadBank("BNK_UI_MainMenu");
                 }
             }
             catch (Exception e)
@@ -104,7 +104,7 @@ namespace FGChaos
         {
             if (loadedObjects.Count == 0)
             {
-                loadedObjects.Add("Blueberry Sprite", ChaosPluginBehaviour.PNGtoSprite(Plugin.GetModFolder() + "/Assets/Images/blueberrybombardment.png"));
+                loadedObjects.Add("Blueberry Sprite", FGChaosUtils.PNGtoSprite(Plugin.GetModFolder() + "/Assets/Images/blueberrybombardment.png"));
             }
         }
 

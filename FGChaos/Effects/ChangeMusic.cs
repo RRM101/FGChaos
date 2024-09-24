@@ -46,13 +46,14 @@ namespace FGChaos.Effects
             GlobalGameStateClient.Instance.GameStateView.GetLiveClientGameManager(out ClientGameManager cgm);
             cgm._musicInstance.setPaused(true);
 
-            ChaosPluginBehaviour.LoadBank(music[chosenMusic][0]);
+            FGChaosUtils.LoadBank(music[chosenMusic][0]);
             eventInstance = RuntimeManager.CreateInstance(AudioManager.GetGuidForKey(music[chosenMusic][1]));
             eventInstance.start();
 
             base.Run();
         }
 
+        // TODO: Unload bank if the current round doesn't use it
         public override void End()
         {
             eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);

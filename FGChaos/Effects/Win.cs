@@ -17,7 +17,7 @@ namespace FGChaos.Effects
         public override void Run()
         {
             ClientPlayerManager clientPlayerManager = GlobalGameStateClient.Instance._clientPlayerManager;
-            ChaosPluginBehaviour.UnloadBank(CMSLoader.Instance.CMSData.Rounds[NetworkGameData.currentGameOptions_._roundID].IngameMusicSoundBank);
+            FGChaosUtils.UnloadBank(CMSLoader.Instance.CMSData.Rounds[NetworkGameData.currentGameOptions_._roundID].IngameMusicSoundBank);
             
 
             if (clientPlayerManager._players.Count == 0)
@@ -28,8 +28,8 @@ namespace FGChaos.Effects
                 clientPlayerManager._playerMetadata.Add(0, playerMetadata);
             }
 
-            ChaosPluginBehaviour.LoadBank("BNK_SFX_WinnerScreen");
-            ChaosPluginBehaviour.LoadBank("BNK_Music_GP");
+            FGChaosUtils.LoadBank("BNK_SFX_WinnerScreen");
+            FGChaosUtils.LoadBank("BNK_Music_GP");
 
             Action action = SwitchToVictoryScreen;
 

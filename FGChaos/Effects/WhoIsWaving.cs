@@ -12,7 +12,7 @@ namespace FGChaos.Effects
 
         public override void Run()
         {
-            ChaosPluginBehaviour.LoadBank("BNK_Emote_Wave_A");
+            FGChaosUtils.LoadBank("BNK_Emote_Wave_A");
             StartCoroutine(WhoIsWavingCoroutine());
             isActive = true;
             RunWithoutEnd();

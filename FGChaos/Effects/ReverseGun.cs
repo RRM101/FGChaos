@@ -19,7 +19,7 @@ namespace FGChaos.Effects
 
         public override void Run()
         {
-            ChaosPluginBehaviour.LoadBank("BNK_SFX_OBJ_Cannon");
+            FGChaosUtils.LoadBank("BNK_SFX_OBJ_Cannon");
             Chaos.OnJumpActions.Add(DoShoot);
             base.Run();
         }
