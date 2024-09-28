@@ -23,7 +23,7 @@ namespace FGChaos.Effects
         }
 
         ClientGameManager cgm;
-        CustomVolumeWaveProvider volumeWaveProvider;
+        FGChaosVolumeWaveProvider volumeWaveProvider;
         float fgMusicVolume;
 
         public override void Run()

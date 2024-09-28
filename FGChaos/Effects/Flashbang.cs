@@ -13,7 +13,7 @@ using UnityEngine.UI;
 
 namespace FGChaos.Effects
 {
-    public class Flashbang : Effect
+    public class Flashbang : Effect // unused
     {
         public Flashbang()
         {
@@ -24,7 +24,7 @@ namespace FGChaos.Effects
         Image screenshot;
         Image whiteimage;
         ClientGameManager cgm;
-        CustomVolumeWaveProvider volumeWaveProvider;
+        FGChaosVolumeWaveProvider volumeWaveProvider;
 
         public override void Run()
         {

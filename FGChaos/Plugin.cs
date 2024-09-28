@@ -73,6 +73,7 @@ namespace FGChaos
 
         public static string GetModFolder()
         {
+                // idiot protection
             return Directory.Exists($"{Paths.PluginPath}/FGChaos/FGChaos") ? $"{Paths.PluginPath}/FGChaos/FGChaos" : $"{Paths.PluginPath}/FGChaos";
         }
     }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace FGChaos
 {
-    public class CustomVolumeWaveProvider
+    public class FGChaosVolumeWaveProvider
     {
-        public CustomVolumeWaveProvider(IWaveProvider waveProvider)
+        public FGChaosVolumeWaveProvider(IWaveProvider waveProvider)
         {
             WaveProvider = waveProvider;
         }

@@ -27,7 +27,8 @@ namespace FGChaos.Effects
 
         public override void Run()
         {
-            CustomisationSelections customisationSelections = GlobalGameStateClient.Instance.PlayerProfile.CustomisationSelections;
+            CustomisationSelections customisationSelections = new CustomisationSelections();
+            GlobalGameStateClient.Instance.PlayerProfile.CustomisationSelections.CopyTo(customisationSelections);
             customisationSelections.ColourOption = teamColour;
             CustomisationManager.Instance.ApplyCustomisationsToFallGuy(chaos.fallGuy.gameObject, customisationSelections, 0);
             base.Run();

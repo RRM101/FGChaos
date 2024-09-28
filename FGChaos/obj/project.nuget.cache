@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bKrYJKv6/+odbNw7eTdMnyFZ0AKAssJrrS33lbv+v6gfwvWQi1pGeTBPER4THDyNCwNNfLmTWDsrOwcE+g4N+A==",
+  "dgSpecHash": "f6lO24nv1k/XVMsdU07hyHqJW3lBLe39igEDL5hWXol235orqlUrDYf2XVYHaAq3nObyyXon2yBRRfl8Rzt5+A==",
   "success": true,
   "projectFilePath": "C:\\Users\\rrm1\\source\\repos\\FGChaos\\FGChaos\\FGChaos.csproj",
   "expectedPackageFiles": [
@@ -11,10 +11,10 @@
     "C:\\Users\\rrm1\\.nuget\\packages\\assetripper.cil\\1.1.0\\assetripper.cil.1.1.0.nupkg.sha512",
     "C:\\Users\\rrm1\\.nuget\\packages\\assetripper.gee.external.capstone\\2.3.2\\assetripper.gee.external.capstone.2.3.2.nupkg.sha512",
     "C:\\Users\\rrm1\\.nuget\\packages\\assetripper.primitives\\3.1.3\\assetripper.primitives.3.1.3.nupkg.sha512",
-    "C:\\Users\\rrm1\\.nuget\\packages\\bepinex.core\\6.0.0-be.704\\bepinex.core.6.0.0-be.704.nupkg.sha512",
+    "C:\\Users\\rrm1\\.nuget\\packages\\bepinex.core\\6.0.0-be.725\\bepinex.core.6.0.0-be.725.nupkg.sha512",
     "C:\\Users\\rrm1\\.nuget\\packages\\bepinex.plugininfoprops\\2.1.0\\bepinex.plugininfoprops.2.1.0.nupkg.sha512",
-    "C:\\Users\\rrm1\\.nuget\\packages\\bepinex.unity.common\\6.0.0-be.704\\bepinex.unity.common.6.0.0-be.704.nupkg.sha512",
-    "C:\\Users\\rrm1\\.nuget\\packages\\bepinex.unity.il2cpp\\6.0.0-be.704\\bepinex.unity.il2cpp.6.0.0-be.704.nupkg.sha512",
+    "C:\\Users\\rrm1\\.nuget\\packages\\bepinex.unity.common\\6.0.0-be.725\\bepinex.unity.common.6.0.0-be.725.nupkg.sha512",
+    "C:\\Users\\rrm1\\.nuget\\packages\\bepinex.unity.il2cpp\\6.0.0-be.725\\bepinex.unity.il2cpp.6.0.0-be.725.nupkg.sha512",
     "C:\\Users\\rrm1\\.nuget\\packages\\disarm\\2022.1.0-master.34\\disarm.2022.1.0-master.34.nupkg.sha512",
     "C:\\Users\\rrm1\\.nuget\\packages\\harmonyx\\2.10.2\\harmonyx.2.10.2.nupkg.sha512",
     "C:\\Users\\rrm1\\.nuget\\packages\\iced\\1.21.0\\iced.1.21.0.nupkg.sha512",
