@@ -11,7 +11,7 @@ namespace FGChaos.Effects
     {
         public Spawn()
         {
-            if (ChaosPluginBehaviour.chaosInstance != null)
+            if (ChaosManager.chaosInstance != null)
             {
                 int randomnumber = UnityEngine.Random.Range(0, Chaos.addressableAssetsNames.Length);
 

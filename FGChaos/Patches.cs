@@ -33,7 +33,7 @@ namespace FGChaos
         {
             if (!Plugin.Disable.Value && !Plugin.tempDisable)
             {
-                ChaosPluginBehaviour.instance.EnableChaos();
+                ChaosManager.instance.EnableChaos();
             }
         }
 
@@ -121,7 +121,7 @@ namespace FGChaos
                 __instance.CalculateDirectionAndMagnitude(out Vector3 direction, out float magnitude);
                 if (SwitchMoment.active)
                 {
-                    ChaosPluginBehaviour.instance.StartCoroutine(InputDelay(__instance, direction, magnitude).WrapToIl2Cpp());
+                    ChaosManager.instance.StartCoroutine(InputDelay(__instance, direction, magnitude).WrapToIl2Cpp());
                 }
                 else
                 {

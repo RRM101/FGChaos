@@ -20,7 +20,7 @@ namespace FGChaos.Effects
 
         public bool destroyEffectName = true;
 
-        public Chaos chaos = ChaosPluginBehaviour.chaosInstance;
+        public Chaos chaos = ChaosManager.chaosInstance;
 
         bool canRunUpdateMethod = false;
 
@@ -106,7 +106,7 @@ namespace FGChaos.Effects
 
         public void AddEffectName()
         {
-            textMeshPro = GameObject.Instantiate(ChaosPluginBehaviour.effectName.gameObject, chaos.chaosCanvas.transform.GetChild(1)).GetComponent<TextMeshProUGUI>();
+            textMeshPro = GameObject.Instantiate(ChaosManager.effectName.gameObject, chaos.chaosCanvas.transform.GetChild(1)).GetComponent<TextMeshProUGUI>();
             if (Duration > 0)
             {
                 textMeshPro.text = $"{Name} ({Duration}s)";
@@ -124,7 +124,7 @@ namespace FGChaos.Effects
 
         public void StartCoroutine(IEnumerator enumerator)
         {
-            ChaosPluginBehaviour.instance.RunCoroutine(enumerator);
+            ChaosManager.instance.RunCoroutine(enumerator);
         }
 
         /// <summary>

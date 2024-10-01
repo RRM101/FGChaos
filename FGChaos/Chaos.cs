@@ -32,7 +32,7 @@ namespace FGChaos
         public static bool jumpingEnabled = true;
         public static bool rocketShip;
         public static List<Action> OnJumpActions = new List<Action>();
-        public static Dictionary<string, object> LoadedObjects => ChaosPluginBehaviour.chaosInstance.loadedObjects;
+        public static Dictionary<string, object> LoadedObjects => ChaosManager.chaosInstance.loadedObjects;
         public GameObject chaosCanvas;
         public Dictionary<string, object> loadedObjects = new();
         Slider chaosSlider;
@@ -95,7 +95,7 @@ namespace FGChaos
             }
             catch (Exception e)
             {
-                ChaosPluginBehaviour.ChaosStartError(e);
+                ChaosManager.ChaosStartError(e);
                 throw;
             }
         }
@@ -267,7 +267,7 @@ namespace FGChaos
 
         public static bool CanJump(MotorFunctionJump motorFunctionJump)
         {
-            if (ChaosPluginBehaviour.chaosInstance != null)
+            if (ChaosManager.chaosInstance != null)
             {
                 if (InfiniteJumps.active)
                 {

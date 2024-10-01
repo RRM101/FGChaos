@@ -18,11 +18,11 @@ namespace FGChaos
         { 
             get 
             {
-                if (ChaosPluginBehaviour.chaosInstance != null)
+                if (ChaosManager.chaosInstance != null)
                 {
-                    if (ChaosPluginBehaviour.chaosInstance.nextEffect != null)
+                    if (ChaosManager.chaosInstance.nextEffect != null)
                     {
-                        return ChaosPluginBehaviour.chaosInstance.nextEffect.ID;
+                        return ChaosManager.chaosInstance.nextEffect.ID;
                     }
                 }
                 return "null";
@@ -101,9 +101,9 @@ namespace FGChaos
                 }
             }
 
-            if (selectedEffect != null && ChaosPluginBehaviour.chaosInstance != null)
+            if (selectedEffect != null && ChaosManager.chaosInstance != null)
             {
-                ChaosPluginBehaviour.chaosInstance.nextEffect = selectedEffect;
+                ChaosManager.chaosInstance.nextEffect = selectedEffect;
             }
         }
     }

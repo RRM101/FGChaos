@@ -65,7 +65,7 @@ namespace FGChaos.UI
             UIFactory.SetLayoutElement(saveButton.Component.gameObject, minHeight: 25, minWidth: 0, flexibleWidth: 0, flexibleHeight: 0);
             saveButton.OnClick += Save;
 
-            ChaosPluginBehaviour.instance.RunCoroutine(WorkAroundForInvisibleSlider(autoScrollbar.Slider.GetComponent<Mask>()));
+            ChaosManager.instance.RunCoroutine(WorkAroundForInvisibleSlider(autoScrollbar.Slider.GetComponent<Mask>()));
 
             foreach (Effect effect in EffectList.effects)
             {
@@ -114,7 +114,7 @@ namespace FGChaos.UI
 
             File.WriteAllLines($"{Plugin.GetModFolder()}/disabledeffects.txt", disabledEffectIDs.ToArray());
 
-            ChaosPluginBehaviour.DisableEffects();
+            ChaosManager.DisableEffects();
         }
 
         void OnSearchInputFieldValueChanged(string value)

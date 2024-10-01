@@ -61,12 +61,12 @@ namespace FGChaos
             ClassInjector.RegisterTypeInIl2Cpp<MonoBehaviours.BouncyPlayer>();
             ClassInjector.RegisterTypeInIl2Cpp<MonoBehaviours.ReplayRecorder>();
 
-            ClassInjector.RegisterTypeInIl2Cpp<ChaosPluginBehaviour>();
+            ClassInjector.RegisterTypeInIl2Cpp<ChaosManager>();
             ClassInjector.RegisterTypeInIl2Cpp<Chaos>();
             GameObject obj = new GameObject("FGChaos Behaviour");
             GameObject.DontDestroyOnLoad(obj);
             obj.hideFlags = HideFlags.HideAndDontSave;
-            obj.AddComponent<ChaosPluginBehaviour>();
+            obj.AddComponent<ChaosManager>();
             obj.AddComponent<FGChaosDebug>();
             Log.LogInfo($"Plugin FGChaos has been loaded!");            
         }
@@ -77,9 +77,9 @@ namespace FGChaos
             return Directory.Exists($"{Paths.PluginPath}/FGChaos/FGChaos") ? $"{Paths.PluginPath}/FGChaos/FGChaos" : $"{Paths.PluginPath}/FGChaos";
         }
     }
-    public class ChaosPluginBehaviour : MonoBehaviour
+    public class ChaosManager : MonoBehaviour
     {
-        public static ChaosPluginBehaviour instance;
+        public static ChaosManager instance;
         public static Chaos chaosInstance;
         public static TextMeshProUGUI effectName;
         string[] modFiles = new string[]
