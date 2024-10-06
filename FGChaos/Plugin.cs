@@ -60,6 +60,7 @@ namespace FGChaos
 
             ClassInjector.RegisterTypeInIl2Cpp<MonoBehaviours.BouncyPlayer>();
             ClassInjector.RegisterTypeInIl2Cpp<MonoBehaviours.ReplayRecorder>();
+            ClassInjector.RegisterTypeInIl2Cpp<MonoBehaviours.TouchTrigger>();
 
             ClassInjector.RegisterTypeInIl2Cpp<ChaosManager>();
             ClassInjector.RegisterTypeInIl2Cpp<Chaos>();

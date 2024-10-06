@@ -44,7 +44,7 @@ namespace FGChaos.Effects
                 obj.transform.Translate(chaos.fallGuy.transform.forward * 5, Space.World);
                 Rigidbody rigidbody = obj.GetComponent<Rigidbody>();
                 rigidbody.velocity = chaos.fallGuy.transform.rotation * new Vector3(0, 0, 100);
-                rigidbody.velocity = new Vector3(-rigidbody.velocity.x, rigidbody.velocity.y, -rigidbody.velocity.z);
+                rigidbody.velocity *= -1;
 
                 rigidbody.angularVelocity = chaos.fallGuy.transform.rotation * new Vector3(UnityEngine.Random.Range(-100, 200), UnityEngine.Random.Range(-100, 199), UnityEngine.Random.Range(-100, 201));
             }
