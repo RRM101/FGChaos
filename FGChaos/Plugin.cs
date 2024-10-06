@@ -73,7 +73,7 @@ namespace FGChaos
 
         public static string GetModFolder()
         {
-                // idiot protection
+            // idiot protection
             return Directory.Exists($"{Paths.PluginPath}/FGChaos/FGChaos") ? $"{Paths.PluginPath}/FGChaos/FGChaos" : $"{Paths.PluginPath}/FGChaos";
         }
     }
@@ -223,6 +223,11 @@ namespace FGChaos
 
         void ShowWrongGameVersionPopup()
         {
+            void StupidMTBoolQuitGame(bool stupid)
+            {
+                Application.Quit();
+            }
+
             Action<bool> stupid = StupidMTBoolQuitGame;
 
             ModalMessageData modalMessageData = new ModalMessageData
@@ -238,11 +243,6 @@ namespace FGChaos
             Plugin.Logs.LogError($"Wrong Game Version: {Application.version}");
 
             PopupManager.Instance.Show(PopupInteractionType.Error, modalMessageData);
-        }
-
-        void StupidMTBoolQuitGame(bool stupid)
-        {
-            Application.Quit();
         }
 
         void ShowFGToolsPopup()

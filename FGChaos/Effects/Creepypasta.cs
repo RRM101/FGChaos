@@ -15,7 +15,7 @@ namespace FGChaos.Effects
         {
             Name = "Creepypasta";
             Duration = 30;
-            BlockedEffects = new Type[] { typeof(VignetteEffect), typeof(Creepypasta) };
+            BlockedEffects = new Type[] { typeof(VignetteEffect), typeof(Creepypasta), typeof(BrightLight) };
         }
 
         PostProcessProfile postProcessProfile;

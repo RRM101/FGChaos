@@ -13,6 +13,7 @@ namespace FGChaos.Effects
         {
             Name = "No Lights";
             Duration = 20;
+            BlockedEffects = new Type[] { typeof(NoLights), typeof(BrightLight) };
         }
 
         List<Light> Lights = new();
