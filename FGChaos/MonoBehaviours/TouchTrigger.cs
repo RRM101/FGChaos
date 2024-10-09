@@ -30,12 +30,12 @@ namespace FGChaos.MonoBehaviours
                 timer = 1;
                 if (collision.contactCount > 0)
                 {
-                    StartCoroutine(Shoot(collision).WrapToIl2Cpp());
+                    StartCoroutine(Shoot(collision.GetContact(0).normal).WrapToIl2Cpp());
                 }
             }
         }
 
-        IEnumerator Shoot(Collision collision)
+        IEnumerator Shoot(Vector3 collisionNormal)
         {
             string[] boulderKeys = { "PB_Boulder_Large", "PB_Boulder_Large_01", "PB_Boulder_Large_02", "PB_Boulder_Large_03", "PB_Boulder_Large_04" };
             int randomboulder = UnityEngine.Random.Range(0, boulderKeys.Length);
@@ -46,7 +46,7 @@ namespace FGChaos.MonoBehaviours
                 GameObject obj = GameObject.Instantiate(handle.Result);
                 obj.RemoveComponentIfExists<LodController>();
                 obj.transform.position = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-                obj.transform.Translate(collision.GetContact(0).normal * 3, Space.World);
+                obj.transform.Translate(collisionNormal * 6, Space.World);
                 obj.transform.LookAt(transform.position);
                 Rigidbody rigidbody = obj.GetComponent<Rigidbody>();
                 rigidbody.velocity = obj.transform.rotation * new Vector3(0, 0, 100);

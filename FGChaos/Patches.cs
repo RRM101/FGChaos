@@ -193,5 +193,17 @@ namespace FGChaos
                 __instance.RoundDescriptionText = "EVIL " + __instance.RoundDescriptionText;
             }
         }
+
+        [HarmonyPatch(typeof(PlayerInfoDisplayCanvas), "SetText")]
+        [HarmonyPrefix]
+        static bool PlayerInfoDisplayCanvasSetText(ref string text)
+        {
+            if (EvilFallGuys.isEvil)
+            {
+                text = "EVIL " + text;
+            }
+
+            return true;
+        }
     }
 }
