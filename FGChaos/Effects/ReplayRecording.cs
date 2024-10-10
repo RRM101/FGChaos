@@ -47,7 +47,9 @@ namespace FGChaos.Effects
 
         void SetUIState(bool spectator)
         {
-            cgm._inGameUiManager._switchableView._views[4].GetComponentInChildren<GameplayQualificationStatusPromptViewModel>().UpdateDisplay(true, false);
+            GameplayQualificationStatusPromptViewModel gameplayQualificationStatus = cgm._inGameUiManager._switchableView._views[4].GetComponentInChildren<GameplayQualificationStatusPromptViewModel>();
+            gameplayQualificationStatus.UpdateDisplay(true, false);
+            gameplayQualificationStatus.transform.FindChild("GameObject/LowerLayoutRoot/QualifiedLayout/Text").GetComponent<LocalisedStaticLabel>().SetLocalisationKey("fgchaos_replay");
             cgm._inGameUiManager._switchableView._views[4].GetComponentInChildren<NameTagViewModel>().UpdateDisplay(GlobalGameStateClient.Instance.GetLocalPlayerKey(), "", GlobalGameStateClient.Instance._playerProfile.CustomisationSelections);
 
             if (spectator)

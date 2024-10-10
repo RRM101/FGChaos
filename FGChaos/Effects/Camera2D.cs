@@ -60,9 +60,11 @@ namespace FGChaos.Effects
         IEnumerator EnableDOF()
         {
             depthOfField.active = true;
-            chaos.cameraDirector.MainNativeCam.gameObject.SetActive(false);
+            if (chaos != null)
+                chaos.cameraDirector.MainNativeCam.gameObject.SetActive(false);
             yield return new WaitForEndOfFrame();
-            chaos.cameraDirector.MainNativeCam.gameObject.SetActive(true);
+            if (chaos != null)
+                chaos.cameraDirector.MainNativeCam.gameObject.SetActive(true);
         }
     }
 }

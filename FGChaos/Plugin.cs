@@ -20,6 +20,7 @@ using UniverseLib.UI;
 using FGChaos.Effects;
 using System.Linq;
 using BepInEx.Logging;
+using FG.Common.CMS;
 
 namespace FGChaos
 {
@@ -152,7 +153,7 @@ namespace FGChaos
                     GameObject effectNameGameObject = new GameObject("Effect Name");
                     GameObject.DontDestroyOnLoad(effectNameGameObject);
                     effectNameGameObject.hideFlags = HideFlags.HideAndDontSave;
-                    effectNameGameObject.AddComponent<LayoutElement>();
+                    effectNameGameObject.AddComponent<UnityEngine.UI.LayoutElement>();
                     effectName = effectNameGameObject.AddComponent<TextMeshProUGUI>();
                     foreach(TMP_FontAsset fontAsset in Resources.FindObjectsOfTypeAll<TMP_FontAsset>())
                     {
@@ -189,6 +190,29 @@ namespace FGChaos
             {
                 UI.Enabled = !UI.Enabled;
                 CursorManager.Instance.OnApplicationFocus(true);
+            }
+        }
+
+        public void HandleCMSDataParsedEvent()
+        {
+            AddCMSStringKeys();
+        }
+
+        void AddCMSStringKeys()
+        {
+            Dictionary<string, string> stringsToAdd = new Dictionary<string, string>()
+            {
+                {"fgchaos_replay", "REPLAY"}
+            };
+
+            foreach (var toAdd in stringsToAdd) AddNewStringToCMS(toAdd.Key, toAdd.Value);
+        }
+
+        void AddNewStringToCMS(string key, string value)
+        {
+            if (!CMSLoader.Instance._localisedStrings._localisedStrings.ContainsKey(key))
+            {
+                CMSLoader.Instance._localisedStrings._localisedStrings.Add(key, value);
             }
         }
 

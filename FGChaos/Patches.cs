@@ -26,6 +26,13 @@ namespace FGChaos
             }
         }
 
+        [HarmonyPatch(typeof(CMSLoader), "InitItemsFromContent")]
+        [HarmonyPostfix]
+        static void CMSLoaderInitItemsFromContent(CMSLoader __instance)
+        {
+            ChaosManager.instance.HandleCMSDataParsedEvent();
+        }
+
         [HarmonyPatch(typeof(OfflinePlaygroundManager), "OnIntroCamerasComplete")]
         [HarmonyPatch(typeof(ClientGameManager), "OnIntroCountdownEnded")]
         [HarmonyPostfix]
