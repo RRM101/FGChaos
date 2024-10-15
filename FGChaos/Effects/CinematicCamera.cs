@@ -29,7 +29,7 @@ namespace FGChaos.Effects
         FallGuysCharacterControllerInput input;
         Camera camera;
 
-        float delay = 5;
+        float delay = 3;
         bool zoomed = false;
         Vector3 originalCameraPositon;
         bool isAtOriginalCameraPositon = false;
@@ -59,7 +59,7 @@ namespace FGChaos.Effects
             }
             else
             {
-                delay = 5;
+                delay = 3;
                 SetCameraPositon();
             }
 

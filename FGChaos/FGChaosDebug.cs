@@ -47,6 +47,8 @@ namespace FGChaos
         string command;
         bool runCommand;
 
+        static string HelpText => "\nFGChaos Debug Commands\neffect <Effect ID> - Sets the next effect to the specified ID\nhelp - Shows this";
+
         void OnGUI()
         {
             if (showDebugMenu)
@@ -75,13 +77,15 @@ namespace FGChaos
         void Run(string s)
         {
             string[] strings = s.Split(' ');
-            string command = strings[0];
-            string arg = strings[1];
+            string command = strings[0].ToLower();
 
             switch (command)
             {
                 case "effect":
-                    SetNextEffect(arg);
+                    SetNextEffect(strings[1]);
+                    break;
+                case "help":
+                    LogHelpText();
                     break;
                 default:
                     break;
@@ -105,6 +109,11 @@ namespace FGChaos
             {
                 ChaosManager.chaosInstance.nextEffect = selectedEffect;
             }
+        }
+
+        void LogHelpText()
+        {
+            Plugin.Logs.LogMessage(HelpText);
         }
     }
 }
