@@ -1,4 +1,5 @@
-﻿using FMODUnity;
+﻿using FGChaos.Effects;
+using FMODUnity;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -36,6 +37,18 @@ namespace FGChaos
             ImageConversion.LoadImage(texture, imagedata);
             Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));
             return sprite;
+        }
+
+        public static Effect GetEffectForID(string id)
+        {
+            foreach (Effect effect in EffectList.effects)
+            {
+                if (effect.ID == id)
+                {
+                    return effect.Create();
+                }
+            }
+            return null;
         }
     }
 }

@@ -265,6 +265,18 @@ namespace FGChaos
             }
         }
 
+        public void RunEffectWithDelay(Effect effect, float delay)
+        {
+            StartCoroutine(IRunEffectWithDelay(effect, delay).WrapToIl2Cpp());
+        }
+
+        IEnumerator IRunEffectWithDelay(Effect effect, float delay)
+        {
+            yield return new WaitForSecondsRealtime(delay);
+            effect.Run();
+        }
+
+
         public static bool CanJump(MotorFunctionJump motorFunctionJump)
         {
             if (ChaosManager.chaosInstance != null)

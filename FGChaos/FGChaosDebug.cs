@@ -87,23 +87,28 @@ namespace FGChaos
                 case "help":
                     LogHelpText();
                     break;
+                case "runeffect":
+                    RunEffectWithDelay(strings);
+                    break;
                 default:
                     break;
 
             }
         }
 
+        void RunEffectWithDelay(string[] args)
+        {
+            if (args.Length >= 3 && ChaosManager.chaosInstance != null)
+            {
+                bool parseSuccess = float.TryParse(command, out float delay);
+                if (parseSuccess)
+                    ChaosManager.chaosInstance.RunEffectWithDelay(FGChaosUtils.GetEffectForID(args[1]), delay);
+            }
+        }
+
         void SetNextEffect(string effectID)
         {
-            Effect selectedEffect = null;
-            foreach (Effect effect in EffectList.effects)
-            {
-                if (effect.ID == effectID)
-                {
-                    selectedEffect = effect;
-                    break;
-                }
-            }
+            Effect selectedEffect = FGChaosUtils.GetEffectForID(effectID);
 
             if (selectedEffect != null && ChaosManager.chaosInstance != null)
             {
