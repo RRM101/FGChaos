@@ -100,7 +100,7 @@ namespace FGChaos
         {
             if (args.Length >= 3 && ChaosManager.chaosInstance != null)
             {
-                bool parseSuccess = float.TryParse(args[3], out float delay);
+                bool parseSuccess = float.TryParse(args[2], out float delay);
                 if (parseSuccess)
                     ChaosManager.chaosInstance.RunEffectWithDelay(FGChaosUtils.GetEffectForID(args[1]), delay);
             }
