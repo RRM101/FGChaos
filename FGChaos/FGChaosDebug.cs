@@ -47,7 +47,7 @@ namespace FGChaos
         string command;
         bool runCommand;
 
-        static string HelpText => "\nFGChaos Debug Commands\neffect <Effect ID> - Sets the next effect to the specified ID\nhelp - Shows this";
+        static string HelpText => "\nFGChaos Debug Commands\neffect <Effect ID> - Sets the next effect to the specified ID\nruneffect <Effect ID> <delay> - Runs the effect with a delay seperate from the progress bar\nhelp - Shows this";
 
         void OnGUI()
         {
@@ -100,7 +100,7 @@ namespace FGChaos
         {
             if (args.Length >= 3 && ChaosManager.chaosInstance != null)
             {
-                bool parseSuccess = float.TryParse(command, out float delay);
+                bool parseSuccess = float.TryParse(args[3], out float delay);
                 if (parseSuccess)
                     ChaosManager.chaosInstance.RunEffectWithDelay(FGChaosUtils.GetEffectForID(args[1]), delay);
             }
