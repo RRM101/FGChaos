@@ -79,6 +79,8 @@ namespace FGChaos
             string[] strings = s.Split(' ');
             string command = strings[0].ToLower();
 
+            Plugin.Logs.LogInfo($"Running \"{s}\"");
+
             switch (command)
             {
                 case "effect":
@@ -90,9 +92,20 @@ namespace FGChaos
                 case "runeffect":
                     RunEffectWithDelay(strings);
                     break;
+                /*case "noeffect":
+                    NoEffect();
+                    break;*/
                 default:
                     break;
 
+            }
+        }
+
+        void NoEffect()
+        {
+            if (ChaosManager.chaosInstance != null)
+            {
+                ChaosManager.chaosInstance.nextEffect = null;
             }
         }
 
