@@ -61,6 +61,10 @@ namespace FGChaos.Effects
             gameObject.transform.position = position;
             GameObject model = GameObject.Instantiate(chaos.fallGuy.transform.GetChild(0).gameObject, gameObject.transform);
             model.transform.localPosition = Vector3.zero;
+            model.transform.LookAt(chaos.fallGuy.transform);
+            Vector3 eulerAngles = model.transform.eulerAngles;
+            eulerAngles.x = 0;
+            model.transform.eulerAngles = eulerAngles;
         }
 
         public override void End()
