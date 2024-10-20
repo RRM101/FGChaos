@@ -115,8 +115,6 @@ namespace FGChaos
 
         void ChooseRandomEffect()
         {
-            delay = Plugin.EffectTimer.Value;
-
             if (effects.Count == 0)
             {
                 Application.OpenURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
@@ -248,11 +246,20 @@ namespace FGChaos
             }
             else
             {
-                if (nextEffect == null && CanContinue())
+                delay = Plugin.EffectTimer.Value;
+
+                try
                 {
-                    ChooseRandomEffect();
+                    if (nextEffect == null && CanContinue())
+                    {
+                        ChooseRandomEffect();
+                    }
+                    RunEffect();
                 }
-                RunEffect();
+                catch (Exception e)
+                {
+                    Plugin.Logs.LogError($"An error occured: {e.GetType().Name}: {e.Message}\n\nStack Trace:\n{e.StackTrace}");
+                }
                 ChooseRandomEffect();
             }
 
